@@ -1,103 +1,201 @@
-import Image from "next/image";
+'use client';
+
+import { useRef, useEffect, useState } from 'react';
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [activeSection, setActiveSection] = useState(0);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+  useEffect(() => {
+    const scrollContainer = scrollContainerRef.current;
+    if (!scrollContainer) return;
+
+    // Set up observer for content sections to determine active section
+    const sections = document.querySelectorAll('.section');
+    
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = Array.from(sections).indexOf(entry.target);
+            setActiveSection(index);
+            
+            // Add visible class to content section
+            const contentSection = entry.target.querySelector('.content-section');
+            if (contentSection) {
+              contentSection.classList.add('visible');
+            }
+          } else {
+            // Remove visible class when section is not in view
+            const contentSection = entry.target.querySelector('.content-section');
+            if (contentSection) {
+              contentSection.classList.remove('visible');
+            }
+          }
+        });
+      },
+      { 
+        threshold: 0.6, // Trigger when 60% of the section is visible
+        root: scrollContainer
+      }
+    );
+    
+    sections.forEach((section) => observer.observe(section));
+
+    // Handle video playback
+    if (videoRef.current) {
+      const video = videoRef.current;
+      
+      // Ensure video loads and is ready
+      video.load();
+      video.muted = true;
+      
+      // Play video continuously
+      video.play().catch(() => {
+        console.log('Video playback was prevented');
+      });
+      
+      // Control video playback rate based on scroll
+      scrollContainer.addEventListener('scroll', () => {
+        // Keep playing the video during scrolling
+        if (video.paused) {
+          video.play().catch(() => {});
+        }
+        
+        // Calculate scroll progress (0-1)
+        const scrollTop = scrollContainer.scrollTop;
+        const scrollHeight = scrollContainer.scrollHeight - scrollContainer.clientHeight;
+        const scrollProgress = scrollTop / scrollHeight;
+        
+        // Adjust playback rate based on scroll speed
+        video.playbackRate = Math.max(0.5, Math.min(2, 1 + scrollProgress));
+      });
+    }
+
+    return () => {
+      observer.disconnect();
+      if (scrollContainerRef.current) {
+        scrollContainerRef.current.removeEventListener('scroll', () => {});
+      }
+    };
+  }, []);
+
+  return (
+    <div className="main-container">
+      {/* Scrollable left side */}
+      <div className="scrollable-container" ref={scrollContainerRef}>
+        {/* Hero Section */}
+        <section className="section">
+          <div className="left-side">
+            <div className="content-section visible">
+              <h1 className="heading">Frito Paws</h1>
+              <h2 className="subheading">Professional Dog Walking Service</h2>
+              <p className="text">
+                We provide top-notch care for your furry friends when you can't be there. 
+                Trusted, reliable, and passionate about pets.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* What We Do Section */}
+        <section className="section">
+          <div className="left-side">
+            <div className="content-section">
+              <h2 className="heading">What We Do?</h2>
+              <h3 className="subheading">Professional Dog Walking & Care</h3>
+              <p className="text">
+                Our services include daily walks, playtime sessions, and personalized care for your pets.
+                We tailor our approach to your dog's specific needs, energy level, and personality.
+              </p>
+              <ul className="text list-disc pl-5 mb-4">
+                <li>Individual and group walks</li>
+                <li>Puppy care visits</li>
+                <li>Daily updates with photos</li>
+                <li>Flexible scheduling options</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* Who We Are Section */}
+        <section className="section">
+          <div className="left-side">
+            <div className="content-section">
+              <h2 className="heading">Who We Are?</h2>
+              <h3 className="subheading">Meet Our Team of Dog Lovers</h3>
+              <p className="text">
+                We're a team of certified pet professionals who are passionate about animals.
+                All our staff are insured, bonded, and have extensive experience caring for dogs of all breeds and sizes.
+              </p>
+              <p className="text">
+                Founded in 2020, Frito Paws has quickly become the trusted choice for pet parents in the area
+                who want peace of mind knowing their furry family members are receiving the best care possible.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Contact Section */}
+        <section className="section">
+          <div className="left-side">
+            <div className="content-section">
+              <h2 className="heading">Get In Touch</h2>
+              <h3 className="subheading">Book Your First Walk Today</h3>
+              <p className="text">
+                We'd love to meet you and your furry friend! Contact us today to schedule
+                a free consultation or book your first walk.
+              </p>
+              <div className="flex flex-col gap-3">
+                <p className="font-semibold">Phone: (555) 123-4567</p>
+                <p className="font-semibold">Email: hello@fritopaws.com</p>
+                <p className="font-semibold">Service Area: Downtown & Surrounding Neighborhoods</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Footer */}
+        <footer className="py-8 text-center bg-[#f5f5f5] dark:bg-[#111]">
+          <p>© 2023 Frito Paws Professional Dog Walking. All rights reserved.</p>
+        </footer>
+      </div>
+
+      {/* Fixed right side with animation */}
+      <div className="fixed-right-side">
+        <div className="animation-container">
+          <video 
+            ref={videoRef}
+            className="w-full max-w-md"
+            loop
+            muted
+            playsInline
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            <source src="/Animation - 1746133982800.webm" type="video/webm" />
+            Your browser does not support the video tag.
+          </video>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+      </div>
+
+      {/* Navigation dots */}
+      <div className="fixed right-6 top-1/2 transform -translate-y-1/2 z-10 flex flex-col gap-3">
+        {[0, 1, 2, 3].map((index) => (
+          <button
+            key={index}
+            className={`w-3 h-3 rounded-full transition-colors duration-300 ${
+              activeSection === index ? 'bg-[var(--primary)]' : 'bg-gray-400'
+            }`}
+            onClick={() => {
+              const sections = document.querySelectorAll('.section');
+              sections[index].scrollIntoView({
+                behavior: 'smooth'
+              });
+            }}
+            aria-label={`Go to section ${index + 1}`}
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        ))}
+      </div>
     </div>
   );
 }

@@ -3,6 +3,11 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary: #E5704B;
+  --secondary: #D9F0FF;
+  --tertiary: #8BC8E0;
+  --section-height: 100vh;
+  --left-side-width: 50%;
 }
 
 @theme inline {
@@ -16,11 +21,134 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --primary: #FF8866;
+    --secondary: #004766;
+    --tertiary: #2D9CCA;
   }
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+.main-container {
+  display: flex;
+  position: relative;
+  height: 100vh;
+  width: 100%;
+}
+
+.scrollable-container {
+  width: var(--left-side-width);
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.scrollable-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.section {
+  height: var(--section-height);
+  width: 100%;
+  position: relative;
+  scroll-snap-align: start;
+}
+
+.left-side {
+  width: 100%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.fixed-right-side {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: calc(100% - var(--left-side-width));
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.animation-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heading {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  color: var(--primary);
+}
+
+.subheading {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.content-section {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.content-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  :root {
+    --left-side-width: 100%;
+  }
+  
+  .main-container {
+    flex-direction: column;
+  }
+  
+  .fixed-right-side {
+    position: relative;
+    width: 100%;
+    height: 50vh;
+    top: auto;
+    right: auto;
+  }
+  
+  .scrollable-container {
+    width: 100%;
+  }
+  
+  .heading {
+    font-size: 2rem;
+  }
+  
+  .subheading {
+    font-size: 1.25rem;
+  }
 }
