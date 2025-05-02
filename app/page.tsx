@@ -3,6 +3,7 @@
 import { useState, useRef } from 'react';
 import { ExpandableCard } from './components/ExpandableCard';
 import Image from 'next/image';
+import DogAnimation from './components/DogAnimation';
 
 // Component for paw icon with random rotation and position
 interface PawIconProps {
@@ -61,16 +62,7 @@ export default function Home() {
         <PawIcon bottom="10%" right="18%" size={36} rotate={-30} opacity={0.1} />
         
         <div className="animation-container mb-4 relative">
-          <video 
-            className="w-full h-full object-cover"
-            autoPlay
-            loop
-            muted
-            playsInline
-          >
-            <source src="/Animation - 1746133982800.webm" type="video/webm" />
-            Your browser does not support the video tag.
-          </video>
+          <DogAnimation />
         </div>
         
         <h1 className="hero-title">Frito Paws</h1>
