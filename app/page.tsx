@@ -2,15 +2,67 @@
 
 import { useState, useRef } from 'react';
 import { ExpandableCard } from './components/ExpandableCard';
+import Image from 'next/image';
+
+// Component for paw icon with random rotation and position
+interface PawIconProps {
+  size?: number;
+  position?: string;
+  top?: string;
+  left?: string;
+  right?: string;
+  bottom?: string;
+  rotate?: number;
+  opacity?: number;
+  color?: string;
+}
+
+const PawIcon = ({ 
+  size = 30, 
+  position = 'absolute', 
+  top, 
+  left, 
+  right, 
+  bottom, 
+  rotate = 0,
+  opacity = 0.15,
+  color = '#143F3F'
+}: PawIconProps) => {
+  return (
+    <div 
+      className={`${position} z-0`} 
+      style={{ 
+        top, 
+        left, 
+        right, 
+        bottom,
+        transform: `rotate(${rotate}deg)`,
+        opacity,
+        width: size,
+        height: size
+      }}
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" height={size} viewBox="0 -960 960 960" width={size} fill={color}>
+        <path d="M180-475q-42 0-71-29t-29-71q0-42 29-71t71-29q42 0 71 29t29 71q0 42-29 71t-71 29Zm180-160q-42 0-71-29t-29-71q0-42 29-71t71-29q42 0 71 29t29 71q0 42-29 71t-71 29Zm240 0q-42 0-71-29t-29-71q0-42 29-71t71-29q42 0 71 29t29 71q0 42-29 71t-71 29Zm180 160q-42 0-71-29t-29-71q0-42 29-71t71-29q42 0 71 29t29 71q0 42-29 71t-71 29ZM266-75q-45 0-75.5-34.5T160-191q0-52 35.5-91t70.5-77q29-31 50-67.5t50-68.5q22-26 51-43t63-17q34 0 63 16t51 42q28 32 49.5 69t50.5 69q35 38 70.5 77t35.5 91q0 47-30.5 81.5T694-75q-54 0-107-9t-107-9q-54 0-107 9t-107 9Z"/>
+      </svg>
+    </div>
+  );
+};
 
 export default function Home() {
   return (
     <div className="main-container">
       {/* Header Section with Animation and Title */}
-      <header className="header">
-        <div className="animation-container mb-6">
+      <header className="header relative overflow-hidden">
+        {/* Decorative paw icons */}
+        <PawIcon top="15%" left="10%" size={40} rotate={-15} opacity={0.1} />
+        <PawIcon top="25%" right="12%" size={24} rotate={20} opacity={0.1} />
+        <PawIcon bottom="30%" left="15%" size={32} rotate={45} opacity={0.08} />
+        <PawIcon bottom="10%" right="18%" size={36} rotate={-30} opacity={0.1} />
+        
+        <div className="animation-container mb-4 relative">
           <video 
-            className="w-full mx-auto"
+            className="w-full h-full object-cover"
             autoPlay
             loop
             muted
@@ -22,20 +74,29 @@ export default function Home() {
         </div>
         
         <h1 className="hero-title">Frito Paws</h1>
-        <p className="text-lg text-muted-foreground max-w-md mx-auto mt-3 mb-5">
+        <p className="text-lg text-muted-foreground max-w-md mx-auto mt-2 mb-4">
           Professional Dog Walking & Care Services
         </p>
         <a href="#contact" className="book-now-btn">Book Now</a>
       </header>
 
       {/* Section Title */}
-      <div className="text-center py-6">
+      <div className="text-center py-5 relative">
+        <PawIcon position="absolute" top="50%" left="20%" size={28} rotate={-10} opacity={0.12} />
+        <PawIcon position="absolute" top="30%" right="22%" size={24} rotate={15} opacity={0.12} />
+        
         <h2 className="text-2xl font-bold mb-2">Our Services</h2>
         <div className="w-24 h-1 bg-primary mx-auto rounded-full"></div>
       </div>
 
       {/* Cards Container */}
-      <main className="cards-container">
+      <main className="cards-container relative">
+        {/* Background paw icons */}
+        <PawIcon position="absolute" top="5%" left="5%" size={36} rotate={-25} opacity={0.08} />
+        <PawIcon position="absolute" top="20%" right="8%" size={30} rotate={15} opacity={0.08} />
+        <PawIcon position="absolute" bottom="15%" left="10%" size={24} rotate={30} opacity={0.08} />
+        <PawIcon position="absolute" bottom="30%" right="5%" size={32} rotate={-10} opacity={0.08} />
+        
         {/* What We Do Card */}
         <ExpandableCard 
           title="What We Do"
@@ -110,7 +171,13 @@ export default function Home() {
       </main>
 
       {/* Contact Section */}
-      <footer id="contact" className="contact-section">
+      <footer id="contact" className="contact-section relative">
+        {/* Decorative paw icons */}
+        <PawIcon position="absolute" top="10%" left="8%" size={40} rotate={-20} opacity={0.1} color="#143F3F" />
+        <PawIcon position="absolute" top="20%" right="12%" size={28} rotate={15} opacity={0.1} color="#143F3F" />
+        <PawIcon position="absolute" bottom="20%" left="15%" size={32} rotate={40} opacity={0.1} color="#143F3F" />
+        <PawIcon position="absolute" bottom="15%" right="10%" size={36} rotate={-10} opacity={0.1} color="#143F3F" />
+        
         <div className="contact-container">
           <h2 className="text-3xl font-bold mb-6">Contact Us</h2>
           <div className="flex flex-col md:flex-row justify-center gap-12">

@@ -1,19 +1,19 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --primary: #FF7D55;
-  --primary-hover: #FF6A3D;
-  --secondary: #D9F0FF;
-  --tertiary: #8BC8E0;
+  --background: #F4E2C6;
+  --foreground: #143F3F;
+  --primary: #143F3F;
+  --primary-hover: #1f5c5c;
+  --secondary: #e8d2ac;
+  --tertiary: #265b5b;
   --section-height: 100vh;
   --left-side-width: 50%;
   --card: #ffffff;
-  --card-foreground: #171717;
-  --border: rgba(0, 0, 0, 0.08);
-  --accent-light: #f7f7f7;
-  --muted-foreground: #737373;
+  --card-foreground: #143F3F;
+  --border: rgba(20, 63, 63, 0.1);
+  --accent-light: #faf0e0;
+  --muted-foreground: #4b6e6e;
 }
 
 @theme inline {
@@ -21,9 +21,9 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-noto-sans);
   --animate-fade-in: fadeIn 0.5s ease forwards;
-  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 8px 16px rgba(0, 0, 0, 0.08);
-  --shadow-lg: 0 16px 32px rgba(0, 0, 0, 0.1);
+  --shadow-sm: 0 2px 4px rgba(20, 63, 63, 0.05);
+  --shadow-md: 0 8px 16px rgba(20, 63, 63, 0.08);
+  --shadow-lg: 0 16px 32px rgba(20, 63, 63, 0.1);
   --animate-hover: translateY(-8px);
 
   @keyframes fadeIn {
@@ -40,17 +40,17 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #131313;
-    --foreground: #f2f2f2;
-    --primary: #FF8866;
-    --primary-hover: #FF7D55;
-    --secondary: #004766;
-    --tertiary: #2D9CCA;
-    --card: #1e1e1e;
-    --card-foreground: #f2f2f2;
-    --border: rgba(255, 255, 255, 0.1);
-    --accent-light: #252525;
-    --muted-foreground: #a1a1a1;
+    --background: #2d2b26;
+    --foreground: #e9dfca;
+    --primary: #3d7a7a;
+    --primary-hover: #4c9898;
+    --secondary: #453f32;
+    --tertiary: #5c9b9b;
+    --card: #3a3832;
+    --card-foreground: #e9dfca;
+    --border: rgba(233, 223, 202, 0.1);
+    --accent-light: #353129;
+    --muted-foreground: #bcae94;
   }
 }
 
@@ -76,25 +76,29 @@ body {
 .header {
   padding: 2rem 1rem;
   text-align: center;
-  background: linear-gradient(180deg, var(--background) 0%, rgba(var(--accent-light), 0.3) 100%);
+  background: linear-gradient(180deg, var(--background) 0%, var(--accent-light) 100%);
 }
 
 .animation-container {
   width: 100%;
-  max-width: 420px;
+  max-width: 260px;
+  height: 200px;
   margin: 0 auto;
   overflow: hidden;
   border-radius: 12px;
   box-shadow: var(--shadow-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hero-title {
-  margin-top: 1.5rem;
-  font-size: 4rem;
+  margin-top: 1rem;
+  font-size: 3.5rem;
   font-weight: 800;
   color: var(--primary);
   letter-spacing: -0.03em;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  text-shadow: 0 1px 2px rgba(20, 63, 63, 0.1);
 }
 
 .book-now-btn {
@@ -107,7 +111,7 @@ body {
   margin-top: 1.5rem;
   display: inline-block;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(229, 112, 75, 0.3);
+  box-shadow: 0 4px 10px rgba(20, 63, 63, 0.3);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
@@ -115,7 +119,7 @@ body {
 .book-now-btn:hover {
   background-color: var(--primary-hover);
   transform: translateY(-3px);
-  box-shadow: 0 6px 15px rgba(229, 112, 75, 0.4);
+  box-shadow: 0 6px 15px rgba(20, 63, 63, 0.4);
 }
 
 .cards-container {
@@ -149,7 +153,7 @@ body {
   background-color: var(--secondary);
   padding: 3rem 2rem;
   margin-top: auto;
-  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 -4px 20px rgba(20, 63, 63, 0.05);
   position: relative;
 }
 

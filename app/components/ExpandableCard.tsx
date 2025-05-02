@@ -31,27 +31,77 @@ export const ExpandableCard = ({
 
   useOutsideClick(cardRef as React.RefObject<HTMLDivElement>, handleOutsideClick);
 
+  // Generate a unique gradient based on the index
+  const getGradient = (idx: number) => {
+    const gradients = [
+      'linear-gradient(135deg, #fff 0%, #f8f0e3 100%)', 
+      'linear-gradient(135deg, #fff 0%, #e8d2ac 100%)',
+      'linear-gradient(135deg, #fff 0%, #f4e2c6 100%)'
+    ];
+    
+    return gradients[idx % gradients.length];
+  };
+
+  // Generate a unique hover gradient based on the index
+  const getHoverGradient = (idx: number) => {
+    const gradients = [
+      'linear-gradient(135deg, #fff 0%, #e8d2ac 100%)',
+      'linear-gradient(135deg, #fff 0%, #f4e2c6 100%)',
+      'linear-gradient(135deg, #fff 0%, #f8f0e3 100%)'
+    ];
+    
+    return gradients[idx % gradients.length];
+  };
+
   return (
     <div
       ref={cardRef}
       className={cn(
-        "relative bg-card overflow-hidden border border-border rounded-lg",
+        "relative overflow-hidden border border-border rounded-lg",
         "transition-all duration-400 cursor-pointer",
         isExpanded ? 
           "absolute inset-4 z-40 p-8" : 
-          "p-6 z-30 hover:bg-accent-light",
-        isExpanded ? 
-          "bg-background shadow-xl" : 
-          "",
+          "p-6 z-30",
         className
       )}
       style={{ 
+        background: isExpanded ? '#fff' : getGradient(index),
         transformOrigin: "center",
         transform: isExpanded ? "scale(1.05)" : "scale(1)",
-        transitionTimingFunction: "cubic-bezier(0.175, 0.885, 0.32, 1.275)"
+        transitionTimingFunction: "cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+        boxShadow: isExpanded ? 'var(--shadow-lg)' : 'var(--shadow-md)'
+      }}
+      onMouseEnter={(e) => {
+        if (!isExpanded) {
+          e.currentTarget.style.background = getHoverGradient(index);
+        }
+      }}
+      onMouseLeave={(e) => {
+        if (!isExpanded) {
+          e.currentTarget.style.background = getGradient(index);
+        }
       }}
       onClick={() => !isExpanded && setIsExpanded(true)}
     >
+      {/* Decorative corner element */}
+      <div 
+        className="absolute top-0 right-0 w-16 h-16 overflow-hidden"
+        style={{
+          opacity: isExpanded ? 0 : 0.15,
+          transition: 'opacity 0.3s ease'
+        }}
+      >
+        <div 
+          className="absolute transform rotate-45 bg-primary" 
+          style={{
+            width: '200%',
+            height: '200%',
+            top: '-150%',
+            right: '-150%',
+          }}
+        />
+      </div>
+
       <div className="relative z-20">
         <div className="text-xl font-bold mb-3 text-primary">
           {title}
