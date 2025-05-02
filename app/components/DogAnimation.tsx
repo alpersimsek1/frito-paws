@@ -11,28 +11,51 @@ interface PawPrint {
   opacity: number;
 }
 
+interface PathPoint {
+  x: number;
+  y: number;
+}
+
 const DogAnimation = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [position, setPosition] = useState(0);
+  const [pathPosition, setPathPosition] = useState(0);
+  const [currentPoint, setCurrentPoint] = useState<PathPoint>({ x: 0, y: 0 });
   const [direction, setDirection] = useState(1); // 1 for right, -1 for left
   const [isSniffing, setIsSniffing] = useState(false);
   const [bobAmount, setBobAmount] = useState(0);
   const [pawPrints, setPawPrints] = useState<PawPrint[]>([]);
   const animationFrameRef = useRef<number | null>(null);
   const pawPrintIdRef = useRef(0);
+  const prevPointRef = useRef<PathPoint>({ x: 0, y: 0 });
   
   // Animation settings
-  const speed = 0.15; // Base speed (percentage per frame) - slower than before
-  const containerWidth = 100; // percentage of container width
+  const speed = 0.1; // Base speed (percentage per frame) - slower for curved path
+  const pathLength = 100; // Total path length parameter
   const minSniffInterval = 3000; // Minimum ms between sniffing animations
   const maxSniffInterval = 7000; // Maximum ms between sniffing animations
   const sniffDuration = 1500; // ms for sniffing animation
-  const pawPrintFrequency = 30; // frames between paw prints
+  const pawPrintFrequency = 35; // frames between paw prints
   const frameCountRef = useRef(0);
   
   // Get random interval for natural-looking sniffing behavior
   const getRandomSniffInterval = () => {
     return Math.floor(Math.random() * (maxSniffInterval - minSniffInterval + 1)) + minSniffInterval;
+  };
+
+  // Calculate point along S-shaped path
+  const getPathPoint = (t: number): PathPoint => {
+    // Normalize t to 0-1 range for full path traversal
+    const normalizedT = (t % pathLength) / pathLength;
+    
+    // Calculate position along S-curve
+    // This creates an S-shaped path that fits within the container
+    const x = normalizedT * 100; // x from 0% to 100% of container width
+    
+    // y varies with a sine wave (2 periods) to create the S shape
+    // Adjusted amplitude to 20% of container height for a more pronounced curve
+    const y = Math.sin(normalizedT * Math.PI * 2) * 20;
+    
+    return { x, y };
   };
 
   // Add a paw print at the current position
@@ -41,13 +64,13 @@ const DogAnimation = () => {
     
     // Alternate left and right paws
     const isLeftPaw = pawPrintIdRef.current % 2 === 0;
-    const yOffset = isLeftPaw ? -3 : 3; // Stagger left and right paws
+    const yOffset = isLeftPaw ? -2 : 2; // Stagger left and right paws
     
     // Create a new paw print
     const newPawPrint: PawPrint = {
       id: pawPrintIdRef.current++,
-      x: position + (direction === 1 ? -2 : 2), // Adjust x position based on dog's direction
-      y: yOffset,
+      x: currentPoint.x + (direction === 1 ? -2 : 2), // Adjust x position based on dog's direction
+      y: currentPoint.y + yOffset,
       flipped: direction === -1,
       opacity: 0.6, // Start with higher opacity
     };
@@ -55,7 +78,7 @@ const DogAnimation = () => {
     setPawPrints(prev => [...prev, newPawPrint]);
     
     // Remove old paw prints if there are too many
-    if (pawPrints.length > 30) {
+    if (pawPrints.length > 40) {
       setPawPrints(prev => prev.slice(1));
     }
   };
@@ -84,16 +107,26 @@ const DogAnimation = () => {
       
       // Calculate new position with variable speed (slower when sniffing)
       const currentSpeed = isSniffing ? speed * 0.3 : speed;
-      let newPosition = position + currentSpeed * direction;
+      let newPathPosition = pathPosition + currentSpeed * direction;
       
-      // Reverse direction when reaching edges
-      if (newPosition >= containerWidth - 15) {
-        newPosition = containerWidth - 15;
+      // Reverse direction when reaching path ends
+      if (newPathPosition >= pathLength) {
+        newPathPosition = pathLength;
         setDirection(-1);
-      } else if (newPosition <= 0) {
-        newPosition = 0;
+      } else if (newPathPosition <= 0) {
+        newPathPosition = 0;
         setDirection(1);
       }
+      
+      // Calculate new point on path
+      const newPoint = getPathPoint(newPathPosition);
+      
+      // Store current point for direction calculation
+      prevPointRef.current = currentPoint;
+      
+      // Update current position
+      setCurrentPoint(newPoint);
+      setPathPosition(newPathPosition);
       
       // Add paw prints periodically while moving
       frameCountRef.current += 1;
@@ -102,7 +135,6 @@ const DogAnimation = () => {
         frameCountRef.current = 0;
       }
       
-      setPosition(newPosition);
       animationFrameRef.current = requestAnimationFrame(animate);
     };
     
@@ -130,7 +162,7 @@ const DogAnimation = () => {
       }
       clearTimeout(initialSniffTimeout);
     };
-  }, [position, direction, isSniffing]);
+  }, [pathPosition, direction, isSniffing, currentPoint]);
   
   return (
     <div 
@@ -138,6 +170,128 @@ const DogAnimation = () => {
       className="w-full h-full relative overflow-hidden"
       style={{ background: "linear-gradient(180deg, var(--background) 0%, var(--accent-light) 100%)" }}
     >
+      {/* Background trees */}
+      <div className="absolute top-5 left-[15%] opacity-80 z-0" style={{ transform: 'scale(0.85)' }}>
+        <Image 
+          src="/tree1.png" 
+          alt="Tree" 
+          width={150} 
+          height={180} 
+          className="object-contain"
+        />
+      </div>
+      
+      <div className="absolute top-0 right-[20%] opacity-80 z-0" style={{ transform: 'scale(0.7)' }}>
+        <Image 
+          src="/tree2.png" 
+          alt="Tree" 
+          width={130} 
+          height={160} 
+          className="object-contain"
+        />
+      </div>
+      
+      <div className="absolute bottom-10 left-[75%] opacity-80 z-0" style={{ transform: 'scale(0.8)' }}>
+        <Image 
+          src="/tree1.png" 
+          alt="Tree" 
+          width={120} 
+          height={150} 
+          className="object-contain"
+        />
+      </div>
+      
+      <div className="absolute bottom-8 left-[5%] opacity-80 z-0" style={{ transform: 'scale(0.75)' }}>
+        <Image 
+          src="/tree2.png" 
+          alt="Tree" 
+          width={110} 
+          height={140} 
+          className="object-contain"
+        />
+      </div>
+      
+      {/* Additional trees in various sizes */}
+      <div className="absolute top-2 left-[35%] opacity-70 z-0" style={{ transform: 'scale(0.5)' }}>
+        <Image 
+          src="/tree1.png" 
+          alt="Tree" 
+          width={100} 
+          height={120} 
+          className="object-contain"
+        />
+      </div>
+      
+      <div className="absolute top-15 right-[35%] opacity-75 z-0" style={{ transform: 'scale(0.6)' }}>
+        <Image 
+          src="/tree2.png" 
+          alt="Tree" 
+          width={110} 
+          height={130} 
+          className="object-contain"
+        />
+      </div>
+      
+      <div className="absolute bottom-5 left-[45%] opacity-85 z-0" style={{ transform: 'scale(0.9)' }}>
+        <Image 
+          src="/tree1.png" 
+          alt="Tree" 
+          width={140} 
+          height={170} 
+          className="object-contain"
+        />
+      </div>
+      
+      <div className="absolute bottom-12 right-[10%] opacity-65 z-0" style={{ transform: 'scale(0.55)' }}>
+        <Image 
+          src="/tree2.png" 
+          alt="Tree" 
+          width={90} 
+          height={110} 
+          className="object-contain"
+        />
+      </div>
+      
+      <div className="absolute top-10 left-[60%] opacity-75 z-0" style={{ transform: 'scale(0.65)' }}>
+        <Image 
+          src="/tree1.png" 
+          alt="Tree" 
+          width={100} 
+          height={120} 
+          className="object-contain"
+        />
+      </div>
+      
+      <div className="absolute bottom-15 right-[50%] opacity-80 z-0" style={{ transform: 'scale(0.45)' }}>
+        <Image 
+          src="/tree2.png" 
+          alt="Tree" 
+          width={85} 
+          height={105} 
+          className="object-contain"
+        />
+      </div>
+      
+      <div className="absolute top-20 right-[5%] opacity-90 z-0" style={{ transform: 'scale(1.0)' }}>
+        <Image 
+          src="/tree1.png" 
+          alt="Tree" 
+          width={160} 
+          height={190} 
+          className="object-contain"
+        />
+      </div>
+      
+      <div className="absolute bottom-20 left-[25%] opacity-70 z-0" style={{ transform: 'scale(0.4)' }}>
+        <Image 
+          src="/tree2.png" 
+          alt="Tree" 
+          width={80} 
+          height={100} 
+          className="object-contain"
+        />
+      </div>
+
       {/* Render paw prints */}
       {pawPrints.map((pawPrint) => (
         <div 
@@ -145,7 +299,7 @@ const DogAnimation = () => {
           className="absolute z-0"
           style={{
             left: `${pawPrint.x}%`,
-            bottom: `${5 + pawPrint.y}px`,
+            top: `${50 + pawPrint.y}%`, // Center path vertically and apply offset
             opacity: pawPrint.opacity,
             transform: pawPrint.flipped ? 'scaleX(-1)' : 'none'
           }}
@@ -163,13 +317,23 @@ const DogAnimation = () => {
         </div>
       ))}
 
+      {/* S-curve path line (visual guide, can be removed later) */}
+      <svg className="absolute top-0 left-0 w-full h-full z-0 opacity-10" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <path 
+          d="M0,50 C25,25 75,75 100,50" 
+          stroke="#143F3F" 
+          strokeWidth="0.5" 
+          fill="none" 
+        />
+      </svg>
+
       {/* Dog image */}
       <div 
         className={`absolute transition-transform ${isSniffing ? 'animate-sniff' : ''}`}
         style={{ 
-          left: `${position}%`, 
-          bottom: `${5 + bobAmount}px`,
-          transform: `scaleX(${direction === 1 ? 1 : -1})`,
+          left: `${currentPoint.x}%`, 
+          top: `${50 + currentPoint.y}%`, // Center path vertically and apply calculated Y
+          transform: `translate(-50%, -50%) scaleX(${direction === 1 ? 1 : -1})`,
           zIndex: 10
         }}
       >
