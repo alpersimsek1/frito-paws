@@ -177,6 +177,11 @@ body {
   animation: var(--animate-fade-in);
 }
 
+/* Text shadow for better readability against background image */
+.text-shadow {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
 /* Dog sniffing animation */
 @keyframes sniff {
   0% {

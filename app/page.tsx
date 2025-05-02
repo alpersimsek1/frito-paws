@@ -53,7 +53,12 @@ const PawIcon = ({
 export default function Home() {
   return (
     <div className="main-container">
-      {/* Header Section with Animation and Title */}
+      {/* Animation at the top */}
+      <div className="animation-container mt-4 mb-0 relative mx-auto">
+        <DogAnimation />
+      </div>
+
+      {/* Header Section - removed background image */}
       <header className="header relative overflow-hidden">
         {/* Decorative paw icons */}
         <PawIcon top="15%" left="10%" size={40} rotate={-15} opacity={0.1} />
@@ -61,15 +66,14 @@ export default function Home() {
         <PawIcon bottom="30%" left="15%" size={32} rotate={45} opacity={0.08} />
         <PawIcon bottom="10%" right="18%" size={36} rotate={-30} opacity={0.1} />
         
-        <div className="animation-container mb-4 relative">
-          <DogAnimation />
+        {/* Center content */}
+        <div className="flex flex-col items-center justify-center py-8">
+          <h1 className="hero-title">Frito Paws</h1>
+          <p className="text-lg text-muted-foreground max-w-md mx-auto mt-2 mb-6">
+            Professional Dog Walking & Care Services
+          </p>
+          <a href="#contact" className="book-now-btn hover:scale-105 transition-transform">Book Now</a>
         </div>
-        
-        <h1 className="hero-title">Frito Paws</h1>
-        <p className="text-lg text-muted-foreground max-w-md mx-auto mt-2 mb-4">
-          Professional Dog Walking & Care Services
-        </p>
-        <a href="#contact" className="book-now-btn">Book Now</a>
       </header>
 
       {/* Section Title */}
@@ -162,17 +166,24 @@ export default function Home() {
         />
       </main>
 
-      {/* Contact Section */}
-      <footer id="contact" className="contact-section relative">
+      {/* Contact Section with background image moved here */}
+      <footer id="contact" className="contact-section relative" style={{ 
+        backgroundImage: "url('/background.png')", 
+        backgroundSize: "cover",
+        backgroundPosition: "bottom",
+        backgroundRepeat: "no-repeat",
+        paddingTop: "100px", // Add padding to leave space for content above the dogs
+        minHeight: "650px",
+      }}>
         {/* Decorative paw icons */}
         <PawIcon position="absolute" top="10%" left="8%" size={40} rotate={-20} opacity={0.1} color="#143F3F" />
         <PawIcon position="absolute" top="20%" right="12%" size={28} rotate={15} opacity={0.1} color="#143F3F" />
         <PawIcon position="absolute" bottom="20%" left="15%" size={32} rotate={40} opacity={0.1} color="#143F3F" />
         <PawIcon position="absolute" bottom="15%" right="10%" size={36} rotate={-10} opacity={0.1} color="#143F3F" />
         
-        <div className="contact-container">
-          <h2 className="text-3xl font-bold mb-6">Contact Us</h2>
-          <div className="flex flex-col md:flex-row justify-center gap-12">
+        <div className="contact-container pb-40">
+          <h2 className="text-3xl font-bold mb-6 text-shadow">Contact Us</h2>
+          <div className="flex flex-col md:flex-row justify-center gap-12 mb-8">
             <div className="bg-card p-6 rounded-lg shadow-md">
               <h3 className="font-bold text-lg mb-3 text-primary">Phone</h3>
               <p className="text-lg">(555) 123-4567</p>
@@ -186,7 +197,7 @@ export default function Home() {
               <p className="text-lg">Downtown & Surrounding Neighborhoods</p>
             </div>
           </div>
-          <p className="mt-12 text-sm">© 2023 Frito Paws Professional Dog Walking. All rights reserved.</p>
+          <p className="text-sm text-shadow">© 2023 Frito Paws Professional Dog Walking. All rights reserved.</p>
         </div>
       </footer>
     </div>
