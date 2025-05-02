@@ -1,173 +1,17 @@
 'use client';
 
-import { useRef, useEffect, useState } from 'react';
+import { useState, useRef } from 'react';
+import { ExpandableCard } from './components/ExpandableCard';
 
 export default function Home() {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const [activeSection, setActiveSection] = useState(0);
-
-  useEffect(() => {
-    const scrollContainer = scrollContainerRef.current;
-    if (!scrollContainer) return;
-
-    // Set up observer for content sections to determine active section
-    const sections = document.querySelectorAll('.section');
-    
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = Array.from(sections).indexOf(entry.target);
-            setActiveSection(index);
-            
-            // Add visible class to content section
-            const contentSection = entry.target.querySelector('.content-section');
-            if (contentSection) {
-              contentSection.classList.add('visible');
-            }
-          } else {
-            // Remove visible class when section is not in view
-            const contentSection = entry.target.querySelector('.content-section');
-            if (contentSection) {
-              contentSection.classList.remove('visible');
-            }
-          }
-        });
-      },
-      { 
-        threshold: 0.6, // Trigger when 60% of the section is visible
-        root: scrollContainer
-      }
-    );
-    
-    sections.forEach((section) => observer.observe(section));
-
-    // Handle video playback
-    if (videoRef.current) {
-      const video = videoRef.current;
-      
-      // Ensure video loads and is ready
-      video.load();
-      video.muted = true;
-      
-      // Play video continuously
-      video.play().catch(() => {
-        console.log('Video playback was prevented');
-      });
-      
-      // Control video playback rate based on scroll
-      scrollContainer.addEventListener('scroll', () => {
-        // Keep playing the video during scrolling
-        if (video.paused) {
-          video.play().catch(() => {});
-        }
-        
-        // Calculate scroll progress (0-1)
-        const scrollTop = scrollContainer.scrollTop;
-        const scrollHeight = scrollContainer.scrollHeight - scrollContainer.clientHeight;
-        const scrollProgress = scrollTop / scrollHeight;
-        
-        // Adjust playback rate based on scroll speed
-        video.playbackRate = Math.max(0.5, Math.min(2, 1 + scrollProgress));
-      });
-    }
-
-    return () => {
-      observer.disconnect();
-      if (scrollContainerRef.current) {
-        scrollContainerRef.current.removeEventListener('scroll', () => {});
-      }
-    };
-  }, []);
-
   return (
     <div className="main-container">
-      {/* Scrollable left side */}
-      <div className="scrollable-container" ref={scrollContainerRef}>
-        {/* Hero Section */}
-        <section className="section">
-          <div className="left-side">
-            <div className="content-section visible">
-              <h1 className="heading">Frito Paws</h1>
-              <h2 className="subheading">Professional Dog Walking Service</h2>
-              <p className="text">
-                We provide top-notch care for your furry friends when you can't be there. 
-                Trusted, reliable, and passionate about pets.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* What We Do Section */}
-        <section className="section">
-          <div className="left-side">
-            <div className="content-section">
-              <h2 className="heading">What We Do?</h2>
-              <h3 className="subheading">Professional Dog Walking & Care</h3>
-              <p className="text">
-                Our services include daily walks, playtime sessions, and personalized care for your pets.
-                We tailor our approach to your dog's specific needs, energy level, and personality.
-              </p>
-              <ul className="text list-disc pl-5 mb-4">
-                <li>Individual and group walks</li>
-                <li>Puppy care visits</li>
-                <li>Daily updates with photos</li>
-                <li>Flexible scheduling options</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        {/* Who We Are Section */}
-        <section className="section">
-          <div className="left-side">
-            <div className="content-section">
-              <h2 className="heading">Who We Are?</h2>
-              <h3 className="subheading">Meet Our Team of Dog Lovers</h3>
-              <p className="text">
-                We're a team of certified pet professionals who are passionate about animals.
-                All our staff are insured, bonded, and have extensive experience caring for dogs of all breeds and sizes.
-              </p>
-              <p className="text">
-                Founded in 2020, Frito Paws has quickly become the trusted choice for pet parents in the area
-                who want peace of mind knowing their furry family members are receiving the best care possible.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Contact Section */}
-        <section className="section">
-          <div className="left-side">
-            <div className="content-section">
-              <h2 className="heading">Get In Touch</h2>
-              <h3 className="subheading">Book Your First Walk Today</h3>
-              <p className="text">
-                We'd love to meet you and your furry friend! Contact us today to schedule
-                a free consultation or book your first walk.
-              </p>
-              <div className="flex flex-col gap-3">
-                <p className="font-semibold">Phone: (555) 123-4567</p>
-                <p className="font-semibold">Email: hello@fritopaws.com</p>
-                <p className="font-semibold">Service Area: Downtown & Surrounding Neighborhoods</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Footer */}
-        <footer className="py-8 text-center bg-[#f5f5f5] dark:bg-[#111]">
-          <p>© 2023 Frito Paws Professional Dog Walking. All rights reserved.</p>
-        </footer>
-      </div>
-
-      {/* Fixed right side with animation */}
-      <div className="fixed-right-side">
-        <div className="animation-container">
+      {/* Header Section with Animation and Title */}
+      <header className="header">
+        <div className="animation-container mb-6">
           <video 
-            ref={videoRef}
-            className="w-full max-w-md"
+            className="w-full mx-auto"
+            autoPlay
             loop
             muted
             playsInline
@@ -176,26 +20,116 @@ export default function Home() {
             Your browser does not support the video tag.
           </video>
         </div>
+        
+        <h1 className="hero-title">Frito Paws</h1>
+        <p className="text-lg text-muted-foreground max-w-md mx-auto mt-3 mb-5">
+          Professional Dog Walking & Care Services
+        </p>
+        <a href="#contact" className="book-now-btn">Book Now</a>
+      </header>
+
+      {/* Section Title */}
+      <div className="text-center py-6">
+        <h2 className="text-2xl font-bold mb-2">Our Services</h2>
+        <div className="w-24 h-1 bg-primary mx-auto rounded-full"></div>
       </div>
 
-      {/* Navigation dots */}
-      <div className="fixed right-6 top-1/2 transform -translate-y-1/2 z-10 flex flex-col gap-3">
-        {[0, 1, 2, 3].map((index) => (
-          <button
-            key={index}
-            className={`w-3 h-3 rounded-full transition-colors duration-300 ${
-              activeSection === index ? 'bg-[var(--primary)]' : 'bg-gray-400'
-            }`}
-            onClick={() => {
-              const sections = document.querySelectorAll('.section');
-              sections[index].scrollIntoView({
-                behavior: 'smooth'
-              });
-            }}
-            aria-label={`Go to section ${index + 1}`}
-          />
-        ))}
-      </div>
+      {/* Cards Container */}
+      <main className="cards-container">
+        {/* What We Do Card */}
+        <ExpandableCard 
+          title="What We Do"
+          subtitle="Professional Dog Walking & Care"
+          content={
+            <div>
+              <p className="mb-5 text-[15px] leading-relaxed">
+                Our services include daily walks, playtime sessions, and personalized care for your pets.
+                We tailor our approach to your dog's specific needs, energy level, and personality.
+              </p>
+              <ul className="list-disc pl-6 mb-5 space-y-2 text-[15px]">
+                <li>Individual and group walks</li>
+                <li>Puppy care visits</li>
+                <li>Daily updates with photos</li>
+                <li>Flexible scheduling options</li>
+              </ul>
+            </div>
+          }
+          className="card"
+          index={0}
+        />
+
+        {/* Who We Are Card */}
+        <ExpandableCard 
+          title="Who We Are"
+          subtitle="Meet Our Team of Dog Lovers"
+          content={
+            <div>
+              <p className="mb-5 text-[15px] leading-relaxed">
+                We're a team of certified pet professionals who are passionate about animals.
+                All our staff are insured, bonded, and have extensive experience caring for dogs of all breeds and sizes.
+              </p>
+              <p className="text-[15px] leading-relaxed">
+                Founded in 2020, Frito Paws has quickly become the trusted choice for pet parents in the area
+                who want peace of mind knowing their furry family members are receiving the best care possible.
+              </p>
+            </div>
+          }
+          className="card"
+          index={1}
+        />
+
+        {/* Our Services Card */}
+        <ExpandableCard 
+          title="Our Services"
+          subtitle="Tailored Dog Care Solutions"
+          content={
+            <div>
+              <p className="mb-5 text-[15px] leading-relaxed">
+                We offer a variety of services to meet your pet care needs:
+              </p>
+              <ul className="list-disc pl-6 mb-5 space-y-2 text-[15px]">
+                <li className="font-medium">
+                  <span className="text-primary font-bold">Daily Walks:</span> 30 or 60-minute walks
+                </li>
+                <li className="font-medium">
+                  <span className="text-primary font-bold">Check-in Visits:</span> Quick visits for bathroom breaks and feeding
+                </li>
+                <li className="font-medium">
+                  <span className="text-primary font-bold">Adventure Hikes:</span> Longer outdoor adventures for active dogs
+                </li>
+                <li className="font-medium">
+                  <span className="text-primary font-bold">Overnight Care:</span> In-home overnight stays for extended coverage
+                </li>
+              </ul>
+              <p className="text-[15px] leading-relaxed">All services include detailed reports, photos, and GPS tracking of walks.</p>
+            </div>
+          }
+          className="card"
+          index={2}
+        />
+      </main>
+
+      {/* Contact Section */}
+      <footer id="contact" className="contact-section">
+        <div className="contact-container">
+          <h2 className="text-3xl font-bold mb-6">Contact Us</h2>
+          <div className="flex flex-col md:flex-row justify-center gap-12">
+            <div className="bg-card p-6 rounded-lg shadow-md">
+              <h3 className="font-bold text-lg mb-3 text-primary">Phone</h3>
+              <p className="text-lg">(555) 123-4567</p>
+            </div>
+            <div className="bg-card p-6 rounded-lg shadow-md">
+              <h3 className="font-bold text-lg mb-3 text-primary">Email</h3>
+              <p className="text-lg">hello@fritopaws.com</p>
+            </div>
+            <div className="bg-card p-6 rounded-lg shadow-md">
+              <h3 className="font-bold text-lg mb-3 text-primary">Service Area</h3>
+              <p className="text-lg">Downtown & Surrounding Neighborhoods</p>
+            </div>
+          </div>
+          <p className="mt-12 text-sm">© 2023 Frito Paws Professional Dog Walking. All rights reserved.</p>
+        </div>
+      </footer>
     </div>
   );
 }
