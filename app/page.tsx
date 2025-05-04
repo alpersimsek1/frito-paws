@@ -282,7 +282,7 @@ export default function Home() {
         {/* Desktop Layout */}
         <div className="hidden md:block">
           {/* Professional services text with Book Now button */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 text-center bg-[#FEF2E4] px-8 py-4 rounded-md" 
+          <div className="absolute left-1/2 transform -translate-x-1/2 text-center px-8 py-4 rounded-md" 
                style={{ zIndex: 20, maxWidth: '600px', top: '150px' }}>
             <h2 className="text-2xl font-bold tracking-wide mb-6" style={{ color: '#143F3F' }}>Professional Dog Walking & Care Services</h2>
             
@@ -354,7 +354,7 @@ export default function Home() {
         {/* Mobile Layout - Reverted to vertical stack */}
         <div className="block md:hidden">
           {/* Text with Book Now button */}
-          <div className="services-text bg-[#FEF2E4] px-6 py-4 rounded-md mb-8">
+          <div className="services-text px-6 py-4 rounded-md mb-8">
             <h2 className="text-xl font-bold tracking-wide mb-4" style={{ color: '#143F3F' }}>Professional Dog Walking & Care Services</h2>
             
             <div className="text-center">

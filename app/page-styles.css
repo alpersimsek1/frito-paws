@@ -33,7 +33,7 @@
   position: relative;
   overflow: hidden;
   border-radius: 0;
-  margin-bottom: 130px;
+  margin-bottom: 130px; /* Large space for desktop layout */
 }
 
 /* Circular images */
@@ -113,6 +113,12 @@
   .hero-container {
     height: auto;
     padding-bottom: 40px;
+  }
+  
+  /* Reduce animation area margin for mobile */
+  .animation-area {
+    margin-bottom: 40px;
+    height: 140px;
   }
   
   .services-text {
