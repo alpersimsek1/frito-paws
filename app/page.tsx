@@ -5,6 +5,7 @@ import { ExpandableCard } from './components/ExpandableCard';
 import Image from 'next/image';
 import DogAnimation from './components/DogAnimation';
 import './page-styles.css'; // Import the custom styles
+import CircularImage from './components/CircularImage'; // Import CircularImage component
 
 // Component for paw icon with position
 interface PawIconProps {
@@ -17,6 +18,107 @@ interface PawIconProps {
   opacity?: number;
   color?: string;
 }
+
+// Header component
+const Header = () => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  
+  return (
+    <header className="fixed top-0 left-0 right-0 bg-[#fef2e4] py-4 px-6 shadow-md z-50">
+      <div className="max-w-7xl mx-auto flex items-center justify-between">
+        {/* Logo */}
+        <div className="flex items-center">
+          <div className="mr-3">
+            <Image 
+              src="/frito-logo.png" 
+              alt="Frito Paws Logo"
+              width={48}
+              height={48}
+              style={{ objectFit: 'contain' }}
+              priority
+            />
+          </div>
+          <h1 className="text-3xl font-bold" style={{ color: '#143F3F' }}>FRITO PAWS</h1>
+        </div>
+        
+        {/* Navigation */}
+        <div className="flex items-center space-x-4">
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center space-x-8 mr-8">
+            <a href="#" className="text-primary hover:text-primary-hover font-medium">Home</a>
+            <a href="#services" className="text-primary hover:text-primary-hover font-medium">Services</a>
+            <a href="#why-us" className="text-primary hover:text-primary-hover font-medium">About Us</a>
+            <a href="#contact" className="text-primary hover:text-primary-hover font-medium">Contact</a>
+          </nav>
+          
+          {/* Book Now button */}
+          <a 
+            href="#contact" 
+            className="px-5 py-2 bg-primary text-white rounded-full font-semibold hover:bg-primary-hover transition-colors"
+          >
+            Book Now
+          </a>
+          
+          {/* Mobile menu button */}
+          <button 
+            className="md:hidden ml-4 p-2 text-primary focus:outline-none"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            <svg 
+              xmlns="http://www.w3.org/2000/svg" 
+              className="h-6 w-6" 
+              fill="none" 
+              viewBox="0 0 24 24" 
+              stroke="currentColor"
+            >
+              {mobileMenuOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div className="md:hidden bg-[#fef2e4] py-4 px-6 shadow-md">
+          <nav className="flex flex-col space-y-4">
+            <a 
+              href="#" 
+              className="text-primary hover:text-primary-hover font-medium"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Home
+            </a>
+            <a 
+              href="#services" 
+              className="text-primary hover:text-primary-hover font-medium"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Services
+            </a>
+            <a 
+              href="#why-us" 
+              className="text-primary hover:text-primary-hover font-medium"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              About Us
+            </a>
+            <a 
+              href="#contact" 
+              className="text-primary hover:text-primary-hover font-medium"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Contact
+            </a>
+          </nav>
+        </div>
+      )}
+    </header>
+  );
+};
 
 const PawIcon = ({ 
   size = 30, 
@@ -172,16 +274,17 @@ export default function Home() {
 
   return (
     <div className="main-container">
+      {/* Add Header */}
+      <Header />
+      
+      {/* Add padding to account for fixed header */}
+      <div className="pt-20"></div>
+      
       {/* Hero section */}
       <div className="hero-container mt-4">
         {/* Animation area at the top */}
         <div className="animation-area">
           <DogAnimation />
-        </div>
-        
-        {/* Title on the top left */}
-        <div className="absolute left-8 top-6" style={{ zIndex: 20 }}>
-          <h1 className="text-4xl font-bold" style={{ color: '#143F3F' }}>FRITO PAWS</h1>
         </div>
         
         {/* Desktop Layout */}
@@ -195,64 +298,39 @@ export default function Home() {
           <div className="flex justify-between items-start absolute w-full" style={{ top: '250px' }}>
             {/* Left Image */}
             <div className="ml-[15%]" style={{ zIndex: 10 }}>
-              <div 
-                className="circular-image cursor-pointer w-64 h-64"
-                onClick={() => handleCircleClick('who-we-are')}
-              >
-                <Image 
-                  src="/one-dog-1.png" 
-                  alt="Who we are"
-                  width={280}
-                  height={280}
-                  style={{ objectFit: 'cover', width: '100%', height: '100%' }}
-                  priority
-                />
-              </div>
-              <div className="image-caption">Solo Walking</div>
+              <CircularImage 
+                section="who-we-are"
+                imageSrc="/one-dog-1.png"
+                altText="Who we are"
+                caption="Solo Walking"
+                size={256}
+                className="circle-container"
+              />
+              
             </div>
             
             {/* Book Now button in the center */}
-            <div style={{ zIndex: 20 }}>
-              <div className="flex flex-col items-center">
-                <a 
-                  href="#contact" 
-                  className="book-button mb-10"
-                >
-                  Book NOW
-                </a>
-                
-                {/* Logo below button */}
-                <div className="mt-4">
-                  <div className="bg-[#FEF2E4] p-4 rounded-full shadow-md">
-                    <Image 
-                      src="/frito-logo.png" 
-                      alt="Frito Paws Logo"
-                      width={150}
-                      height={150}
-                      style={{ objectFit: 'contain' }}
-                      priority
-                    />
-                  </div>
-                </div>
-              </div>
+            <div className="absolute inset-0 flex items-center justify-center" style={{ zIndex: 20, pointerEvents: 'none' }}>
+              <a 
+                href="#contact" 
+                className="book-button transform translate-y-4"
+                style={{ pointerEvents: 'auto' }}
+              >
+                Book NOW
+              </a>
             </div>
             
             {/* Right Image */}
             <div className="mr-[15%]" style={{ zIndex: 10 }}>
-              <div 
-                className="circular-image cursor-pointer w-64 h-64"
-                onClick={() => handleCircleClick('what-we-do')}
-              >
-                <Image 
-                  src="/two-dogs.png" 
-                  alt="What we do"
-                  width={280}
-                  height={280}
-                  style={{ objectFit: 'cover', width: '100%', height: '100%' }}
-                  priority
-                />
-              </div>
-              <div className="image-caption">Group Walkings</div>
+              <CircularImage 
+                section="what-we-do"
+                imageSrc="/two-dogs.png"
+                altText="What we do"
+                caption="Group Walkings"
+                size={256}
+                className="circle-container"
+              />
+            
             </div>
           </div>
         </div>
@@ -264,22 +342,8 @@ export default function Home() {
             <h2 className="text-xl font-bold tracking-wide" style={{ color: '#143F3F' }}>Professional Dog Walking & Care Services</h2>
           </div>
           
-          {/* Logo */}
-          <div className="logo-container">
-            <div className="bg-[#FEF2E4] p-4 rounded-full shadow-md">
-              <Image 
-                src="/frito-logo.png" 
-                alt="Frito Paws Logo"
-                width={140}
-                height={140}
-                style={{ objectFit: 'contain' }}
-                priority
-              />
-            </div>
-          </div>
-          
-          {/* Book Now button */}
-          <div className="button-container">
+          {/* Book Now button moved to top */}
+          <div className="button-container mt-6 mb-8">
             <a 
               href="#contact" 
               className="book-button"
@@ -290,38 +354,38 @@ export default function Home() {
           
           {/* Left Image - Solo Walking */}
           <div className="image-container">
-            <div 
-              className="circular-image cursor-pointer"
-              onClick={() => handleCircleClick('who-we-are')}
+            <CircularImage 
+              section="who-we-are"
+              imageSrc="/one-dog-1.png"
+              altText="Solo Walking"
+              caption="Solo Walking"
+              size={240}
+              className="circle-container"
+            />
+            <button 
+              onClick={() => handleCircleClick('who-we-are')} 
+              className="block mx-auto mt-1 text-primary hover:underline text-sm"
             >
-              <Image 
-                src="/one-dog-1.png" 
-                alt="Solo Walking"
-                width={240}
-                height={240}
-                style={{ objectFit: 'cover', width: '100%', height: '100%' }}
-                priority
-              />
-            </div>
-            <div className="image-caption">Solo Walking</div>
+              Learn more
+            </button>
           </div>
           
           {/* Right Image - Group Walkings */}
           <div className="image-container">
-            <div 
-              className="circular-image cursor-pointer"
-              onClick={() => handleCircleClick('what-we-do')}
+            <CircularImage 
+              section="what-we-do"
+              imageSrc="/two-dogs.png"
+              altText="Group Walkings"
+              caption="Group Walkings"
+              size={240}
+              className="circle-container"
+            />
+            <button 
+              onClick={() => handleCircleClick('what-we-do')} 
+              className="block mx-auto mt-1 text-primary hover:underline text-sm"
             >
-              <Image 
-                src="/two-dogs.png" 
-                alt="Group Walkings"
-                width={240}
-                height={240}
-                style={{ objectFit: 'cover', width: '100%', height: '100%' }}
-                priority
-              />
-            </div>
-            <div className="image-caption">Group Walkings</div>
+              Learn more
+            </button>
           </div>
         </div>
         
@@ -333,7 +397,7 @@ export default function Home() {
       </div>
 
       {/* Who We Are Banner */}
-      <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 mb-16">
+      <div id="why-us" className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 mb-16">
         <div 
           className="rounded-lg overflow-hidden"
           style={{ 
@@ -379,12 +443,52 @@ export default function Home() {
                 </div>
               </div>
             </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+              <div>
+                <h3 className="text-xl font-bold mb-4" style={{ color: "#FEF2E4" }}>Our Story</h3>
+                <p className="text-[#e0e0e0] mb-4">
+                  Frito Paws was founded with a simple mission: to provide the highest quality care for your 
+                  furry companions. Our team consists of dedicated animal lovers who understand that pets 
+                  are family members.
+                </p>
+                <p className="text-[#e0e0e0]">
+                  With years of experience and a passion for animal welfare, we've built a service that 
+                  puts your pet's happiness and safety first.
+                </p>
+              </div>
+              <div>
+                <h3 className="text-xl font-bold mb-4" style={{ color: "#FEF2E4" }}>Our Values</h3>
+                <ul className="text-[#e0e0e0] space-y-3">
+                  <li className="flex items-start">
+                    <span className="text-[#8BAEAE] mr-2">•</span>
+                    <span>Trust and reliability in all our services</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-[#8BAEAE] mr-2">•</span>
+                    <span>Personalized care tailored to your pet's unique needs</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-[#8BAEAE] mr-2">•</span>
+                    <span>Regular communication and updates about your pet</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-[#8BAEAE] mr-2">•</span>
+                    <span>Continuous training and education for our team</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-[#8BAEAE] mr-2">•</span>
+                    <span>Creating joyful experiences for pets in our care</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
       {/* Services Section with card images */}
-      <section className="py-16" style={{ backgroundColor: "#FEF2E4" }}>
+      <section id="services" className="py-16" style={{ backgroundColor: "#FEF2E4" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-primary mb-2">Our Services</h2>
@@ -470,111 +574,6 @@ export default function Home() {
               }
               index={2}
             />
-          </div>
-        </div>
-      </section>
-
-      {/* Who We Are Section */}
-      <section id="who-we-are" className="py-16" style={{ backgroundColor: "#FCE9D1" }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-primary mb-2">Who We Are</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Meet the team behind Frito Paws and our passion for caring for your pets
-            </p>
-            <div className="w-24 h-1 bg-primary mx-auto rounded-full mt-4"></div>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div className="bg-white rounded-lg p-8 shadow-md">
-              <h3 className="text-xl font-bold text-primary mb-4">Our Story</h3>
-              <p className="text-gray-600 mb-4">
-                Frito Paws was founded with a simple mission: to provide the highest quality care for your 
-                furry companions. Our team consists of dedicated animal lovers who understand that pets 
-                are family members.
-              </p>
-              <p className="text-gray-600">
-                With years of experience and a passion for animal welfare, we've built a service that 
-                puts your pet's happiness and safety first.
-              </p>
-            </div>
-            <div className="bg-white rounded-lg p-8 shadow-md">
-              <h3 className="text-xl font-bold text-primary mb-4">Our Values</h3>
-              <ul className="text-gray-600 space-y-3">
-                <li className="flex items-start">
-                  <span className="text-primary mr-2">•</span>
-                  <span>Trust and reliability in all our services</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-primary mr-2">•</span>
-                  <span>Personalized care tailored to your pet's unique needs</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-primary mr-2">•</span>
-                  <span>Regular communication and updates about your pet</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-primary mr-2">•</span>
-                  <span>Continuous training and education for our team</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-primary mr-2">•</span>
-                  <span>Creating joyful experiences for pets in our care</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* What We Do Section */}
-      <section id="what-we-do" className="py-16" style={{ backgroundColor: "#FEF2E4" }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-primary mb-2">What We Do</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Comprehensive pet care services tailored to your pet's needs
-            </p>
-            <div className="w-24 h-1 bg-primary mx-auto rounded-full mt-4"></div>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-lg p-6 shadow-md border border-gray-100">
-              <div className="w-12 h-12 bg-primary-light rounded-full flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-semibold text-primary mb-2">Dog Walking</h3>
-              <p className="text-gray-600">
-                Regular walks tailored to your dog's energy level, with flexible scheduling options from 30-60 minute sessions.
-              </p>
-            </div>
-            
-            <div className="bg-white rounded-lg p-6 shadow-md border border-gray-100">
-              <div className="w-12 h-12 bg-primary-light rounded-full flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-semibold text-primary mb-2">Pet Sitting</h3>
-              <p className="text-gray-600">
-                In-home pet sitting services with feeding, playtime, and personalized care while you're away.
-              </p>
-            </div>
-            
-            <div className="bg-white rounded-lg p-6 shadow-md border border-gray-100">
-              <div className="w-12 h-12 bg-primary-light rounded-full flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-semibold text-primary mb-2">Playtime & Training</h3>
-              <p className="text-gray-600">
-                Interactive play sessions and basic training reinforcement to keep your pet mentally stimulated and well-behaved.
-              </p>
-            </div>
           </div>
         </div>
       </section>
@@ -696,17 +695,20 @@ export default function Home() {
       </section>
 
       {/* Footer with background image */}
-      <footer className="relative" style={{ 
-        backgroundImage: "url('/background.png')", 
-        backgroundSize: "cover",
-        backgroundPosition: "bottom",
-        backgroundRepeat: "no-repeat",
-        paddingTop: "100px",
-        minHeight: "350px",
+      <footer className="py-10 text-center" style={{ 
         backgroundColor: "#FEF2E4"
       }}>
-        <div className="pb-20 text-center">
-          <p className="text-sm text-shadow">© 2023 Frito Paws Professional Dog Walking. All rights reserved.</p>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-center mb-6">
+            <Image 
+              src="/frito-logo.png" 
+              alt="Frito Paws Logo"
+              width={60}
+              height={60}
+              style={{ objectFit: 'contain' }}
+            />
+          </div>
+          <p className="text-sm text-primary">© 2025 Frito Paws Professional Dog Walking. All rights reserved.</p>
         </div>
       </footer>
     </div>

@@ -60,10 +60,10 @@ const DogAnimation = () => {
     setTrees(newTrees);
   }, []);
 
-  // Simple horizontal path with small vertical oscillation
+  // Path calculation - use full width of the screen
   const getPathPoint = (t: number): PathPoint => {
     const normalizedT = (t % pathLength) / pathLength;
-    const x = normalizedT * 90 + 5; // x from 5% to 95% of container width
+    const x = normalizedT * 98 + 1; // x from 1% to 99% of container width
     const y = Math.sin(normalizedT * Math.PI * 2) * 6 + 40; // centered higher vertically with less oscillation
     return { x, y };
   };
@@ -153,7 +153,15 @@ const DogAnimation = () => {
     <div 
       ref={containerRef} 
       className="w-full h-full relative"
-      style={{ background: "transparent", pointerEvents: "none", minHeight: "180px" }}
+      style={{ 
+        background: "transparent", 
+        pointerEvents: "none", 
+        minHeight: "180px",
+        width: "100vw",
+        maxWidth: "100%",
+        margin: "0 auto",
+        overflow: "hidden"
+      }}
     >
       {/* Trees */}
       {trees.map(tree => (

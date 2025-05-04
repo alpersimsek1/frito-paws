@@ -60,14 +60,14 @@ export const ExpandableCard = ({
         "relative overflow-hidden border border-border rounded-lg",
         "transition-all duration-400 cursor-pointer",
         isExpanded ? 
-          "absolute inset-4 z-40 p-8" : 
-          "p-6 z-30",
+          "fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-40 p-5 max-w-md w-[90%]" : 
+          "p-4 z-30",
         className
       )}
       style={{ 
         background: isExpanded ? '#fff' : getGradient(index),
         transformOrigin: "center",
-        transform: isExpanded ? "scale(1.05)" : "scale(1)",
+        transform: isExpanded ? "scale(1)" : "scale(1)",
         transitionTimingFunction: "cubic-bezier(0.175, 0.885, 0.32, 1.275)",
         boxShadow: isExpanded ? 'var(--shadow-lg)' : 'var(--shadow-md)'
       }}
@@ -85,7 +85,7 @@ export const ExpandableCard = ({
     >
       {/* Decorative corner element */}
       <div 
-        className="absolute top-0 right-0 w-16 h-16 overflow-hidden"
+        className="absolute top-0 right-0 w-12 h-12 overflow-hidden"
         style={{
           opacity: isExpanded ? 0 : 0.15,
           transition: 'opacity 0.3s ease'
@@ -103,17 +103,17 @@ export const ExpandableCard = ({
       </div>
 
       <div className="relative z-20">
-        <div className="text-xl font-bold mb-3 text-primary">
+        <div className="text-lg font-bold mb-2 text-primary">
           {title}
         </div>
         
-        <div className="text-sm text-muted-foreground font-medium">
+        <div className="text-xs text-muted-foreground font-medium">
           {subtitle}
         </div>
 
         {isExpanded && (
           <div
-            className="pt-6 animate-fadeIn"
+            className="pt-4 animate-fadeIn text-sm"
           >
             {content}
             <button
@@ -121,7 +121,7 @@ export const ExpandableCard = ({
                 e.stopPropagation();
                 setIsExpanded(false);
               }}
-              className="mt-6 px-4 py-2 bg-primary text-white rounded-lg text-sm font-bold transition-all hover:bg-primary-hover hover:-translate-y-1 hover:shadow-md"
+              className="mt-4 px-3 py-1.5 bg-primary text-white rounded-lg text-xs font-bold transition-all hover:bg-primary-hover hover:-translate-y-1 hover:shadow-md"
             >
               Close
             </button>

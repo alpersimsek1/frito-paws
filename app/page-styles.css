@@ -6,6 +6,7 @@
   min-height: 100vh;
   width: 100%;
   overflow-x: hidden;
+  position: relative;
 }
 
 /* Hero section container */
@@ -34,16 +35,17 @@
 }
 
 /* Circular images */
-.circular-image {
-  border-radius: 50%;
-  border: none;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  overflow: hidden;
-  transition: transform 0.3s ease;
+.circular-image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 5;
 }
 
-.circular-image:hover {
-  transform: scale(1.05);
+.circle-container {
+  margin-bottom: 0 !important;
 }
 
 /* Book now button */
@@ -58,6 +60,8 @@
   box-shadow: 0 4px 12px rgba(20, 63, 63, 0.2);
   text-align: center;
   display: inline-block;
+  position: relative;
+  z-index: 25;
 }
 
 .book-button:hover {
@@ -80,6 +84,15 @@
   color: #143F3F;
   margin-top: 1rem;
   font-size: 1.1rem;
+  position: relative;
+  z-index: 5;
+  padding-bottom: 5px;
+  width: 100%;
+}
+
+/* Popup styles */
+.image-popup-overlay {
+  z-index: 1000 !important;
 }
 
 /* Mobile Styles */
@@ -121,15 +134,10 @@
   }
   
   .image-container {
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-  }
-  
-  .image-container .circular-image {
-    width: 220px;
-    height: 220px;
   }
 } 
