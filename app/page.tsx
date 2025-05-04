@@ -5,7 +5,7 @@ import { ExpandableCard } from './components/ExpandableCard';
 import Image from 'next/image';
 import DogAnimation from './components/DogAnimation';
 import './page-styles.css'; // Import the custom styles
-import CircularImage from './components/CircularImage'; // Import CircularImage component
+import CircularServiceCard from './components/CircularServiceCard'; // Import new component
 
 // Component for paw icon with position
 interface PawIconProps {
@@ -297,25 +297,55 @@ export default function Home() {
           <div className="flex justify-center items-start absolute w-full" style={{ top: '310px' }}>
             {/* Left Image */}
             <div className="mr-12" style={{ zIndex: 10 }}>
-              <CircularImage 
-                section="who-we-are"
+              <CircularServiceCard 
+                title="Solo Walking"
+                description="Our solo walking service provides personalized attention for your dog. Perfect for dogs that need one-on-one time or have specific exercise requirements."
                 imageSrc="/one-dog-1.png"
-                altText="Who we are"
-                caption="Solo Walking"
                 size={256}
                 className="circle-container"
+                detailedContent={
+                  <div>
+                    <h4 className="text-lg font-semibold mb-3">Individual Attention</h4>
+                    <p className="mb-4">
+                      Our solo walking service ensures your dog receives our undivided attention during their walk.
+                      This is ideal for dogs that:
+                    </p>
+                    <ul className="list-disc pl-6 mb-4 space-y-2">
+                      <li>Need individual training reinforcement</li>
+                      <li>Are uncomfortable around other dogs</li>
+                      <li>Have specific exercise requirements</li>
+                      <li>Need specialized care or medication during walks</li>
+                    </ul>
+                    <p>Each solo walk includes photo updates and a detailed report of your dog's activities and behavior.</p>
+                  </div>
+                }
               />
             </div>
             
             {/* Right Image */}
             <div className="ml-12" style={{ zIndex: 10 }}>
-              <CircularImage 
-                section="what-we-do"
+              <CircularServiceCard 
+                title="Group Walkings"
+                description="Our group walks allow your dog to socialize with other furry friends while getting exercise. Small groups ensure each dog gets attention and proper supervision."
                 imageSrc="/two-dogs.png"
-                altText="What we do"
-                caption="Group Walkings"
                 size={256}
                 className="circle-container"
+                detailedContent={
+                  <div>
+                    <h4 className="text-lg font-semibold mb-3">Social Experience</h4>
+                    <p className="mb-4">
+                      Our group walking service offers your dog the chance to socialize while enjoying their exercise.
+                      Benefits include:
+                    </p>
+                    <ul className="list-disc pl-6 mb-4 space-y-2">
+                      <li>Socialization with other friendly dogs</li>
+                      <li>Learning proper social behavior</li>
+                      <li>More stimulating and enriching experience</li>
+                      <li>Cost-effective option for regular walking</li>
+                    </ul>
+                    <p>We carefully match dogs by size, temperament, and energy level to ensure a positive experience for all.</p>
+                  </div>
+                }
               />
             </div>
           </div>
@@ -338,39 +368,57 @@ export default function Home() {
           </div>
           
           {/* Left Image - Solo Walking */}
-          <div className="image-container">
-            <CircularImage 
-              section="who-we-are"
+          <div className="image-container mb-8">
+            <CircularServiceCard 
+              title="Solo Walking"
+              description="Our solo walking service provides personalized attention for your dog. Perfect for dogs that need one-on-one time or have specific exercise requirements."
               imageSrc="/one-dog-1.png"
-              altText="Solo Walking"
-              caption="Solo Walking"
               size={200}
               className="circle-container"
+              detailedContent={
+                <div>
+                  <h4 className="text-lg font-semibold mb-3">Individual Attention</h4>
+                  <p className="mb-4">
+                    Our solo walking service ensures your dog receives our undivided attention during their walk.
+                    This is ideal for dogs that:
+                  </p>
+                  <ul className="list-disc pl-6 mb-4 space-y-2">
+                    <li>Need individual training reinforcement</li>
+                    <li>Are uncomfortable around other dogs</li>
+                    <li>Have specific exercise requirements</li>
+                    <li>Need specialized care or medication during walks</li>
+                  </ul>
+                  <p>Each solo walk includes photo updates and a detailed report of your dog's activities and behavior.</p>
+                </div>
+              }
             />
-            <button 
-              onClick={() => handleCircleClick('who-we-are')} 
-              className="block mx-auto mt-1 text-primary hover:underline text-sm"
-            >
-              Learn more
-            </button>
           </div>
           
           {/* Right Image - Group Walkings */}
           <div className="image-container">
-            <CircularImage 
-              section="what-we-do"
+            <CircularServiceCard 
+              title="Group Walkings"
+              description="Our group walks allow your dog to socialize with other furry friends while getting exercise. Small groups ensure each dog gets attention and proper supervision."
               imageSrc="/two-dogs.png"
-              altText="Group Walkings"
-              caption="Group Walkings"
               size={200}
               className="circle-container"
+              detailedContent={
+                <div>
+                  <h4 className="text-lg font-semibold mb-3">Social Experience</h4>
+                  <p className="mb-4">
+                    Our group walking service offers your dog the chance to socialize while enjoying their exercise.
+                    Benefits include:
+                  </p>
+                  <ul className="list-disc pl-6 mb-4 space-y-2">
+                    <li>Socialization with other friendly dogs</li>
+                    <li>Learning proper social behavior</li>
+                    <li>More stimulating and enriching experience</li>
+                    <li>Cost-effective option for regular walking</li>
+                  </ul>
+                  <p>We carefully match dogs by size, temperament, and energy level to ensure a positive experience for all.</p>
+                </div>
+              }
             />
-            <button 
-              onClick={() => handleCircleClick('what-we-do')} 
-              className="block mx-auto mt-1 text-primary hover:underline text-sm"
-            >
-              Learn more
-            </button>
           </div>
         </div>
         
