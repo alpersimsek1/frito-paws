@@ -1,27 +1,72 @@
 /* Custom overrides for Frito Paws homepage */
 
-/* Override animation container styles from globals.css */
-.animation-container {
-  box-shadow: none !important;
-  border-radius: 0 !important;
-  border: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  background-image: url('/original-background.png') !important;
-  background-size: cover !important;
-  background-position: center !important;
-}
-
-/* Override any header styles that might cause issues */
-.header {
-  background: white !important;
-  border: none !important;
-  box-shadow: none !important;
-  margin: 0 !important;
-}
-
-/* Ensure consistent background for the whole header area */
-#header-wrapper {
-  background-color: white !important;
+/* Main container styles */
+.main-container {
+  background-color: #FEF2E4;
+  min-height: 100vh;
   width: 100%;
+}
+
+/* Hero section container */
+.hero-container {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  height: 800px;
+  margin: 0 auto;
+  border: none;
+  border-radius: 0;
+  overflow: hidden;
+  background-color: #FEF2E4;
+  box-shadow: none;
+}
+
+/* Animation area */
+.animation-area {
+  width: 100%;
+  height: 30%;
+  background-color: #FEF2E4;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0;
+}
+
+/* Circular images */
+.circular-image {
+  border-radius: 50%;
+  border: 4px solid white;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.circular-image:hover {
+  transform: scale(1.05);
+}
+
+/* Book now button */
+.book-button {
+  background-color: #143F3F;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(20, 63, 63, 0.2);
+  text-align: center;
+  display: inline-block;
+}
+
+.book-button:hover {
+  background-color: #1a4f4f;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(20, 63, 63, 0.3);
+}
+
+/* Paw Icons */
+.paw-icon {
+  position: absolute;
+  z-index: 1;
+  opacity: 0.2;
 } 
