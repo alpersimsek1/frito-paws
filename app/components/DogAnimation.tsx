@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import Image from 'next/image';
 
 interface PawPrint {
   id: number;
@@ -16,36 +15,56 @@ interface PathPoint {
   y: number;
 }
 
+interface Tree {
+  id: number;
+  x: number;
+  y: number;
+  type: 'tree1' | 'tree2';
+  size: number;
+  zIndex: number;
+}
+
 const DogAnimation = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [pathPosition, setPathPosition] = useState(0);
   const [currentPoint, setCurrentPoint] = useState<PathPoint>({ x: 0, y: 0 });
   const [direction, setDirection] = useState(1); // 1 for right, -1 for left
-  const [isSniffing, setIsSniffing] = useState(false);
-  const [bobAmount, setBobAmount] = useState(0);
   const [pawPrints, setPawPrints] = useState<PawPrint[]>([]);
+  const [trees, setTrees] = useState<Tree[]>([]);
   const animationFrameRef = useRef<number | null>(null);
   const pawPrintIdRef = useRef(0);
   
   // Animation settings
   const speed = 0.15; // Base speed (percentage per frame)
   const pathLength = 100; // Total path length parameter
-  const minSniffInterval = 3000; // Minimum ms between sniffing animations
-  const maxSniffInterval = 7000; // Maximum ms between sniffing animations
-  const sniffDuration = 1500; // ms for sniffing animation
   const pawPrintFrequency = 30; // frames between paw prints
   const frameCountRef = useRef(0);
-  
-  // Get random interval for natural-looking sniffing behavior
-  const getRandomSniffInterval = () => {
-    return Math.floor(Math.random() * (maxSniffInterval - minSniffInterval + 1)) + minSniffInterval;
-  };
+
+  // Generate random trees
+  useEffect(() => {
+    const numberOfTrees = 180; // Number of trees to add
+    const newTrees: Tree[] = [];
+    
+    for (let i = 0; i < numberOfTrees; i++) {
+      // Create trees with random properties
+      newTrees.push({
+        id: i,
+        x: Math.random() * 100, // Random x position (0-100%)
+        y: Math.random() * 60 + 10, // Random y position (10-70%)
+        type: Math.random() > 0.5 ? 'tree1' : 'tree2', // Randomly select tree type
+        size: Math.random() * 0.5 + 0.5, // Random size between 0.5 and 1
+        zIndex: Math.floor(Math.random() * 2) // Random z-index for layering
+      });
+    }
+    
+    setTrees(newTrees);
+  }, []);
 
   // Simple horizontal path with small vertical oscillation
   const getPathPoint = (t: number): PathPoint => {
     const normalizedT = (t % pathLength) / pathLength;
     const x = normalizedT * 90 + 5; // x from 5% to 95% of container width
-    const y = Math.sin(normalizedT * Math.PI * 2) * 8 + 50; // centered vertically with small oscillation
+    const y = Math.sin(normalizedT * Math.PI * 2) * 6 + 40; // centered higher vertically with less oscillation
     return { x, y };
   };
 
@@ -94,12 +113,8 @@ const DogAnimation = () => {
     const animate = () => {
       if (!containerRef.current) return;
       
-      // Walking bob effect
-      setBobAmount(Math.sin(Date.now() * 0.005) * 3);
-      
       // Calculate new position
-      const currentSpeed = isSniffing ? speed * 0.3 : speed;
-      let newPathPosition = pathPosition + currentSpeed * direction;
+      let newPathPosition = pathPosition + speed * direction;
       
       // Reverse direction at edges
       if (newPathPosition >= pathLength) {
@@ -127,32 +142,43 @@ const DogAnimation = () => {
     // Start animation
     animationFrameRef.current = requestAnimationFrame(animate);
     
-    // Trigger sniffing behavior
-    const triggerSniff = () => {
-      setIsSniffing(true);
-      setTimeout(() => {
-        setIsSniffing(false);
-        setTimeout(triggerSniff, getRandomSniffInterval());
-      }, sniffDuration);
-    };
-    
-    // Start first sniffing animation
-    const initialSniffTimeout = setTimeout(triggerSniff, getRandomSniffInterval());
-    
     return () => {
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
       }
-      clearTimeout(initialSniffTimeout);
     };
-  }, [pathPosition, direction, isSniffing]);
+  }, [pathPosition, direction]);
   
   return (
     <div 
       ref={containerRef} 
       className="w-full h-full relative"
-      style={{ background: "transparent", pointerEvents: "none" }}
+      style={{ background: "transparent", pointerEvents: "none", minHeight: "180px" }}
     >
+      {/* Trees */}
+      {trees.map(tree => (
+        <div 
+          key={tree.id}
+          className="absolute"
+          style={{
+            left: `${tree.x}%`,
+            top: `${tree.y}%`,
+            transform: `scale(${tree.size})`,
+            zIndex: tree.zIndex
+          }}
+        >
+          <img 
+            src={`/${tree.type}.png`}
+            alt={`${tree.type}`}
+            style={{
+              width: 'auto',
+              height: tree.type === 'tree1' ? '60px' : '70px',
+              objectFit: 'contain'
+            }}
+          />
+        </div>
+      ))}
+
       {/* Paw prints */}
       {pawPrints.map(paw => (
         <div 
@@ -162,7 +188,8 @@ const DogAnimation = () => {
             left: `${paw.x}%`,
             top: `${paw.y}%`,
             opacity: paw.opacity,
-            transform: `${paw.flipped ? 'scaleX(-1)' : ''}`
+            transform: `${paw.flipped ? 'scaleX(-1)' : ''}`,
+            zIndex: 5
           }}
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="rgba(20, 63, 63, 0.7)">
@@ -177,32 +204,23 @@ const DogAnimation = () => {
         style={{
           left: `${currentPoint.x}%`,
           top: `${currentPoint.y}%`, 
-          transform: `translateY(${bobAmount}px) scaleX(${direction})`,
+          transform: direction === -1 ? 'scaleX(-1)' : '', 
           transition: "transform 0.1s ease",
           zIndex: 10
         }}
       >
-        {isSniffing ? (
-          // Sniffing animation
-          <div style={{ width: '90px', height: '75px' }}>
-            <video autoPlay muted loop style={{ width: '100%', height: '100%', objectFit: 'contain' }}>
-              <source src="/dogsniffing.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-        ) : (
-          // Regular dog image
-          <div style={{ width: '90px', height: '75px' }}>
-            <Image 
-              src="/maya.png" 
-              alt="Dog" 
-              width={90}
-              height={75}
-              style={{ objectFit: 'contain' }}
-              priority
-            />
-          </div>
-        )}
+        {/* Dog animation GIF */}
+        <div style={{ width: '90px', height: '90px' }}>
+          <img 
+            src="/new-animation.gif" 
+            alt="Dog animation" 
+            style={{ 
+              width: '100%', 
+              height: '100%', 
+              objectFit: 'contain'
+            }}
+          />
+        </div>
       </div>
     </div>
   );

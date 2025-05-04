@@ -25,12 +25,12 @@
 /* Animation area */
 .animation-area {
   width: 100%;
-  height: 120px;
+  height: 160px;
   background-color: #FEF2E4;
   position: relative;
   overflow: hidden;
   border-radius: 0;
-  margin-bottom: 30px;
+  margin-bottom: 130px;
 }
 
 /* Circular images */
