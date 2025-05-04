@@ -51,14 +51,6 @@ const Header = () => {
             <a href="#contact" className="text-primary hover:text-primary-hover font-medium">Contact</a>
           </nav>
           
-          {/* Book Now button */}
-          <a 
-            href="#contact" 
-            className="px-5 py-2 bg-primary text-white rounded-full font-semibold hover:bg-primary-hover transition-colors"
-          >
-            Book Now
-          </a>
-          
           {/* Mobile menu button */}
           <button 
             className="md:hidden ml-4 p-2 text-primary focus:outline-none"
@@ -289,15 +281,22 @@ export default function Home() {
         
         {/* Desktop Layout */}
         <div className="hidden md:block">
-          {/* Professional services text in its own container */}
+          {/* Professional services text with Book Now button */}
           <div className="absolute left-1/2 transform -translate-x-1/2 text-center bg-[#FEF2E4] px-8 py-4 rounded-md" 
                style={{ zIndex: 20, maxWidth: '600px', top: '150px' }}>
-            <h2 className="text-2xl font-bold tracking-wide" style={{ color: '#143F3F' }}>Professional Dog Walking & Care Services</h2>
+            <h2 className="text-2xl font-bold tracking-wide mb-6" style={{ color: '#143F3F' }}>Professional Dog Walking & Care Services</h2>
+            
+            <a 
+              href="#contact" 
+              className="book-button mb-4"
+            >
+              Book NOW
+            </a>
           </div>
           
-          <div className="flex justify-between items-start absolute w-full" style={{ top: '250px' }}>
+          <div className="flex justify-center items-start absolute w-full" style={{ top: '310px' }}>
             {/* Left Image */}
-            <div className="ml-[15%]" style={{ zIndex: 10 }}>
+            <div className="mr-12" style={{ zIndex: 10 }}>
               <CircularImage 
                 section="who-we-are"
                 imageSrc="/one-dog-1.png"
@@ -306,22 +305,10 @@ export default function Home() {
                 size={256}
                 className="circle-container"
               />
-              
-            </div>
-            
-            {/* Book Now button in the center */}
-            <div className="absolute inset-0 flex items-center justify-center" style={{ zIndex: 20, pointerEvents: 'none' }}>
-              <a 
-                href="#contact" 
-                className="book-button transform translate-y-4"
-                style={{ pointerEvents: 'auto' }}
-              >
-                Book NOW
-              </a>
             </div>
             
             {/* Right Image */}
-            <div className="mr-[15%]" style={{ zIndex: 10 }}>
+            <div className="ml-12" style={{ zIndex: 10 }}>
               <CircularImage 
                 section="what-we-do"
                 imageSrc="/two-dogs.png"
@@ -330,26 +317,24 @@ export default function Home() {
                 size={256}
                 className="circle-container"
               />
-            
             </div>
           </div>
         </div>
         
-        {/* Mobile Layout - Stacked vertically */}
+        {/* Mobile Layout - Reverted to vertical stack */}
         <div className="block md:hidden">
-          {/* Text */}
-          <div className="services-text bg-[#FEF2E4] px-6 py-4 rounded-md">
-            <h2 className="text-xl font-bold tracking-wide" style={{ color: '#143F3F' }}>Professional Dog Walking & Care Services</h2>
-          </div>
-          
-          {/* Book Now button moved to top */}
-          <div className="button-container mt-6 mb-8">
-            <a 
-              href="#contact" 
-              className="book-button"
-            >
-              Book NOW
-            </a>
+          {/* Text with Book Now button */}
+          <div className="services-text bg-[#FEF2E4] px-6 py-4 rounded-md mb-8">
+            <h2 className="text-xl font-bold tracking-wide mb-4" style={{ color: '#143F3F' }}>Professional Dog Walking & Care Services</h2>
+            
+            <div className="text-center">
+              <a 
+                href="#contact" 
+                className="book-button"
+              >
+                Book NOW
+              </a>
+            </div>
           </div>
           
           {/* Left Image - Solo Walking */}
@@ -359,7 +344,7 @@ export default function Home() {
               imageSrc="/one-dog-1.png"
               altText="Solo Walking"
               caption="Solo Walking"
-              size={240}
+              size={200}
               className="circle-container"
             />
             <button 
@@ -377,7 +362,7 @@ export default function Home() {
               imageSrc="/two-dogs.png"
               altText="Group Walkings"
               caption="Group Walkings"
-              size={240}
+              size={200}
               className="circle-container"
             />
             <button 
