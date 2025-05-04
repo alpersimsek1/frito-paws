@@ -173,76 +173,83 @@ export default function Home() {
   return (
     <div className="main-container">
       {/* Hero section */}
-      <div className="hero-container my-8" style={{ boxShadow: 'none' }}>
+      <div className="hero-container mt-4">
         {/* Animation area at the top */}
         <div className="animation-area">
           <DogAnimation />
         </div>
         
         {/* Title on the top left */}
-        <div className="absolute left-8 top-8" style={{ zIndex: 20 }}>
+        <div className="absolute left-8 top-6" style={{ zIndex: 20 }}>
           <h1 className="text-4xl font-bold" style={{ color: '#143F3F' }}>FRITO PAWS</h1>
         </div>
         
-        {/* Professional services text above button */}
-        <div className="absolute left-1/2 top-[23%] transform -translate-x-1/2 text-center" style={{ zIndex: 20 }}>
-          <h2 className="text-2xl font-bold mb-6 tracking-wide" style={{ color: '#143F3F', maxWidth: '500px' }}>Professional Dog Walking & Care Services</h2>
+        {/* Professional services text in its own container */}
+        <div className="absolute left-1/2 transform -translate-x-1/2 text-center bg-[#FEF2E4] px-8 py-4 rounded-md" 
+             style={{ zIndex: 20, maxWidth: '600px', top: '150px' }}>
+          <h2 className="text-2xl font-bold tracking-wide" style={{ color: '#143F3F' }}>Professional Dog Walking & Care Services</h2>
         </div>
         
-        {/* Book Now button in the middle below title */}
-        <div className="absolute left-1/2 top-[42%] transform -translate-x-1/2" style={{ zIndex: 20 }}>
-          <a 
-            href="#contact" 
-            className="book-button"
-          >
-            Book NOW
-          </a>
-        </div>
-        
-        {/* Image on the right aligned with button */}
-        <div className="absolute right-[10%] top-[35%] transform translate-y-8" style={{ zIndex: 10 }}>
-          <div 
-            className="circular-image cursor-pointer w-72 h-72"
-            onClick={() => handleCircleClick('what-we-do')}
-          >
-            <Image 
-              src="/two-dogs.png" 
-              alt="What we do"
-              width={320}
-              height={320}
-              style={{ objectFit: 'cover', width: '100%', height: '100%' }}
-              priority
-            />
+        <div className="flex justify-between items-start absolute w-full" style={{ top: '250px' }}>
+          {/* Left Image */}
+          <div className="ml-[15%]" style={{ zIndex: 10 }}>
+            <div 
+              className="circular-image cursor-pointer w-64 h-64"
+              onClick={() => handleCircleClick('who-we-are')}
+            >
+              <Image 
+                src="/one-dog-1.png" 
+                alt="Who we are"
+                width={280}
+                height={280}
+                style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+                priority
+              />
+            </div>
           </div>
-        </div>
-        
-        {/* Image on the left below button */}
-        <div className="absolute left-[10%] top-[50%]" style={{ zIndex: 10 }}>
-          <div 
-            className="circular-image cursor-pointer w-72 h-72"
-            onClick={() => handleCircleClick('who-we-are')}
-          >
-            <Image 
-              src="/one-dog-1.png" 
-              alt="Who we are"
-              width={320}
-              height={320}
-              style={{ objectFit: 'cover', width: '100%', height: '100%' }}
-              priority
-            />
+          
+          {/* Book Now button in the center */}
+          <div style={{ zIndex: 20 }}>
+            <div className="flex flex-col items-center">
+              <a 
+                href="#contact" 
+                className="book-button mb-10"
+              >
+                Book NOW
+              </a>
+              
+              {/* Logo below button */}
+              <div className="mt-4">
+                <div className="bg-[#FEF2E4] p-4 rounded-full shadow-md">
+                  <Image 
+                    src="/frito-logo.png" 
+                    alt="Frito Paws Logo"
+                    width={150}
+                    height={150}
+                    style={{ objectFit: 'contain' }}
+                    priority
+                  />
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-        
-        {/* Logo in the middle at the bottom */}
-        <div className="absolute left-1/2 bottom-8 transform -translate-x-1/2" style={{ zIndex: 10 }}>
-          <Image 
-            src="/frito-logo.png" 
-            alt="Frito Paws Logo"
-            width={220}
-            height={220}
-            style={{ objectFit: 'contain' }}
-            priority
-          />
+          
+          {/* Right Image */}
+          <div className="mr-[15%]" style={{ zIndex: 10 }}>
+            <div 
+              className="circular-image cursor-pointer w-64 h-64"
+              onClick={() => handleCircleClick('what-we-do')}
+            >
+              <Image 
+                src="/two-dogs.png" 
+                alt="What we do"
+                width={280}
+                height={280}
+                style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+                priority
+              />
+            </div>
+          </div>
         </div>
         
         {/* Decorative paw prints */}
@@ -253,7 +260,7 @@ export default function Home() {
       </div>
 
       {/* Who We Are Banner */}
-      <div className="py-8 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" style={{ marginBottom: "2rem" }}>
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-16">
         <div 
           className="rounded-lg overflow-hidden"
           style={{ 
@@ -268,9 +275,9 @@ export default function Home() {
               <h3 className="text-[#8BAEAE] font-medium uppercase tracking-wider">WHY US</h3>
             </div>
             
-            <h2 className="text-5xl font-bold mb-8" style={{ color: "#FEF2E4" }}>The Frito Paws difference</h2>
+            <h2 className="text-5xl font-bold mb-6" style={{ color: "#FEF2E4" }}>The Frito Paws difference</h2>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-6">
               <div className="flex items-start">
                 <div className="mr-4 bg-[#1a4f4f] p-3 rounded-lg">
                   <svg xmlns="http://www.w3.org/2000/svg" height="40" viewBox="0 -960 960 960" width="40" fill="#FEF2E4">
