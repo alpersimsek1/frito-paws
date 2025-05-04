@@ -185,12 +185,12 @@ export default function Home() {
         </div>
         
         {/* Professional services text above button */}
-        <div className="absolute left-1/2 top-[28%] transform -translate-x-1/2 text-center" style={{ zIndex: 20 }}>
+        <div className="absolute left-1/2 top-[23%] transform -translate-x-1/2 text-center" style={{ zIndex: 20 }}>
           <h2 className="text-2xl font-bold mb-6 tracking-wide" style={{ color: '#143F3F', maxWidth: '500px' }}>Professional Dog Walking & Care Services</h2>
         </div>
         
         {/* Book Now button in the middle below title */}
-        <div className="absolute left-1/2 top-[35%] transform -translate-x-1/2" style={{ zIndex: 20 }}>
+        <div className="absolute left-1/2 top-[42%] transform -translate-x-1/2" style={{ zIndex: 20 }}>
           <a 
             href="#contact" 
             className="book-button"
@@ -206,7 +206,7 @@ export default function Home() {
             onClick={() => handleCircleClick('what-we-do')}
           >
             <Image 
-              src="/ourservices.png" 
+              src="/two-dogs.png" 
               alt="What we do"
               width={320}
               height={320}
@@ -223,7 +223,7 @@ export default function Home() {
             onClick={() => handleCircleClick('who-we-are')}
           >
             <Image 
-              src="/one-dog.png" 
+              src="/one-dog-1.png" 
               alt="Who we are"
               width={320}
               height={320}
@@ -238,8 +238,8 @@ export default function Home() {
           <Image 
             src="/frito-logo.png" 
             alt="Frito Paws Logo"
-            width={160}
-            height={160}
+            width={220}
+            height={220}
             style={{ objectFit: 'contain' }}
             priority
           />
@@ -250,6 +250,57 @@ export default function Home() {
         <PawIcon size={30} top="25%" right="20%" rotate={-15} opacity={0.2} />
         <PawIcon size={35} bottom="30%" left="25%" rotate={45} opacity={0.2} />
         <PawIcon size={25} bottom="20%" right="30%" rotate={-30} opacity={0.2} />
+      </div>
+
+      {/* Who We Are Banner */}
+      <div className="py-8 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" style={{ marginBottom: "2rem" }}>
+        <div 
+          className="rounded-lg overflow-hidden"
+          style={{ 
+            backgroundColor: "#143F3F", 
+            padding: "2.5rem", 
+            boxShadow: "0 4px 12px rgba(20, 63, 63, 0.2)" 
+          }}
+        >
+          <div>
+            <div className="flex items-center mb-2">
+              <div className="w-16 h-0.5 bg-[#8BAEAE] mr-4"></div>
+              <h3 className="text-[#8BAEAE] font-medium uppercase tracking-wider">WHY US</h3>
+            </div>
+            
+            <h2 className="text-5xl font-bold mb-8" style={{ color: "#FEF2E4" }}>The Frito Paws difference</h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+              <div className="flex items-start">
+                <div className="mr-4 bg-[#1a4f4f] p-3 rounded-lg">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="40" viewBox="0 -960 960 960" width="40" fill="#FEF2E4">
+                    <path d="M180-475q-42 0-71-29t-29-71q0-42 29-71t71-29q42 0 71 29t29 71q0 42-29 71t-71 29Z"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold mb-2" style={{ color: "#FEF2E4" }}>Professional Pet Care</h3>
+                  <p className="text-[#e0e0e0]">
+                    Our team of certified professionals delivers exceptional care tailored to your pet's specific needs and personality.
+                  </p>
+                </div>
+              </div>
+              
+              <div className="flex items-start">
+                <div className="mr-4 bg-[#1a4f4f] p-3 rounded-lg">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="40" viewBox="0 -960 960 960" width="40" fill="#FEF2E4">
+                    <path d="M266-75q-45 0-75.5-34.5T160-191q0-52 35.5-91t70.5-77q29-31 50-67.5t50-68.5q22-26 51-43t63-17q34 0 63 16t51 42q28 32 49.5 69t50.5 69q35 38 70.5 77t35.5 91q0 47-30.5 81.5T694-75q-54 0-107-9t-107-9q-54 0-107 9t-107 9Z"/>
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold mb-2" style={{ color: "#FEF2E4" }}>Peace of Mind</h3>
+                  <p className="text-[#e0e0e0]">
+                    Regular updates, photos, and GPS tracking provide complete transparency and reassurance while you're away.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Services Section with card images */}
