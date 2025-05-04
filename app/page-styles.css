@@ -7,12 +7,14 @@
   border: none !important;
   margin: 0 !important;
   padding: 0 !important;
-  background-color: #F4E2C6 !important;
+  background-image: url('/original-background.png') !important;
+  background-size: cover !important;
+  background-position: center !important;
 }
 
 /* Override any header styles that might cause issues */
 .header {
-  background: #F4E2C6 !important;
+  background: white !important;
   border: none !important;
   box-shadow: none !important;
   margin: 0 !important;
@@ -20,6 +22,6 @@
 
 /* Ensure consistent background for the whole header area */
 #header-wrapper {
-  background-color: #F4E2C6;
+  background-color: white !important;
   width: 100%;
 } 

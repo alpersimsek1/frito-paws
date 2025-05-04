@@ -171,15 +171,22 @@ export default function Home() {
   return (
     <div className="main-container bg-white">
       {/* Header wrapper to unify animation and title */}
-      <div id="header-wrapper" style={{ backgroundColor: "#F4E2C6", width: "100%" }}>
-        {/* Animation container with all styles completely inline to override any CSS classes */}
+      <div id="header-wrapper" style={{ 
+        width: "100%",
+        minHeight: "600px", // Ensure enough height for 3:2 ratio
+        backgroundColor: "white", // White background
+        position: "relative" // For positioning child elements
+      }}>
+        {/* Animation container with background image */}
         <div 
           className="animation-container"
           style={{ 
             boxShadow: 'none !important', 
             border: 'none',
             borderRadius: '0',
-            backgroundColor: '#F4E2C6',
+            backgroundImage: "url('/original-background.png')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
             height: '220px',
             width: '100%',
             maxWidth: '100%',
@@ -195,12 +202,12 @@ export default function Home() {
           <DogAnimation />
         </div>
 
-        {/* Header Section - unified with animation */}
+        {/* Header Section - with white background */}
         <header 
           className="header"
           style={{ 
             padding: '0 1rem 2rem', 
-            background: '#F4E2C6',
+            background: 'white',
             position: 'relative',
             overflow: 'hidden',
             marginTop: '-1px', /* Ensure no gap */
@@ -215,20 +222,6 @@ export default function Home() {
           
           {/* Center content */}
           <div className="flex flex-col items-center justify-center">
-            {/* Logo as circular image above title */}
-            <div className="mb-4">
-              <Image 
-                src="/frito-logo.png" 
-                alt="Frito Paws Logo" 
-                width={100} 
-                height={100}
-                className="rounded-full object-cover shadow-md"
-                style={{ 
-                  backgroundColor: 'white',
-                  padding: '3px'
-                }}
-              />
-            </div>
             <h1 className="hero-title mt-0" style={{ color: '#143F3F' }}>Frito Paws</h1>
             <p className="text-lg max-w-md mx-auto mt-2 mb-6" style={{ color: '#143F3F' }}>
               Professional Dog Walking & Care Services
