@@ -13,7 +13,7 @@
   position: relative;
   width: 100%;
   max-width: 1200px;
-  height: 550px ;
+  height: 600px; 
   margin: 0 auto 50px;
   border: none;
   border-radius: 0;
@@ -73,10 +73,37 @@
   opacity: 0.2;
 }
 
-/* Logo container */
-.logo-container {
-  margin-top: -80px;
-  margin-bottom: 40px;
-  position: relative;
-  z-index: 30;
+/* Image caption */
+.image-caption {
+  text-align: center;
+  font-weight: 600;
+  color: #143F3F;
+  margin-top: 1rem;
+  font-size: 1.1rem;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .hero-container {
+    height: auto;
+    padding-bottom: 40px;
+  }
+  
+  .services-text {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  
+  .logo-container {
+    margin-bottom: 30px;
+  }
+  
+  .button-container {
+    margin-bottom: 40px;
+  }
+  
+  .image-container {
+    margin-bottom: 40px;
+  }
 } 

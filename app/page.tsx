@@ -184,71 +184,144 @@ export default function Home() {
           <h1 className="text-4xl font-bold" style={{ color: '#143F3F' }}>FRITO PAWS</h1>
         </div>
         
-        {/* Professional services text in its own container */}
-        <div className="absolute left-1/2 transform -translate-x-1/2 text-center bg-[#FEF2E4] px-8 py-4 rounded-md" 
-             style={{ zIndex: 20, maxWidth: '600px', top: '150px' }}>
-          <h2 className="text-2xl font-bold tracking-wide" style={{ color: '#143F3F' }}>Professional Dog Walking & Care Services</h2>
+        {/* Desktop Layout */}
+        <div className="hidden md:block">
+          {/* Professional services text in its own container */}
+          <div className="absolute left-1/2 transform -translate-x-1/2 text-center bg-[#FEF2E4] px-8 py-4 rounded-md" 
+               style={{ zIndex: 20, maxWidth: '600px', top: '150px' }}>
+            <h2 className="text-2xl font-bold tracking-wide" style={{ color: '#143F3F' }}>Professional Dog Walking & Care Services</h2>
+          </div>
+          
+          <div className="flex justify-between items-start absolute w-full" style={{ top: '250px' }}>
+            {/* Left Image */}
+            <div className="ml-[15%]" style={{ zIndex: 10 }}>
+              <div 
+                className="circular-image cursor-pointer w-64 h-64"
+                onClick={() => handleCircleClick('who-we-are')}
+              >
+                <Image 
+                  src="/one-dog-1.png" 
+                  alt="Who we are"
+                  width={280}
+                  height={280}
+                  style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+                  priority
+                />
+              </div>
+              <div className="image-caption">Solo Walking</div>
+            </div>
+            
+            {/* Book Now button in the center */}
+            <div style={{ zIndex: 20 }}>
+              <div className="flex flex-col items-center">
+                <a 
+                  href="#contact" 
+                  className="book-button mb-10"
+                >
+                  Book NOW
+                </a>
+                
+                {/* Logo below button */}
+                <div className="mt-4">
+                  <div className="bg-[#FEF2E4] p-4 rounded-full shadow-md">
+                    <Image 
+                      src="/frito-logo.png" 
+                      alt="Frito Paws Logo"
+                      width={150}
+                      height={150}
+                      style={{ objectFit: 'contain' }}
+                      priority
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Right Image */}
+            <div className="mr-[15%]" style={{ zIndex: 10 }}>
+              <div 
+                className="circular-image cursor-pointer w-64 h-64"
+                onClick={() => handleCircleClick('what-we-do')}
+              >
+                <Image 
+                  src="/two-dogs.png" 
+                  alt="What we do"
+                  width={280}
+                  height={280}
+                  style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+                  priority
+                />
+              </div>
+              <div className="image-caption">Group Walkings</div>
+            </div>
+          </div>
         </div>
         
-        <div className="flex justify-between items-start absolute w-full" style={{ top: '250px' }}>
-          {/* Left Image */}
-          <div className="ml-[15%]" style={{ zIndex: 10 }}>
+        {/* Mobile Layout - Stacked vertically */}
+        <div className="block md:hidden">
+          {/* Text */}
+          <div className="services-text bg-[#FEF2E4] px-6 py-4 rounded-md">
+            <h2 className="text-xl font-bold tracking-wide" style={{ color: '#143F3F' }}>Professional Dog Walking & Care Services</h2>
+          </div>
+          
+          {/* Logo */}
+          <div className="logo-container">
+            <div className="bg-[#FEF2E4] p-4 rounded-full shadow-md">
+              <Image 
+                src="/frito-logo.png" 
+                alt="Frito Paws Logo"
+                width={140}
+                height={140}
+                style={{ objectFit: 'contain' }}
+                priority
+              />
+            </div>
+          </div>
+          
+          {/* Book Now button */}
+          <div className="button-container">
+            <a 
+              href="#contact" 
+              className="book-button"
+            >
+              Book NOW
+            </a>
+          </div>
+          
+          {/* Left Image - Solo Walking */}
+          <div className="image-container">
             <div 
-              className="circular-image cursor-pointer w-64 h-64"
+              className="circular-image cursor-pointer"
               onClick={() => handleCircleClick('who-we-are')}
             >
               <Image 
                 src="/one-dog-1.png" 
-                alt="Who we are"
-                width={280}
-                height={280}
+                alt="Solo Walking"
+                width={240}
+                height={240}
                 style={{ objectFit: 'cover', width: '100%', height: '100%' }}
                 priority
               />
             </div>
+            <div className="image-caption">Solo Walking</div>
           </div>
           
-          {/* Book Now button in the center */}
-          <div style={{ zIndex: 20 }}>
-            <div className="flex flex-col items-center">
-              <a 
-                href="#contact" 
-                className="book-button mb-10"
-              >
-                Book NOW
-              </a>
-              
-              {/* Logo below button */}
-              <div className="mt-4">
-                <div className="bg-[#FEF2E4] p-4 rounded-full shadow-md">
-                  <Image 
-                    src="/frito-logo.png" 
-                    alt="Frito Paws Logo"
-                    width={150}
-                    height={150}
-                    style={{ objectFit: 'contain' }}
-                    priority
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          {/* Right Image */}
-          <div className="mr-[15%]" style={{ zIndex: 10 }}>
+          {/* Right Image - Group Walkings */}
+          <div className="image-container">
             <div 
-              className="circular-image cursor-pointer w-64 h-64"
+              className="circular-image cursor-pointer"
               onClick={() => handleCircleClick('what-we-do')}
             >
               <Image 
                 src="/two-dogs.png" 
-                alt="What we do"
-                width={280}
-                height={280}
+                alt="Group Walkings"
+                width={240}
+                height={240}
                 style={{ objectFit: 'cover', width: '100%', height: '100%' }}
                 priority
               />
             </div>
+            <div className="image-caption">Group Walkings</div>
           </div>
         </div>
         
@@ -260,7 +333,7 @@ export default function Home() {
       </div>
 
       {/* Who We Are Banner */}
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-16">
+      <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 mb-16">
         <div 
           className="rounded-lg overflow-hidden"
           style={{ 
