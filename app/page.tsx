@@ -1,9 +1,10 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { ExpandableCard } from './components/ExpandableCard';
 import Image from 'next/image';
 import DogAnimation from './components/DogAnimation';
+import './page-styles.css'; // Import the custom styles
 
 // Component for paw icon with random rotation and position
 interface PawIconProps {
@@ -63,25 +64,26 @@ const ServiceCard = ({ title, description, detailedContent, imageSrc, index = 0 
   const [isExpanded, setIsExpanded] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
   
-  // Close card when clicking outside
-  const handleClickOutside = (e: MouseEvent) => {
-    if (cardRef.current && !cardRef.current.contains(e.target as Node) && isExpanded) {
-      setIsExpanded(false);
-    }
-  };
-
-  // Add and remove event listener for outside clicks
-  useState(() => {
-    if (isExpanded) {
+  // Handle outside clicks to close expanded card
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (cardRef.current && !cardRef.current.contains(e.target as Node) && isExpanded) {
+        setIsExpanded(false);
+      }
+    };
+    
+    // Only add event listener on client-side
+    if (typeof window !== 'undefined' && isExpanded) {
       document.addEventListener('mousedown', handleClickOutside);
-    } else {
-      document.removeEventListener('mousedown', handleClickOutside);
     }
     
+    // Cleanup event listener
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      if (typeof window !== 'undefined') {
+        document.removeEventListener('mousedown', handleClickOutside);
+      }
     };
-  });
+  }, [isExpanded]); // Re-run effect when isExpanded changes
 
   return (
     <div 
@@ -168,28 +170,73 @@ export default function Home() {
 
   return (
     <div className="main-container bg-white">
-      {/* Animation at the top */}
-      <div className="animation-container mt-4 mb-0 relative mx-auto">
-        <DogAnimation />
-      </div>
-
-      {/* Header Section - removed background image */}
-      <header className="header relative overflow-hidden bg-white">
-        {/* Decorative paw icons */}
-        <PawIcon top="15%" left="10%" size={40} rotate={-15} opacity={0.1} />
-        <PawIcon top="25%" right="12%" size={24} rotate={20} opacity={0.1} />
-        <PawIcon bottom="30%" left="15%" size={32} rotate={45} opacity={0.08} />
-        <PawIcon bottom="10%" right="18%" size={36} rotate={-30} opacity={0.1} />
-        
-        {/* Center content */}
-        <div className="flex flex-col items-center justify-center py-8">
-          <h1 className="hero-title">Frito Paws</h1>
-          <p className="text-lg text-muted-foreground max-w-md mx-auto mt-2 mb-6">
-            Professional Dog Walking & Care Services
-          </p>
-          <a href="#contact" className="book-now-btn hover:scale-105 transition-transform">Book Now</a>
+      {/* Header wrapper to unify animation and title */}
+      <div id="header-wrapper" style={{ backgroundColor: "#F4E2C6", width: "100%" }}>
+        {/* Animation container with all styles completely inline to override any CSS classes */}
+        <div 
+          className="animation-container"
+          style={{ 
+            boxShadow: 'none !important', 
+            border: 'none',
+            borderRadius: '0',
+            backgroundColor: '#F4E2C6',
+            height: '220px',
+            width: '100%',
+            maxWidth: '100%',
+            margin: 0,
+            padding: 0,
+            overflow: 'hidden',
+            position: 'relative',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}
+        >
+          <DogAnimation />
         </div>
-      </header>
+
+        {/* Header Section - unified with animation */}
+        <header 
+          className="header"
+          style={{ 
+            padding: '0 1rem 2rem', 
+            background: '#F4E2C6',
+            position: 'relative',
+            overflow: 'hidden',
+            marginTop: '-1px', /* Ensure no gap */
+            borderTop: 'none'
+          }}
+        >
+          {/* Decorative paw icons */}
+          <PawIcon top="15%" left="10%" size={40} rotate={-15} opacity={0.1} />
+          <PawIcon top="25%" right="12%" size={24} rotate={20} opacity={0.1} />
+          <PawIcon bottom="30%" left="15%" size={32} rotate={45} opacity={0.08} />
+          <PawIcon bottom="10%" right="18%" size={36} rotate={-30} opacity={0.1} />
+          
+          {/* Center content */}
+          <div className="flex flex-col items-center justify-center">
+            {/* Logo as circular image above title */}
+            <div className="mb-4">
+              <Image 
+                src="/frito-logo.png" 
+                alt="Frito Paws Logo" 
+                width={100} 
+                height={100}
+                className="rounded-full object-cover shadow-md"
+                style={{ 
+                  backgroundColor: 'white',
+                  padding: '3px'
+                }}
+              />
+            </div>
+            <h1 className="hero-title mt-0" style={{ color: '#143F3F' }}>Frito Paws</h1>
+            <p className="text-lg max-w-md mx-auto mt-2 mb-6" style={{ color: '#143F3F' }}>
+              Professional Dog Walking & Care Services
+            </p>
+            <a href="#contact" className="book-now-btn hover:scale-105 transition-transform">Book Now</a>
+          </div>
+        </header>
+      </div>
 
       {/* Services Section with card images - Moved here right after title */}
       <section className="py-16 bg-white">
@@ -284,134 +331,112 @@ export default function Home() {
 
       {/* Contact Us Section */}
       <section id="contact" className="py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            {/* Left Side - Contact Form */}
-            <div className="bg-white p-8 rounded-lg shadow-md">
-              <div className="mb-6">
-                <h2 className="text-2xl font-bold text-primary mb-2">Get in Touch</h2>
-                <h3 className="text-4xl font-bold mb-4">Let's Chat, Reach Out to Us</h3>
-                <p className="text-lg text-muted-foreground mb-8">
-                  Have questions or feedback? We're here to help. Send us a message, and we'll respond within 24 hours
-                </p>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl font-bold text-primary mb-2">Get in Touch</h2>
+            <h3 className="text-4xl font-bold mb-4">Let's Chat, Reach Out to Us</h3>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
+              Have questions or feedback? We're here to help. Send us a message, and we'll respond within 24 hours
+            </p>
+          </div>
+          
+          <div className="bg-white p-8 rounded-lg shadow-md">
+            <form onSubmit={handleContactSubmit}>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <label htmlFor="firstName" className="block mb-2 font-medium">First Name</label>
+                  <input 
+                    type="text" 
+                    id="firstName" 
+                    name="firstName"
+                    placeholder="First name" 
+                    className="w-full p-3 border border-gray-300 rounded-md"
+                    value={contactFormData.firstName}
+                    onChange={handleContactFormChange}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="lastName" className="block mb-2 font-medium">Last Name</label>
+                  <input 
+                    type="text" 
+                    id="lastName"
+                    name="lastName" 
+                    placeholder="Last name" 
+                    className="w-full p-3 border border-gray-300 rounded-md"
+                    value={contactFormData.lastName}
+                    onChange={handleContactFormChange}
+                  />
+                </div>
               </div>
-              
-              <form onSubmit={handleContactSubmit}>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                  <div>
-                    <label htmlFor="firstName" className="block mb-2 font-medium">First Name</label>
-                    <input 
-                      type="text" 
-                      id="firstName" 
-                      name="firstName"
-                      placeholder="First name" 
-                      className="w-full p-3 border border-gray-300 rounded-md"
-                      value={contactFormData.firstName}
-                      onChange={handleContactFormChange}
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="lastName" className="block mb-2 font-medium">Last Name</label>
-                    <input 
-                      type="text" 
-                      id="lastName"
-                      name="lastName" 
-                      placeholder="Last name" 
-                      className="w-full p-3 border border-gray-300 rounded-md"
-                      value={contactFormData.lastName}
-                      onChange={handleContactFormChange}
-                    />
-                  </div>
-                </div>
 
-                <div className="mb-6">
-                  <label htmlFor="email" className="block mb-2 font-medium">Email Address</label>
-                  <input 
-                    type="email" 
-                    id="email" 
-                    name="email"
-                    placeholder="Email address" 
-                    className="w-full p-3 border border-gray-300 rounded-md"
-                    value={contactFormData.email}
-                    onChange={handleContactFormChange}
-                  />
-                </div>
+              <div className="mb-6">
+                <label htmlFor="email" className="block mb-2 font-medium">Email Address</label>
+                <input 
+                  type="email" 
+                  id="email" 
+                  name="email"
+                  placeholder="Email address" 
+                  className="w-full p-3 border border-gray-300 rounded-md"
+                  value={contactFormData.email}
+                  onChange={handleContactFormChange}
+                />
+              </div>
 
-                <div className="mb-6">
-                  <label htmlFor="message" className="block mb-2 font-medium">Message</label>
-                  <textarea 
-                    id="message" 
-                    name="message"
-                    placeholder="Leave us message" 
-                    rows={4} 
-                    className="w-full p-3 border border-gray-300 rounded-md"
-                    value={contactFormData.message}
-                    onChange={handleContactFormChange}
-                  ></textarea>
-                </div>
+              <div className="mb-6">
+                <label htmlFor="message" className="block mb-2 font-medium">Message</label>
+                <textarea 
+                  id="message" 
+                  name="message"
+                  placeholder="Leave us message" 
+                  rows={4} 
+                  className="w-full p-3 border border-gray-300 rounded-md"
+                  value={contactFormData.message}
+                  onChange={handleContactFormChange}
+                ></textarea>
+              </div>
 
-                <div className="mb-6 flex items-center">
-                  <input 
-                    type="checkbox" 
-                    id="privacy" 
-                    className="mr-2"
-                  />
-                  <label htmlFor="privacy" className="text-sm">
-                    I agree to our friendly <span className="underline">privacy policy</span>
-                  </label>
-                </div>
+              <div className="mb-6 flex items-center">
+                <input 
+                  type="checkbox" 
+                  id="privacy" 
+                  className="mr-2"
+                />
+                <label htmlFor="privacy" className="text-sm">
+                  I agree to our friendly <span className="underline">privacy policy</span>
+                </label>
+              </div>
 
+              <div className="flex justify-center">
                 <button type="submit" className="px-6 py-3 bg-primary text-white font-bold rounded-md hover:bg-primary-hover transition-colors">
                   Send Message
                 </button>
-              </form>
-            </div>
-
-            {/* Right Side - Image and Contact Info */}
-            <div className="rounded-xl overflow-hidden relative bg-blue-100">
-              <div className="relative w-full h-full">
-                {/* Background with circles pattern */}
-                <div className="absolute inset-0 bg-blue-100 opacity-50">
-                  <div className="absolute inset-0" style={{ 
-                    backgroundImage: 'radial-gradient(circle, #b4d4fc 20%, transparent 20%), radial-gradient(circle, #b4d4fc 20%, transparent 20%)',
-                    backgroundSize: '60px 60px',
-                    backgroundPosition: '0 0, 30px 30px',
-                    opacity: 0.3
-                  }}></div>
+              </div>
+            </form>
+            
+            {/* Contact details as list below the form */}
+            <div className="mt-8 pt-8 border-t border-gray-200">
+              <div className="flex flex-col md:flex-row justify-center gap-8">
+                <div className="flex items-center">
+                  <div className="bg-gray-100 p-3 rounded-full mr-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold mb-1">Email</h3>
+                    <p>hello@fritopaws.com</p>
+                  </div>
                 </div>
                 
-                <Image 
-                  src="/frito-logo.png" 
-                  alt="Frito Paws Logo" 
-                  width={200} 
-                  height={200} 
-                  className="mx-auto mt-8 mb-12"
-                />
-                
-                {/* Contact details */}
-                <div className="p-8 relative z-10">
-                  <div className="mb-8 flex items-center">
-                    <div className="bg-white p-3 rounded-full mr-4">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold mb-1">Email</h3>
-                      <p>hello@fritopaws.com</p>
-                    </div>
+                <div className="flex items-center">
+                  <div className="bg-gray-100 p-3 rounded-full mr-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
                   </div>
-                  
-                  <div className="mb-8 flex items-center">
-                    <div className="bg-white p-3 rounded-full mr-4">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold mb-1">Phone</h3>
-                      <p>(555) 123-4567</p>
-                    </div>
+                  <div>
+                    <h3 className="text-lg font-bold mb-1">Phone</h3>
+                    <p>(555) 123-4567</p>
                   </div>
                 </div>
               </div>

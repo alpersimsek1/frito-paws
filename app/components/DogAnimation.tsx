@@ -168,7 +168,7 @@ const DogAnimation = () => {
     <div 
       ref={containerRef} 
       className="w-full h-full relative overflow-hidden"
-      style={{ background: "linear-gradient(180deg, var(--background) 0%, var(--accent-light) 100%)" }}
+      style={{ background: "transparent" }}
     >
       {/* Background trees */}
       <div className="absolute top-5 left-[15%] opacity-80 z-0" style={{ transform: 'scale(0.85)' }}>
