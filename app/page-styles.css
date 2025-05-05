@@ -41,7 +41,7 @@
   position: relative;
   overflow: hidden;
   border-radius: 0;
-  margin-bottom: 130px; /* Large space for desktop layout */
+  margin-bottom: 150px; /* Increased space for desktop layout */
 }
 
 /* Circular images */

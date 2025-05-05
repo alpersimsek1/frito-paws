@@ -38,7 +38,7 @@ const Header = () => {
               priority
             />
           </div>
-          <h1 className="text-3xl font-bold" style={{ color: '#143F3F' }}>FRITO PAWS</h1>
+          <h1 className="text-3xl" style={{ color: '#143F3F', fontFamily: 'Alfa Slab One, cursive', letterSpacing: '1px' }}>FRITO PAWS</h1>
         </div>
         
         {/* Navigation */}
@@ -280,7 +280,7 @@ export default function Home() {
         {/* Hero section */}
         <div className="hero-container mt-4">
           {/* Animation area at the top */}
-          <div className="animation-area">
+          <div className="animation-area mb-12">
             <DogAnimation />
           </div>
           
@@ -288,8 +288,8 @@ export default function Home() {
           <div className="hidden md:block">
             {/* Professional services text with Book Now button */}
             <div className="absolute left-1/2 transform -translate-x-1/2 text-center px-8 py-4 rounded-md" 
-                style={{ zIndex: 20, maxWidth: '600px', top: '150px' }}>
-              <h2 className="text-2xl font-bold tracking-wide mb-6" style={{ color: '#143F3F' }}>PAWSITIVELY DEVOTED TO YOUR PET</h2>
+                style={{ zIndex: 20, maxWidth: '600px', top: '170px' }}>
+              <h2 className="text-2xl font-bold tracking-wide mb-8" style={{ color: '#143F3F' }}>PAWSITIVELY DEVOTED TO YOUR PET</h2>
               
               <a 
                 href="#contact" 
@@ -299,7 +299,7 @@ export default function Home() {
               </a>
             </div>
             
-            <div className="flex justify-center items-start absolute w-full" style={{ top: '310px' }}>
+            <div className="flex justify-center items-start absolute w-full" style={{ top: '350px' }}>
               {/* Left Image */}
               <div className="mr-12" style={{ zIndex: 10 }}>
                 <CircularServiceCard 
@@ -386,8 +386,8 @@ export default function Home() {
           {/* Mobile Layout - Reverted to vertical stack */}
           <div className="block md:hidden">
             {/* Text with Book Now button */}
-            <div className="services-text px-6 py-4 rounded-md mb-8">
-              <h2 className="text-xl font-bold tracking-wide mb-4" style={{ color: '#143F3F' }}>PAWSITIVELY DEVOTED TO YOUR PET</h2>
+            <div className="services-text px-6 py-4 rounded-md mb-12">
+              <h2 className="text-xl font-bold tracking-wide mb-6" style={{ color: '#143F3F' }}>PAWSITIVELY DEVOTED TO YOUR PET</h2>
               
               <div className="text-center">
                 <a 
@@ -400,7 +400,7 @@ export default function Home() {
             </div>
             
             {/* Left Image - Solo Walking */}
-            <div className="image-container mb-8">
+            <div className="image-container mb-16">
               <CircularServiceCard 
                 title="Solo Walking"
                 description="Our solo walking service provides personalized attention for your dog. Perfect for dogs that need one-on-one time or have specific exercise requirements."
@@ -427,7 +427,7 @@ export default function Home() {
             </div>
             
             {/* Middle Image - Group Walkings */}
-            <div className="image-container mb-8">
+            <div className="image-container mb-16">
               <CircularServiceCard 
                 title="Group Walkings"
                 description="Our group walks allow your dog to socialize with other furry friends while getting exercise. Small groups ensure each dog gets attention and proper supervision."
@@ -484,7 +484,7 @@ export default function Home() {
       </div>
 
       {/* Who We Are Banner */}
-      <div id="why-us" className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 mb-16 relative z-10">
+      <div id="why-us" className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 mb-16 mt-16 relative z-10">
         <div 
           className="rounded-lg overflow-hidden"
           style={{ 
