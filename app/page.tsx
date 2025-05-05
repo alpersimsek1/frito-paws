@@ -275,20 +275,28 @@ export default function Home() {
       {/* Add padding to account for fixed header */}
       <div className="pt-20 relative z-10"></div>
       
+      {/* Full-width animation section - Moved outside content wrapper */}
+      <div className="w-full overflow-hidden relative z-10" style={{
+        width: "100vw",
+        position: "relative", 
+        left: "50%",
+        right: "50%",
+        marginLeft: "-50vw",
+        marginRight: "-50vw",
+        maxWidth: "100vw"
+      }}>
+        <DogAnimation />
+      </div>
+
       {/* Content wrapper */}
-      <div className="content-wrapper relative z-10">
+      <div className="content-wrapper relative z-10 mt-8">
         {/* Hero section */}
-        <div className="hero-container mt-4">
-          {/* Animation area at the top */}
-          <div className="animation-area mb-12">
-            <DogAnimation />
-          </div>
-          
+        <div className="hero-container">
           {/* Desktop Layout */}
           <div className="hidden md:block">
             {/* Professional services text with Book Now button */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 text-center px-8 py-4 rounded-md" 
-                style={{ zIndex: 20, maxWidth: '600px', top: '170px' }}>
+            <div className="text-center px-8 py-4 rounded-md mx-auto" 
+                style={{ zIndex: 20, maxWidth: '600px' }}>
               <h2 className="text-2xl font-bold tracking-wide mb-8" style={{ color: '#143F3F' }}>PAWSITIVELY DEVOTED TO YOUR PET</h2>
               
               <a 
@@ -299,7 +307,7 @@ export default function Home() {
               </a>
             </div>
             
-            <div className="flex justify-center items-start absolute w-full" style={{ top: '350px' }}>
+            <div className="flex justify-center items-start w-full mt-6">
               {/* Left Image */}
               <div className="mr-12" style={{ zIndex: 10 }}>
                 <CircularServiceCard 
