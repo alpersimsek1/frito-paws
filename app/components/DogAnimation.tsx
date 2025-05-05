@@ -42,7 +42,7 @@ const DogAnimation = () => {
 
   // Generate random trees
   useEffect(() => {
-    const numberOfTrees = 180; // Number of trees to add
+    const numberOfTrees = 60; // Number of trees to add
     const newTrees: Tree[] = [];
     
     for (let i = 0; i < numberOfTrees; i++) {

@@ -102,7 +102,7 @@ const CircularServiceCard = ({
                 />
               </div>
               <div className="p-6 overflow-y-auto" style={{ maxHeight: 'calc(90vh - 16rem)' }}>
-                <h3 className="text-xl font-bold text-primary mb-3">{title}</h3>
+                <h3 className="text-xl font-bold mb-3" style={{ color: '#143F3F' }}>{title}</h3>
                 <p className="text-muted-foreground mb-4">{description}</p>
                 
                 {detailedContent && (
@@ -155,7 +155,7 @@ const CircularServiceCard = ({
             priority
           />
         </div>
-        <div className="text-center mt-4 font-medium text-primary">
+        <div className="text-center mt-4 font-bold" style={{ color: '#143F3F' }}>
           {title}
         </div>
       </div>

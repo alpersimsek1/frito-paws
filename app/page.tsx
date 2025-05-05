@@ -322,8 +322,8 @@ export default function Home() {
               />
             </div>
             
-            {/* Right Image */}
-            <div className="ml-12" style={{ zIndex: 10 }}>
+            {/* Middle Image */}
+            <div className="mx-4" style={{ zIndex: 10 }}>
               <CircularServiceCard 
                 title="Group Walkings"
                 description="Our group walks allow your dog to socialize with other furry friends while getting exercise. Small groups ensure each dog gets attention and proper supervision."
@@ -344,6 +344,33 @@ export default function Home() {
                       <li>Cost-effective option for regular walking</li>
                     </ul>
                     <p>We carefully match dogs by size, temperament, and energy level to ensure a positive experience for all.</p>
+                  </div>
+                }
+              />
+            </div>
+            
+            {/* Right Image */}
+            <div className="ml-12" style={{ zIndex: 10 }}>
+              <CircularServiceCard 
+                title="Pet Sitting"
+                description="Our pet sitting service provides loving care for your pet in the comfort of your own home while you're away. Perfect for pets that thrive in familiar environments."
+                imageSrc="/pet-sitting.png"
+                size={256}
+                className="circle-container"
+                detailedContent={
+                  <div>
+                    <h4 className="text-lg font-semibold mb-3">In-Home Care</h4>
+                    <p className="mb-4">
+                      Our pet sitting service ensures your pet is comfortable and well-cared for in their own environment while you're away.
+                      Benefits include:
+                    </p>
+                    <ul className="list-disc pl-6 mb-4 space-y-2">
+                      <li>Maintaining your pet's routine in familiar surroundings</li>
+                      <li>Regular feeding, play, and care sessions</li>
+                      <li>Home security with regular visits</li>
+                      <li>Plant watering and mail collection upon request</li>
+                    </ul>
+                    <p>We provide detailed updates and photos to keep you connected with your pet during your absence.</p>
                   </div>
                 }
               />
@@ -394,8 +421,8 @@ export default function Home() {
             />
           </div>
           
-          {/* Right Image - Group Walkings */}
-          <div className="image-container">
+          {/* Middle Image - Group Walkings */}
+          <div className="image-container mb-8">
             <CircularServiceCard 
               title="Group Walkings"
               description="Our group walks allow your dog to socialize with other furry friends while getting exercise. Small groups ensure each dog gets attention and proper supervision."
@@ -416,6 +443,33 @@ export default function Home() {
                     <li>Cost-effective option for regular walking</li>
                   </ul>
                   <p>We carefully match dogs by size, temperament, and energy level to ensure a positive experience for all.</p>
+                </div>
+              }
+            />
+          </div>
+          
+          {/* Right Image - Pet Sitting */}
+          <div className="image-container">
+            <CircularServiceCard 
+              title="Pet Sitting"
+              description="Our pet sitting service provides loving care for your pet in the comfort of your own home while you're away. Perfect for pets that thrive in familiar environments."
+              imageSrc="/pet-sitting.png"
+              size={200}
+              className="circle-container"
+              detailedContent={
+                <div>
+                  <h4 className="text-lg font-semibold mb-3">In-Home Care</h4>
+                  <p className="mb-4">
+                    Our pet sitting service ensures your pet is comfortable and well-cared for in their own environment while you're away.
+                    Benefits include:
+                  </p>
+                  <ul className="list-disc pl-6 mb-4 space-y-2">
+                    <li>Maintaining your pet's routine in familiar surroundings</li>
+                    <li>Regular feeding, play, and care sessions</li>
+                    <li>Home security with regular visits</li>
+                    <li>Plant watering and mail collection upon request</li>
+                  </ul>
+                  <p>We provide detailed updates and photos to keep you connected with your pet during your absence.</p>
                 </div>
               }
             />
@@ -477,139 +531,9 @@ export default function Home() {
               </div>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-              <div>
-                <h3 className="text-xl font-bold mb-4" style={{ color: "#FEF2E4" }}>Our Story</h3>
-                <p className="text-[#e0e0e0] mb-4">
-                  Frito Paws was founded with a simple mission: to provide the highest quality care for your 
-                  furry companions. Our team consists of dedicated animal lovers who understand that pets 
-                  are family members.
-                </p>
-                <p className="text-[#e0e0e0]">
-                  With years of experience and a passion for animal welfare, we've built a service that 
-                  puts your pet's happiness and safety first.
-                </p>
-              </div>
-              <div>
-                <h3 className="text-xl font-bold mb-4" style={{ color: "#FEF2E4" }}>Our Values</h3>
-                <ul className="text-[#e0e0e0] space-y-3">
-                  <li className="flex items-start">
-                    <span className="text-[#8BAEAE] mr-2">•</span>
-                    <span>Trust and reliability in all our services</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-[#8BAEAE] mr-2">•</span>
-                    <span>Personalized care tailored to your pet's unique needs</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-[#8BAEAE] mr-2">•</span>
-                    <span>Regular communication and updates about your pet</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-[#8BAEAE] mr-2">•</span>
-                    <span>Continuous training and education for our team</span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-[#8BAEAE] mr-2">•</span>
-                    <span>Creating joyful experiences for pets in our care</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
           </div>
         </div>
       </div>
-
-      {/* Services Section with card images */}
-      <section id="services" className="py-16" style={{ backgroundColor: "#FEF2E4" }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-primary mb-2">Our Services</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              We provide professional and caring services for your furry friends
-            </p>
-            <div className="w-24 h-1 bg-primary mx-auto rounded-full mt-4"></div>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <ServiceCard 
-              title="What We Do" 
-              description="Professional dog walking, playtime sessions, and personalized care tailored to your pet's needs, energy level, and personality."
-              imageSrc="/whatwedo.png"
-              detailedContent={
-                <div>
-                  <h4 className="text-lg font-semibold mb-3">Our Approach</h4>
-                  <p className="mb-5 text-[15px] leading-relaxed">
-                    Our services include daily walks, playtime sessions, and personalized care for your pets.
-                    We tailor our approach to your dog's specific needs, energy level, and personality.
-                  </p>
-                  <ul className="list-disc pl-6 mb-5 space-y-2 text-[15px]">
-                    <li>Individual and group walks</li>
-                    <li>Puppy care visits</li>
-                    <li>Daily updates with photos</li>
-                    <li>Flexible scheduling options</li>
-                  </ul>
-                  <p className="text-[15px] leading-relaxed">
-                    Every dog is unique, and we take the time to understand your pet's preferences, routines, and special requirements to provide the best possible care experience.
-                  </p>
-                </div>
-              }
-              index={0}
-            />
-            <ServiceCard 
-              title="Who We Are" 
-              description="A team of certified pet professionals who are passionate about animals, ensuring your furry family members receive the best care possible."
-              imageSrc="/whoweare.png"
-              detailedContent={
-                <div>
-                  <h4 className="text-lg font-semibold mb-3">Our Team</h4>
-                  <p className="mb-5 text-[15px] leading-relaxed">
-                    We're a team of certified pet professionals who are passionate about animals.
-                    All our staff are insured, bonded, and have extensive experience caring for dogs of all breeds and sizes.
-                  </p>
-                  <p className="mb-5 text-[15px] leading-relaxed">
-                    Founded in 2020, Frito Paws has quickly become the trusted choice for pet parents in the area
-                    who want peace of mind knowing their furry family members are receiving the best care possible.
-                  </p>
-                  <p className="text-[15px] leading-relaxed">
-                    Our team undergoes rigorous training in dog behavior, first aid, and emergency response to ensure your pet's safety and well-being at all times.
-                  </p>
-                </div>
-              }
-              index={1}
-            />
-            <ServiceCard 
-              title="Our Services" 
-              description="Daily walks, check-in visits, adventure hikes, and overnight care - all with detailed reports, photos, and GPS tracking."
-              imageSrc="/ourservices.png"
-              detailedContent={
-                <div>
-                  <h4 className="text-lg font-semibold mb-3">Service Options</h4>
-                  <p className="mb-5 text-[15px] leading-relaxed">
-                    We offer a variety of services to meet your pet care needs:
-                  </p>
-                  <ul className="list-disc pl-6 mb-5 space-y-2 text-[15px]">
-                    <li className="font-medium">
-                      <span className="text-primary font-bold">Daily Walks:</span> 30 or 60-minute walks
-                    </li>
-                    <li className="font-medium">
-                      <span className="text-primary font-bold">Check-in Visits:</span> Quick visits for bathroom breaks and feeding
-                    </li>
-                    <li className="font-medium">
-                      <span className="text-primary font-bold">Adventure Hikes:</span> Longer outdoor adventures for active dogs
-                    </li>
-                    <li className="font-medium">
-                      <span className="text-primary font-bold">Overnight Care:</span> In-home overnight stays for extended coverage
-                    </li>
-                  </ul>
-                  <p className="text-[15px] leading-relaxed">All services include detailed reports, photos, and GPS tracking of walks.</p>
-                </div>
-              }
-              index={2}
-            />
-          </div>
-        </div>
-      </section>
 
       {/* Contact Us Section */}
       <section id="contact" className="py-16" style={{ backgroundColor: "#FEF2E4" }}>
