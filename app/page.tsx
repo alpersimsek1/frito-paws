@@ -265,6 +265,7 @@ export default function Home() {
     email: '',
     message: ''
   });
+  const [subscriptionEmail, setSubscriptionEmail] = useState('');
 
   const handleContactFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -283,6 +284,22 @@ export default function Home() {
     const element = document.getElementById(section);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+  
+  const handleBookNowClick = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Update the contact form email with the subscription email
+    setContactFormData(prev => ({
+      ...prev,
+      email: subscriptionEmail
+    }));
+    
+    // Scroll to contact section
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -321,16 +338,21 @@ export default function Home() {
               
               {/* Email subscription form with Sign up button */}
               <div className="flex items-center justify-center mb-8">
-                <div className="w-full max-w-md bg-white flex rounded-full overflow-hidden shadow-md">
+                <form className="w-full max-w-md bg-white flex rounded-full overflow-hidden shadow-md" onSubmit={handleBookNowClick}>
                   <input 
                     type="email" 
                     placeholder="Your email" 
                     className="w-full px-6 py-3 outline-none text-gray-600" 
+                    value={subscriptionEmail}
+                    onChange={(e) => setSubscriptionEmail(e.target.value)}
                   />
-                  <button className="px-6 py-3 bg-[#5BA69E] text-white font-semibold whitespace-nowrap">
+                  <button 
+                    type="submit"
+                    className="px-6 py-3 bg-[#5BA69E] text-white font-semibold whitespace-nowrap hover:bg-[#4a8f88] transition-colors"
+                  >
                     Book Now!
                   </button>
-                </div>
+                </form>
               </div>
             </div>
             
@@ -428,16 +450,21 @@ export default function Home() {
               
               {/* Email subscription form with Sign up button for mobile */}
               <div className="flex items-center justify-center mb-6">
-                <div className="w-full bg-white flex rounded-full overflow-hidden shadow-md">
+                <form className="w-full bg-white flex rounded-full overflow-hidden shadow-md" onSubmit={handleBookNowClick}>
                   <input 
                     type="email" 
                     placeholder="Your email" 
                     className="w-full px-5 py-2.5 outline-none text-gray-600" 
+                    value={subscriptionEmail}
+                    onChange={(e) => setSubscriptionEmail(e.target.value)}
                   />
-                  <button className="px-5 py-2.5 bg-[#5BA69E] text-white font-semibold whitespace-nowrap">
-                    Sign up!
+                  <button 
+                    type="submit"
+                    className="px-5 py-2.5 bg-[#5BA69E] text-white font-semibold whitespace-nowrap hover:bg-[#4a8f88] transition-colors"
+                  >
+                    Book Now!
                   </button>
-                </div>
+                </form>
               </div>
             </div>
             
