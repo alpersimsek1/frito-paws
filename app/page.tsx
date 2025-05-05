@@ -387,7 +387,7 @@ export default function Home() {
               {/* Middle Image */}
               <div className="mx-4" style={{ zIndex: 10 }}>
                 <CircularServiceCard 
-                  title="Group Walkings"
+                  title="Group Walking"
                   description="Our group walks allow your dog to socialize with other furry friends while getting exercise. Small groups ensure each dog gets attention and proper supervision."
                   imageSrc="/two-dogs.png"
                   size={256}
@@ -495,10 +495,10 @@ export default function Home() {
               />
             </div>
             
-            {/* Middle Image - Group Walkings */}
+            {/* Middle Image - Group Walking */}
             <div className="image-container mb-16">
               <CircularServiceCard 
-                title="Group Walkings"
+                title="Group Walking"
                 description="Our group walks allow your dog to socialize with other furry friends while getting exercise. Small groups ensure each dog gets attention and proper supervision."
                 imageSrc="/two-dogs.png"
                 size={200}
@@ -619,7 +619,7 @@ export default function Home() {
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             {/* Contact Dog Image - Moved to left side */}
-            <div className="flex justify-center items-center h-full order-2 lg:order-1">
+            <div className="hidden lg:flex justify-center items-center h-full order-2 lg:order-1">
               <div className="relative w-full max-w-md h-[600px]">
                 <Image 
                   src="/contact-dog.png" 
@@ -636,18 +636,34 @@ export default function Home() {
             
             {/* Contact Form - Moved to right side */}
             <div className="bg-white p-8 rounded-lg shadow-md order-1 lg:order-2">
-              <form onSubmit={handleContactSubmit}>
+              <form action="https://api.web3forms.com/submit" method="POST" className="relative" onSubmit={(e) => {
+                // Allow the form to submit naturally to Web3Forms
+                // No need to call preventDefault()
+                console.log('Form submitted to Web3Forms');
+              }}>
+                {/* Web3Forms Access Key */}
+                <input type="hidden" name="access_key" value="07630ced-bf9b-4a96-be14-d894eaa84be9" />
+                
+                {/* Honeypot Spam Protection */}
+                <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} />
+                
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                   <div>
                     <label htmlFor="firstName" className="block mb-2 font-medium">First Name</label>
                     <input 
                       type="text" 
                       id="firstName" 
-                      name="firstName"
+                      name="first_name"
                       placeholder="First name" 
                       className="w-full p-3 border border-gray-300 rounded-md"
                       value={contactFormData.firstName}
-                      onChange={handleContactFormChange}
+                      onChange={(e) => {
+                        setContactFormData({
+                          ...contactFormData,
+                          firstName: e.target.value
+                        });
+                      }}
+                      required
                     />
                   </div>
                   <div>
@@ -655,11 +671,17 @@ export default function Home() {
                     <input 
                       type="text" 
                       id="lastName"
-                      name="lastName" 
+                      name="last_name" 
                       placeholder="Last name" 
                       className="w-full p-3 border border-gray-300 rounded-md"
                       value={contactFormData.lastName}
-                      onChange={handleContactFormChange}
+                      onChange={(e) => {
+                        setContactFormData({
+                          ...contactFormData,
+                          lastName: e.target.value
+                        });
+                      }}
+                      required
                     />
                   </div>
                 </div>
@@ -673,7 +695,13 @@ export default function Home() {
                     placeholder="Email address" 
                     className="w-full p-3 border border-gray-300 rounded-md"
                     value={contactFormData.email}
-                    onChange={handleContactFormChange}
+                    onChange={(e) => {
+                      setContactFormData({
+                        ...contactFormData,
+                        email: e.target.value
+                      });
+                    }}
+                    required
                   />
                 </div>
 
@@ -686,23 +714,35 @@ export default function Home() {
                     rows={4} 
                     className="w-full p-3 border border-gray-300 rounded-md"
                     value={contactFormData.message}
-                    onChange={handleContactFormChange}
+                    onChange={(e) => {
+                      setContactFormData({
+                        ...contactFormData,
+                        message: e.target.value
+                      });
+                    }}
+                    required
                   ></textarea>
                 </div>
 
                 <div className="mb-6 flex items-center">
                   <input 
                     type="checkbox" 
-                    id="privacy" 
+                    id="privacy"
+                    name="privacy_agreed"
                     className="mr-2"
+                    required
                   />
                   <label htmlFor="privacy" className="text-sm">
                     I agree to our friendly <span className="underline">privacy policy</span>
                   </label>
                 </div>
 
-                <div className="flex justify-center">
-                  <button type="submit" className="px-6 py-3 bg-primary text-white font-bold rounded-md hover:bg-primary-hover transition-colors">
+                {/* Submit button with improved visibility */}
+                <div className="flex justify-center mt-8 mb-4">
+                  <button 
+                    type="submit" 
+                    className="w-full px-6 py-4 bg-green-600 text-white font-bold text-lg rounded-md hover:bg-green-700 transition-colors shadow-md"
+                  >
                     Send Message
                   </button>
                 </div>
@@ -719,7 +759,7 @@ export default function Home() {
                     </div>
                     <div>
                       <h3 className="text-lg font-bold mb-1">Email</h3>
-                      <p>hello@fritopaws.com</p>
+                      <p>info@fritopaws.com</p>
                     </div>
                   </div>
                   
@@ -731,7 +771,7 @@ export default function Home() {
                     </div>
                     <div>
                       <h3 className="text-lg font-bold mb-1">Phone</h3>
-                      <p>(555) 123-4567</p>
+                      <p>07534148093</p>
                     </div>
                   </div>
                 </div>
