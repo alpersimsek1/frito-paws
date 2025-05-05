@@ -553,7 +553,7 @@ export default function Home() {
       </div>
 
       {/* Who We Are Banner */}
-      <div id="why-us" className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 mb-16 mt-16 relative z-10">
+      <div id="why-us" className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 mb-16 mt-6 relative z-10">
         <div 
           className="rounded-lg overflow-hidden"
           style={{ 
@@ -608,7 +608,7 @@ export default function Home() {
 
       {/* Contact Us Section */}
       <section id="contact" className="py-16 relative z-10">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <h2 className="text-2xl font-bold text-primary mb-2">Get in Touch</h2>
             <h3 className="text-4xl font-bold mb-4">Let's Chat, Reach Out to Us</h3>
@@ -617,103 +617,122 @@ export default function Home() {
             </p>
           </div>
           
-          <div className="bg-white p-8 rounded-lg shadow-md">
-            <form onSubmit={handleContactSubmit}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <label htmlFor="firstName" className="block mb-2 font-medium">First Name</label>
-                  <input 
-                    type="text" 
-                    id="firstName" 
-                    name="firstName"
-                    placeholder="First name" 
-                    className="w-full p-3 border border-gray-300 rounded-md"
-                    value={contactFormData.firstName}
-                    onChange={handleContactFormChange}
-                  />
-                </div>
-                <div>
-                  <label htmlFor="lastName" className="block mb-2 font-medium">Last Name</label>
-                  <input 
-                    type="text" 
-                    id="lastName"
-                    name="lastName" 
-                    placeholder="Last name" 
-                    className="w-full p-3 border border-gray-300 rounded-md"
-                    value={contactFormData.lastName}
-                    onChange={handleContactFormChange}
-                  />
-                </div>
-              </div>
-
-              <div className="mb-6">
-                <label htmlFor="email" className="block mb-2 font-medium">Email Address</label>
-                <input 
-                  type="email" 
-                  id="email" 
-                  name="email"
-                  placeholder="Email address" 
-                  className="w-full p-3 border border-gray-300 rounded-md"
-                  value={contactFormData.email}
-                  onChange={handleContactFormChange}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            {/* Contact Dog Image - Moved to left side */}
+            <div className="flex justify-center items-center h-full order-2 lg:order-1">
+              <div className="relative w-full max-w-md h-[600px]">
+                <Image 
+                  src="/contact-dog.png" 
+                  alt="Happy dog waiting for your message"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  style={{
+                    objectFit: 'contain',
+                    objectPosition: 'center',
+                  }}
                 />
               </div>
-
-              <div className="mb-6">
-                <label htmlFor="message" className="block mb-2 font-medium">Message</label>
-                <textarea 
-                  id="message" 
-                  name="message"
-                  placeholder="Leave us message" 
-                  rows={4} 
-                  className="w-full p-3 border border-gray-300 rounded-md"
-                  value={contactFormData.message}
-                  onChange={handleContactFormChange}
-                ></textarea>
-              </div>
-
-              <div className="mb-6 flex items-center">
-                <input 
-                  type="checkbox" 
-                  id="privacy" 
-                  className="mr-2"
-                />
-                <label htmlFor="privacy" className="text-sm">
-                  I agree to our friendly <span className="underline">privacy policy</span>
-                </label>
-              </div>
-
-              <div className="flex justify-center">
-                <button type="submit" className="px-6 py-3 bg-primary text-white font-bold rounded-md hover:bg-primary-hover transition-colors">
-                  Send Message
-                </button>
-              </div>
-            </form>
+            </div>
             
-            {/* Contact details as list below the form */}
-            <div className="mt-8 pt-8 border-t border-gray-200">
-              <div className="flex flex-col md:flex-row justify-center gap-8">
-                <div className="flex items-center">
-                  <div className="bg-gray-100 p-3 rounded-full mr-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
+            {/* Contact Form - Moved to right side */}
+            <div className="bg-white p-8 rounded-lg shadow-md order-1 lg:order-2">
+              <form onSubmit={handleContactSubmit}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                  <div>
+                    <label htmlFor="firstName" className="block mb-2 font-medium">First Name</label>
+                    <input 
+                      type="text" 
+                      id="firstName" 
+                      name="firstName"
+                      placeholder="First name" 
+                      className="w-full p-3 border border-gray-300 rounded-md"
+                      value={contactFormData.firstName}
+                      onChange={handleContactFormChange}
+                    />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold mb-1">Email</h3>
-                    <p>hello@fritopaws.com</p>
+                    <label htmlFor="lastName" className="block mb-2 font-medium">Last Name</label>
+                    <input 
+                      type="text" 
+                      id="lastName"
+                      name="lastName" 
+                      placeholder="Last name" 
+                      className="w-full p-3 border border-gray-300 rounded-md"
+                      value={contactFormData.lastName}
+                      onChange={handleContactFormChange}
+                    />
                   </div>
                 </div>
-                
-                <div className="flex items-center">
-                  <div className="bg-gray-100 p-3 rounded-full mr-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                    </svg>
+
+                <div className="mb-6">
+                  <label htmlFor="email" className="block mb-2 font-medium">Email Address</label>
+                  <input 
+                    type="email" 
+                    id="email" 
+                    name="email"
+                    placeholder="Email address" 
+                    className="w-full p-3 border border-gray-300 rounded-md"
+                    value={contactFormData.email}
+                    onChange={handleContactFormChange}
+                  />
+                </div>
+
+                <div className="mb-6">
+                  <label htmlFor="message" className="block mb-2 font-medium">Message</label>
+                  <textarea 
+                    id="message" 
+                    name="message"
+                    placeholder="Leave us message" 
+                    rows={4} 
+                    className="w-full p-3 border border-gray-300 rounded-md"
+                    value={contactFormData.message}
+                    onChange={handleContactFormChange}
+                  ></textarea>
+                </div>
+
+                <div className="mb-6 flex items-center">
+                  <input 
+                    type="checkbox" 
+                    id="privacy" 
+                    className="mr-2"
+                  />
+                  <label htmlFor="privacy" className="text-sm">
+                    I agree to our friendly <span className="underline">privacy policy</span>
+                  </label>
+                </div>
+
+                <div className="flex justify-center">
+                  <button type="submit" className="px-6 py-3 bg-primary text-white font-bold rounded-md hover:bg-primary-hover transition-colors">
+                    Send Message
+                  </button>
+                </div>
+              </form>
+              
+              {/* Contact details as list below the form */}
+              <div className="mt-8 pt-8 border-t border-gray-200">
+                <div className="flex flex-col md:flex-row justify-center gap-8">
+                  <div className="flex items-center">
+                    <div className="bg-gray-100 p-3 rounded-full mr-4">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold mb-1">Email</h3>
+                      <p>hello@fritopaws.com</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="text-lg font-bold mb-1">Phone</h3>
-                    <p>(555) 123-4567</p>
+                  
+                  <div className="flex items-center">
+                    <div className="bg-gray-100 p-3 rounded-full mr-4">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold mb-1">Phone</h3>
+                      <p>(555) 123-4567</p>
+                    </div>
                   </div>
                 </div>
               </div>
