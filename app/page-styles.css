@@ -2,11 +2,21 @@
 
 /* Main container styles */
 .main-container {
-  background-color: #FEF2E4;
   min-height: 100vh;
   width: 100%;
-  overflow-x: hidden;
+  overflow-y: auto;
   position: relative;
+}
+
+/* Content wrapper */
+.content-wrapper {
+  background-color: transparent;
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  overflow-y: auto;
+  padding-bottom: 50px;
 }
 
 /* Hero section container */
@@ -19,7 +29,6 @@
   border: none;
   border-radius: 0;
   overflow: visible;
-  background-color: #FEF2E4;
   box-shadow: none;
   /* Ensure proper stacking context */
   z-index: 1; 
@@ -29,7 +38,6 @@
 .animation-area {
   width: 100%;
   height: 160px;
-  background-color: #FEF2E4;
   position: relative;
   overflow: hidden;
   border-radius: 0;

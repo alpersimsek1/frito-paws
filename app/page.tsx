@@ -24,7 +24,7 @@ const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
   return (
-    <header className="fixed top-0 left-0 right-0 bg-[#fef2e4] py-4 px-6 shadow-md z-50">
+    <header className="fixed top-0 left-0 right-0 bg-[rgba(254,242,228,0.95)] py-4 px-6 shadow-md z-50">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center">
@@ -75,7 +75,7 @@ const Header = () => {
       
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[#fef2e4] py-4 px-6 shadow-md">
+        <div className="md:hidden bg-[rgba(254,242,228,0.95)] py-4 px-6 shadow-md">
           <nav className="flex flex-col space-y-4">
             <a 
               href="#" 
@@ -265,43 +265,147 @@ export default function Home() {
   };
 
   return (
-    <div className="main-container">
+    <div className="main-container relative">
+      {/* Background overlay */}
+      <div className="absolute inset-0 bg-[#FEF2E4] opacity-85 z-0" style={{ pointerEvents: "none" }}></div>
+      
       {/* Add Header */}
       <Header />
       
       {/* Add padding to account for fixed header */}
-      <div className="pt-20"></div>
+      <div className="pt-20 relative z-10"></div>
       
-      {/* Hero section */}
-      <div className="hero-container mt-4">
-        {/* Animation area at the top */}
-        <div className="animation-area">
-          <DogAnimation />
-        </div>
-        
-        {/* Desktop Layout */}
-        <div className="hidden md:block">
-          {/* Professional services text with Book Now button */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 text-center px-8 py-4 rounded-md" 
-               style={{ zIndex: 20, maxWidth: '600px', top: '150px' }}>
-            <h2 className="text-2xl font-bold tracking-wide mb-6" style={{ color: '#143F3F' }}>PAWSITIVELY DEVOTED TO YOUR PET</h2>
-            
-            <a 
-              href="#contact" 
-              className="book-button mb-4"
-            >
-              Book NOW
-            </a>
+      {/* Content wrapper */}
+      <div className="content-wrapper relative z-10">
+        {/* Hero section */}
+        <div className="hero-container mt-4">
+          {/* Animation area at the top */}
+          <div className="animation-area">
+            <DogAnimation />
           </div>
           
-          <div className="flex justify-center items-start absolute w-full" style={{ top: '310px' }}>
-            {/* Left Image */}
-            <div className="mr-12" style={{ zIndex: 10 }}>
+          {/* Desktop Layout */}
+          <div className="hidden md:block">
+            {/* Professional services text with Book Now button */}
+            <div className="absolute left-1/2 transform -translate-x-1/2 text-center px-8 py-4 rounded-md" 
+                style={{ zIndex: 20, maxWidth: '600px', top: '150px' }}>
+              <h2 className="text-2xl font-bold tracking-wide mb-6" style={{ color: '#143F3F' }}>PAWSITIVELY DEVOTED TO YOUR PET</h2>
+              
+              <a 
+                href="#contact" 
+                className="book-button mb-4"
+              >
+                Book NOW
+              </a>
+            </div>
+            
+            <div className="flex justify-center items-start absolute w-full" style={{ top: '310px' }}>
+              {/* Left Image */}
+              <div className="mr-12" style={{ zIndex: 10 }}>
+                <CircularServiceCard 
+                  title="Solo Walking"
+                  description="Our solo walking service provides personalized attention for your dog. Perfect for dogs that need one-on-one time or have specific exercise requirements."
+                  imageSrc="/one-dog-1.png"
+                  size={256}
+                  className="circle-container"
+                  detailedContent={
+                    <div>
+                      <h4 className="text-lg font-semibold mb-3">Individual Attention</h4>
+                      <p className="mb-4">
+                        Our solo walking service ensures your dog receives our undivided attention during their walk.
+                        This is ideal for dogs that:
+                      </p>
+                      <ul className="list-disc pl-6 mb-4 space-y-2">
+                        <li>Need individual training reinforcement</li>
+                        <li>Are uncomfortable around other dogs</li>
+                        <li>Have specific exercise requirements</li>
+                        <li>Need specialized care or medication during walks</li>
+                      </ul>
+                      <p>Each solo walk includes photo updates and a detailed report of your dog's activities and behavior.</p>
+                    </div>
+                  }
+                />
+              </div>
+              
+              {/* Middle Image */}
+              <div className="mx-4" style={{ zIndex: 10 }}>
+                <CircularServiceCard 
+                  title="Group Walkings"
+                  description="Our group walks allow your dog to socialize with other furry friends while getting exercise. Small groups ensure each dog gets attention and proper supervision."
+                  imageSrc="/two-dogs.png"
+                  size={256}
+                  className="circle-container"
+                  detailedContent={
+                    <div>
+                      <h4 className="text-lg font-semibold mb-3">Social Experience</h4>
+                      <p className="mb-4">
+                        Our group walking service offers your dog the chance to socialize while enjoying their exercise.
+                        Benefits include:
+                      </p>
+                      <ul className="list-disc pl-6 mb-4 space-y-2">
+                        <li>Socialization with other friendly dogs</li>
+                        <li>Learning proper social behavior</li>
+                        <li>More stimulating and enriching experience</li>
+                        <li>Cost-effective option for regular walking</li>
+                      </ul>
+                      <p>We carefully match dogs by size, temperament, and energy level to ensure a positive experience for all.</p>
+                    </div>
+                  }
+                />
+              </div>
+              
+              {/* Right Image */}
+              <div className="ml-12" style={{ zIndex: 10 }}>
+                <CircularServiceCard 
+                  title="Pet Sitting"
+                  description="Our pet sitting service provides loving care for your pet in the comfort of your own home while you're away. Perfect for pets that thrive in familiar environments."
+                  imageSrc="/pet-sitting.png"
+                  size={256}
+                  className="circle-container"
+                  detailedContent={
+                    <div>
+                      <h4 className="text-lg font-semibold mb-3">In-Home Care</h4>
+                      <p className="mb-4">
+                        Our pet sitting service ensures your pet is comfortable and well-cared for in their own environment while you're away.
+                        Benefits include:
+                      </p>
+                      <ul className="list-disc pl-6 mb-4 space-y-2">
+                        <li>Maintaining your pet's routine in familiar surroundings</li>
+                        <li>Regular feeding, play, and care sessions</li>
+                        <li>Home security with regular visits</li>
+                        <li>Plant watering and mail collection upon request</li>
+                      </ul>
+                      <p>We provide detailed updates and photos to keep you connected with your pet during your absence.</p>
+                    </div>
+                  }
+                />
+              </div>
+            </div>
+          </div>
+          
+          {/* Mobile Layout - Reverted to vertical stack */}
+          <div className="block md:hidden">
+            {/* Text with Book Now button */}
+            <div className="services-text px-6 py-4 rounded-md mb-8">
+              <h2 className="text-xl font-bold tracking-wide mb-4" style={{ color: '#143F3F' }}>PAWSITIVELY DEVOTED TO YOUR PET</h2>
+              
+              <div className="text-center">
+                <a 
+                  href="#contact" 
+                  className="book-button"
+                >
+                  Book NOW
+                </a>
+              </div>
+            </div>
+            
+            {/* Left Image - Solo Walking */}
+            <div className="image-container mb-8">
               <CircularServiceCard 
                 title="Solo Walking"
                 description="Our solo walking service provides personalized attention for your dog. Perfect for dogs that need one-on-one time or have specific exercise requirements."
                 imageSrc="/one-dog-1.png"
-                size={256}
+                size={200}
                 className="circle-container"
                 detailedContent={
                   <div>
@@ -322,13 +426,13 @@ export default function Home() {
               />
             </div>
             
-            {/* Middle Image */}
-            <div className="mx-4" style={{ zIndex: 10 }}>
+            {/* Middle Image - Group Walkings */}
+            <div className="image-container mb-8">
               <CircularServiceCard 
                 title="Group Walkings"
                 description="Our group walks allow your dog to socialize with other furry friends while getting exercise. Small groups ensure each dog gets attention and proper supervision."
                 imageSrc="/two-dogs.png"
-                size={256}
+                size={200}
                 className="circle-container"
                 detailedContent={
                   <div>
@@ -349,13 +453,13 @@ export default function Home() {
               />
             </div>
             
-            {/* Right Image */}
-            <div className="ml-12" style={{ zIndex: 10 }}>
+            {/* Right Image - Pet Sitting */}
+            <div className="image-container">
               <CircularServiceCard 
                 title="Pet Sitting"
                 description="Our pet sitting service provides loving care for your pet in the comfort of your own home while you're away. Perfect for pets that thrive in familiar environments."
                 imageSrc="/pet-sitting.png"
-                size={256}
+                size={200}
                 className="circle-container"
                 detailedContent={
                   <div>
@@ -377,120 +481,18 @@ export default function Home() {
             </div>
           </div>
         </div>
-        
-        {/* Mobile Layout - Reverted to vertical stack */}
-        <div className="block md:hidden">
-          {/* Text with Book Now button */}
-          <div className="services-text px-6 py-4 rounded-md mb-8">
-            <h2 className="text-xl font-bold tracking-wide mb-4" style={{ color: '#143F3F' }}>PAWSITIVELY DEVOTED TO YOUR PET</h2>
-            
-            <div className="text-center">
-              <a 
-                href="#contact" 
-                className="book-button"
-              >
-                Book NOW
-              </a>
-            </div>
-          </div>
-          
-          {/* Left Image - Solo Walking */}
-          <div className="image-container mb-8">
-            <CircularServiceCard 
-              title="Solo Walking"
-              description="Our solo walking service provides personalized attention for your dog. Perfect for dogs that need one-on-one time or have specific exercise requirements."
-              imageSrc="/one-dog-1.png"
-              size={200}
-              className="circle-container"
-              detailedContent={
-                <div>
-                  <h4 className="text-lg font-semibold mb-3">Individual Attention</h4>
-                  <p className="mb-4">
-                    Our solo walking service ensures your dog receives our undivided attention during their walk.
-                    This is ideal for dogs that:
-                  </p>
-                  <ul className="list-disc pl-6 mb-4 space-y-2">
-                    <li>Need individual training reinforcement</li>
-                    <li>Are uncomfortable around other dogs</li>
-                    <li>Have specific exercise requirements</li>
-                    <li>Need specialized care or medication during walks</li>
-                  </ul>
-                  <p>Each solo walk includes photo updates and a detailed report of your dog's activities and behavior.</p>
-                </div>
-              }
-            />
-          </div>
-          
-          {/* Middle Image - Group Walkings */}
-          <div className="image-container mb-8">
-            <CircularServiceCard 
-              title="Group Walkings"
-              description="Our group walks allow your dog to socialize with other furry friends while getting exercise. Small groups ensure each dog gets attention and proper supervision."
-              imageSrc="/two-dogs.png"
-              size={200}
-              className="circle-container"
-              detailedContent={
-                <div>
-                  <h4 className="text-lg font-semibold mb-3">Social Experience</h4>
-                  <p className="mb-4">
-                    Our group walking service offers your dog the chance to socialize while enjoying their exercise.
-                    Benefits include:
-                  </p>
-                  <ul className="list-disc pl-6 mb-4 space-y-2">
-                    <li>Socialization with other friendly dogs</li>
-                    <li>Learning proper social behavior</li>
-                    <li>More stimulating and enriching experience</li>
-                    <li>Cost-effective option for regular walking</li>
-                  </ul>
-                  <p>We carefully match dogs by size, temperament, and energy level to ensure a positive experience for all.</p>
-                </div>
-              }
-            />
-          </div>
-          
-          {/* Right Image - Pet Sitting */}
-          <div className="image-container">
-            <CircularServiceCard 
-              title="Pet Sitting"
-              description="Our pet sitting service provides loving care for your pet in the comfort of your own home while you're away. Perfect for pets that thrive in familiar environments."
-              imageSrc="/pet-sitting.png"
-              size={200}
-              className="circle-container"
-              detailedContent={
-                <div>
-                  <h4 className="text-lg font-semibold mb-3">In-Home Care</h4>
-                  <p className="mb-4">
-                    Our pet sitting service ensures your pet is comfortable and well-cared for in their own environment while you're away.
-                    Benefits include:
-                  </p>
-                  <ul className="list-disc pl-6 mb-4 space-y-2">
-                    <li>Maintaining your pet's routine in familiar surroundings</li>
-                    <li>Regular feeding, play, and care sessions</li>
-                    <li>Home security with regular visits</li>
-                    <li>Plant watering and mail collection upon request</li>
-                  </ul>
-                  <p>We provide detailed updates and photos to keep you connected with your pet during your absence.</p>
-                </div>
-              }
-            />
-          </div>
-        </div>
-        
-        {/* Decorative paw prints */}
-        <PawIcon size={40} top="15%" left="15%" rotate={25} opacity={0.2} />
-        <PawIcon size={30} top="25%" right="20%" rotate={-15} opacity={0.2} />
-        <PawIcon size={35} bottom="30%" left="25%" rotate={45} opacity={0.2} />
-        <PawIcon size={25} bottom="20%" right="30%" rotate={-30} opacity={0.2} />
       </div>
 
       {/* Who We Are Banner */}
-      <div id="why-us" className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 mb-16">
+      <div id="why-us" className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 mb-16 relative z-10">
         <div 
           className="rounded-lg overflow-hidden"
           style={{ 
             backgroundColor: "#143F3F", 
             padding: "2.5rem", 
-            boxShadow: "0 4px 12px rgba(20, 63, 63, 0.2)" 
+            boxShadow: "0 4px 12px rgba(20, 63, 63, 0.2)",
+            position: "relative",
+            zIndex: 15
           }}
         >
           <div>
@@ -499,7 +501,7 @@ export default function Home() {
               <h3 className="text-[#8BAEAE] font-medium uppercase tracking-wider">WHY US</h3>
             </div>
             
-            <h2 className="text-5xl font-bold mb-6" style={{ color: "#FEF2E4" }}>The Frito Paws difference</h2>
+            <h2 className="text-5xl font-bold mb-6" style={{ color: "#FEF2E4", position: "relative", zIndex: 20 }}>The Frito Paws difference</h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-6">
               <div className="flex items-start">
@@ -509,8 +511,8 @@ export default function Home() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold mb-2" style={{ color: "#FEF2E4" }}>Professional Pet Care</h3>
-                  <p className="text-[#e0e0e0]">
+                  <h3 className="text-xl font-bold mb-2" style={{ color: "#FEF2E4", position: "relative", zIndex: 20 }}>Professional Pet Care</h3>
+                  <p className="text-[#e0e0e0]" style={{ position: "relative", zIndex: 20 }}>
                     Our team of certified professionals delivers exceptional care tailored to your pet's specific needs and personality.
                   </p>
                 </div>
@@ -523,8 +525,8 @@ export default function Home() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold mb-2" style={{ color: "#FEF2E4" }}>Peace of Mind</h3>
-                  <p className="text-[#e0e0e0]">
+                  <h3 className="text-xl font-bold mb-2" style={{ color: "#FEF2E4", position: "relative", zIndex: 20 }}>Peace of Mind</h3>
+                  <p className="text-[#e0e0e0]" style={{ position: "relative", zIndex: 20 }}>
                     Regular updates, photos, and GPS tracking provide complete transparency and reassurance while you're away.
                   </p>
                 </div>
@@ -536,7 +538,7 @@ export default function Home() {
       </div>
 
       {/* Contact Us Section */}
-      <section id="contact" className="py-16" style={{ backgroundColor: "#FEF2E4" }}>
+      <section id="contact" className="py-16 relative z-10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
             <h2 className="text-2xl font-bold text-primary mb-2">Get in Touch</h2>
@@ -652,9 +654,7 @@ export default function Home() {
       </section>
 
       {/* Footer with background image */}
-      <footer className="py-10 text-center" style={{ 
-        backgroundColor: "#FEF2E4"
-      }}>
+      <footer className="py-10 text-center relative z-10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-center mb-6">
             <Image 
