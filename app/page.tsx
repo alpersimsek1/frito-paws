@@ -326,7 +326,7 @@ export default function Home() {
       </div>
 
       {/* Content wrapper */}
-      <div className="content-wrapper relative z-10 mt-8">
+      <div className="content-wrapper relative z-10 mt-0">
         {/* Hero section */}
         <div className="hero-container">
           {/* Desktop Layout */}
@@ -553,7 +553,7 @@ export default function Home() {
       </div>
 
       {/* Who We Are Banner */}
-      <div id="why-us" className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 mb-16 mt-6 relative z-10">
+      <div id="why-us" className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 mb-16 mt-0 relative z-10 why-us-section">
         <div 
           className="rounded-lg overflow-hidden"
           style={{ 

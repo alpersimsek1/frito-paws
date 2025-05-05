@@ -16,7 +16,8 @@
   position: relative;
   z-index: 2;
   overflow-y: auto;
-  padding-bottom: 5px;
+  padding-bottom: 0;
+  margin-bottom: 0;
 }
 
 /* Hero section container */
@@ -25,7 +26,7 @@
   width: 100%;
   max-width: 1200px;
   height: auto;
-  margin: 0 auto 20px;
+  margin: 0 auto 0;
   border: none;
   border-radius: 0;
   overflow: visible;
@@ -116,11 +117,21 @@
   animation: fadeIn 0.3s ease forwards;
 }
 
+/* Why Us section */
+.why-us-section {
+  margin-top: -80px;
+}
+
 /* Mobile Styles */
 @media (max-width: 768px) {
   .hero-container {
     height: auto;
-    padding-bottom: 40px;
+    padding-bottom: 0;
+  }
+  
+  /* Why Us section mobile styling */
+  .why-us-section {
+    margin-top: 20px !important;
   }
   
   /* Reduce animation area margin for mobile */
@@ -161,10 +172,15 @@
   }
   
   .image-container {
-    margin-bottom: 30px;
+    margin-bottom: 40px;
+    padding: 0 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
+  }
+  
+  .image-container:last-child {
+    margin-bottom: 30px;
   }
 } 
