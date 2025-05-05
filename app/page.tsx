@@ -22,9 +22,31 @@ interface PawIconProps {
 // Header component
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  
+  // Add scroll event listener
+  useEffect(() => {
+    const handleScroll = () => {
+      const offset = window.scrollY;
+      if (offset > 10) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
   
   return (
-    <header className="fixed top-0 left-0 right-0 bg-[rgba(254,242,228,0.95)] py-4 px-6 shadow-md z-50">
+    <header 
+      className={`fixed top-0 left-0 right-0 py-4 px-6 z-50 transition-all duration-300 ${
+        scrolled ? 'bg-[rgba(254,242,228,0.95)] shadow-md' : 'bg-transparent'
+      }`}
+    >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center">
@@ -272,10 +294,7 @@ export default function Home() {
       {/* Add Header */}
       <Header />
       
-      {/* Add padding to account for fixed header */}
-      <div className="pt-20 relative z-10"></div>
-      
-      {/* Full-width animation section - Moved outside content wrapper */}
+      {/* Full-width animation section - Moved to be directly below header */}
       <div className="w-full overflow-hidden relative z-10" style={{
         width: "100vw",
         position: "relative", 
@@ -283,7 +302,8 @@ export default function Home() {
         right: "50%",
         marginLeft: "-50vw",
         marginRight: "-50vw",
-        maxWidth: "100vw"
+        maxWidth: "100vw",
+        marginTop: "0" // Remove any margin to push it up to navbar
       }}>
         <DogAnimation />
       </div>
@@ -296,15 +316,22 @@ export default function Home() {
           <div className="hidden md:block">
             {/* Professional services text with Book Now button */}
             <div className="text-center px-8 py-4 rounded-md mx-auto" 
-                style={{ zIndex: 20, maxWidth: '600px' }}>
-              <h2 className="text-2xl font-bold tracking-wide mb-8" style={{ color: '#143F3F' }}>PAWSITIVELY DEVOTED TO YOUR PET</h2>
+                style={{ zIndex: 20, maxWidth: '800px' }}>
+              <h2 className="text-2xl font-bold tracking-wide mb-8" style={{ color: '#143F3F' }}>Dog-loving couple ready to care for your furry friends! <br /> We offer flexible walking and sitting services whenever your pet needs attention while you're busy</h2>
               
-              <a 
-                href="#contact" 
-                className="book-button mb-4"
-              >
-                Book NOW
-              </a>
+              {/* Email subscription form with Sign up button */}
+              <div className="flex items-center justify-center mb-8">
+                <div className="w-full max-w-md bg-white flex rounded-full overflow-hidden shadow-md">
+                  <input 
+                    type="email" 
+                    placeholder="Your email" 
+                    className="w-full px-6 py-3 outline-none text-gray-600" 
+                  />
+                  <button className="px-6 py-3 bg-[#5BA69E] text-white font-semibold whitespace-nowrap">
+                    Book Now!
+                  </button>
+                </div>
+              </div>
             </div>
             
             <div className="flex justify-center items-start w-full mt-6">
@@ -395,15 +422,22 @@ export default function Home() {
           <div className="block md:hidden">
             {/* Text with Book Now button */}
             <div className="services-text px-6 py-4 rounded-md mb-12">
-              <h2 className="text-xl font-bold tracking-wide mb-6" style={{ color: '#143F3F' }}>PAWSITIVELY DEVOTED TO YOUR PET</h2>
+              <h2 className="text-xl font-bold tracking-wide mb-6" style={{ color: '#143F3F' }}>
+                Dog-loving couple ready to care for your furry friends! <br /> We offer flexible walking and sitting services whenever your pet needs attention while you're busy
+              </h2>
               
-              <div className="text-center">
-                <a 
-                  href="#contact" 
-                  className="book-button"
-                >
-                  Book NOW
-                </a>
+              {/* Email subscription form with Sign up button for mobile */}
+              <div className="flex items-center justify-center mb-6">
+                <div className="w-full bg-white flex rounded-full overflow-hidden shadow-md">
+                  <input 
+                    type="email" 
+                    placeholder="Your email" 
+                    className="w-full px-5 py-2.5 outline-none text-gray-600" 
+                  />
+                  <button className="px-5 py-2.5 bg-[#5BA69E] text-white font-semibold whitespace-nowrap">
+                    Sign up!
+                  </button>
+                </div>
               </div>
             </div>
             

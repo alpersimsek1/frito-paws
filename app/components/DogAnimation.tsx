@@ -15,12 +15,15 @@ const DogAnimation = () => {
         maxWidth: "100%",
         margin: "0",
         padding: "0",
+        paddingTop: "73px", // Add padding top to account for fixed header
         overflow: "hidden",
-        // Aspect ratio based on provided dimensions (1527:317 ≈ 4.8:1)
-        aspectRatio: "4.8/1",
+        // Increase height by decreasing the aspect ratio denominator (was 4.8/1)
+        aspectRatio: "4.8/1.5",
+        height: "auto",
+        minHeight: "380px", // Add minimum height to ensure it's taller
         backgroundImage: "url('/animation-back.jpg')",
         backgroundSize: "cover",
-        backgroundPosition: "center",
+        backgroundPosition: "center top", // Position the background image at the top
         position: "relative",
       }}
     />
