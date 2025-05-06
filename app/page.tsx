@@ -370,7 +370,7 @@ export default function Home() {
                     <div>
                       <p>Each solo walk includes photo & video updates and a detailed report of your dog's activities and behavior.</p>
                       
-                      <h4 className="text-lg font-semibold mt-4 mb-2" style={{ color: '#5BA69E' }}>£25 per walk</h4>
+                      <h4 className="text-lg font-semibold mt-4 mb-2" style={{ color: '#5BA69E' }}>£20 per walk</h4>
                       
                       <h4 className="text-lg font-semibold mt-6 mb-3">Personalized Walkings</h4>
                       <p className="mb-4">
@@ -482,7 +482,7 @@ export default function Home() {
                   <div>
                       <p>Each solo walk includes photo & video updates and a detailed report of your dog's activities and behavior.</p>
                       
-                      <h4 className="text-lg font-semibold mt-4 mb-2" style={{ color: '#5BA69E' }}>£25 per walk</h4>
+                      <h4 className="text-lg font-semibold mt-4 mb-2" style={{ color: '#5BA69E' }}>£20 per walk</h4>
                       
                       <h4 className="text-lg font-semibold mt-6 mb-3">Personalized Walkings</h4>
                       <p className="mb-4">
