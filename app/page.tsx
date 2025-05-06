@@ -67,15 +67,15 @@ const Header = () => {
         <div className="flex items-center space-x-4">
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8 mr-8">
-            <a href="#" className="text-primary hover:text-primary-hover font-medium">Home</a>
-            <a href="#services" className="text-primary hover:text-primary-hover font-medium">Services</a>
-            <a href="#why-us" className="text-primary hover:text-primary-hover font-medium">About Us</a>
-            <a href="#contact" className="text-primary hover:text-primary-hover font-medium">Contact</a>
+            <a href="#" className="text-[#143F3F] hover:text-[#5BA69E] font-medium">Home</a>
+            <a href="#services" className="text-[#143F3F] hover:text-[#5BA69E] font-medium">Services</a>
+            <a href="#why-us" className="text-[#143F3F] hover:text-[#5BA69E] font-medium">About Us</a>
+            <a href="#contact" className="text-[#143F3F] hover:text-[#5BA69E] font-medium">Contact</a>
           </nav>
           
           {/* Mobile menu button */}
           <button 
-            className="md:hidden ml-4 p-2 text-primary focus:outline-none"
+            className="md:hidden ml-4 p-2 text-[#143F3F] focus:outline-none"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             <svg 
@@ -101,28 +101,28 @@ const Header = () => {
           <nav className="flex flex-col space-y-4">
             <a 
               href="#" 
-              className="text-primary hover:text-primary-hover font-medium"
+              className="text-[#143F3F] hover:text-[#5BA69E] font-medium"
               onClick={() => setMobileMenuOpen(false)}
             >
               Home
             </a>
             <a 
               href="#services" 
-              className="text-primary hover:text-primary-hover font-medium"
+              className="text-[#143F3F] hover:text-[#5BA69E] font-medium"
               onClick={() => setMobileMenuOpen(false)}
             >
               Services
             </a>
             <a 
               href="#why-us" 
-              className="text-primary hover:text-primary-hover font-medium"
+              className="text-[#143F3F] hover:text-[#5BA69E] font-medium"
               onClick={() => setMobileMenuOpen(false)}
             >
               About Us
             </a>
             <a 
               href="#contact" 
-              className="text-primary hover:text-primary-hover font-medium"
+              className="text-[#143F3F] hover:text-[#5BA69E] font-medium"
               onClick={() => setMobileMenuOpen(false)}
             >
               Contact
@@ -225,8 +225,8 @@ const ServiceCard = ({ title, description, detailedContent, imageSrc, index = 0 
         />
       </div>
       <div className="p-6 flex-grow">
-        <h3 className="text-xl font-bold text-primary mb-3">{title}</h3>
-        <p className="text-muted-foreground">{description}</p>
+        <h3 className="text-xl font-bold text-[#143F3F] mb-3">{title}</h3>
+        <p className="text-[#666666]">{description}</p>
         
         {isExpanded && detailedContent && (
           <div className="mt-6 animate-fadeIn">
@@ -236,7 +236,7 @@ const ServiceCard = ({ title, description, detailedContent, imageSrc, index = 0 
       </div>
       <div className="px-6 pb-6 flex justify-between items-center">
         {!isExpanded ? (
-          <button className="text-primary font-medium flex items-center hover:underline">
+          <button className="text-[#143F3F] font-medium flex items-center hover:underline">
             Learn more
             <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -248,7 +248,7 @@ const ServiceCard = ({ title, description, detailedContent, imageSrc, index = 0 
               e.stopPropagation();
               setIsExpanded(false);
             }}
-            className="px-4 py-2 bg-primary text-white rounded-md font-semibold hover:bg-primary-hover transition-colors"
+            className="px-4 py-2 bg-[#5BA69E] text-white rounded-md font-semibold hover:bg-[#4a8f88] transition-colors"
           >
             Close
           </button>
@@ -334,7 +334,7 @@ export default function Home() {
             {/* Professional services text with Book Now button */}
             <div className="text-center px-8 py-4 rounded-md mx-auto" 
                 style={{ zIndex: 20, maxWidth: '800px' }}>
-              <h2 className="text-2xl font-bold tracking-wide mb-8" style={{ color: '#143F3F' }}>Dog-loving couple ready to care for your furry friends! <br /> We offer flexible walking and sitting services whenever your pet needs attention while you're busy</h2>
+              <h2 className="text-2xl font-bold tracking-wide mb-8" style={{ color: '#143F3F' }}>Dog-loving couple ready to care for your furry friends in Chiswick, London area! <br /> We offer flexible walking and sitting services whenever your pet needs attention while you're busy</h2>
               
               {/* Email subscription form with Sign up button */}
               <div className="flex items-center justify-center mb-8">
@@ -361,7 +361,7 @@ export default function Home() {
               <div className="mr-12" style={{ zIndex: 10 }}>
                 <CircularServiceCard 
                   title="Solo Walking"
-                  description="Our solo walking service provides personalized attention for your dog. Perfect for dogs that need one-on-one time or have specific exercise requirements."
+                  description="Our solo walking service provides personalised attention for your dog. Perfect for dogs that need one-on-one time or have specific exercise requirements."
                   imageSrc="/one-dog-1.png"
                   size={256}
                   className="circle-container"
@@ -373,12 +373,10 @@ export default function Home() {
                         This is ideal for dogs that:
                       </p>
                       <ul className="list-disc pl-6 mb-4 space-y-2">
-                        <li>Need individual training reinforcement</li>
                         <li>Are uncomfortable around other dogs</li>
                         <li>Have specific exercise requirements</li>
-                        <li>Need specialized care or medication during walks</li>
                       </ul>
-                      <p>Each solo walk includes photo updates and a detailed report of your dog's activities and behavior.</p>
+                      <p>Each solo walk includes photo & video updates and a detailed report of your dog's activities and behavior.</p>
                     </div>
                   }
                 />
@@ -388,7 +386,7 @@ export default function Home() {
               <div className="mx-4" style={{ zIndex: 10 }}>
                 <CircularServiceCard 
                   title="Group Walking"
-                  description="Our group walks allow your dog to socialize with other furry friends while getting exercise. Small groups ensure each dog gets attention and proper supervision."
+                  description="Our group walks (at most 4 dogs) allow your dog to socialise with other furry friends while getting exercise."
                   imageSrc="/two-dogs.png"
                   size={256}
                   className="circle-container"
@@ -396,16 +394,14 @@ export default function Home() {
                     <div>
                       <h4 className="text-lg font-semibold mb-3">Social Experience</h4>
                       <p className="mb-4">
-                        Our group walking service offers your dog the chance to socialize while enjoying their exercise.
+                        Our group walking service offers your dog the chance to socialise while enjoying their exercise.
                         Benefits include:
                       </p>
                       <ul className="list-disc pl-6 mb-4 space-y-2">
-                        <li>Socialization with other friendly dogs</li>
-                        <li>Learning proper social behavior</li>
-                        <li>More stimulating and enriching experience</li>
+                        <li>Socialisation with other friendly dogs</li>
                         <li>Cost-effective option for regular walking</li>
                       </ul>
-                      <p>We carefully match dogs by size, temperament, and energy level to ensure a positive experience for all.</p>
+                      <p>Each group walk includes photo & video updates and a detailed report of your dog's activities and behavior.</p>
                     </div>
                   }
                 />
@@ -415,7 +411,7 @@ export default function Home() {
               <div className="ml-12" style={{ zIndex: 10 }}>
                 <CircularServiceCard 
                   title="Pet Sitting"
-                  description="Our pet sitting service provides loving care for your pet in the comfort of your own home while you're away. Perfect for pets that thrive in familiar environments."
+                  description="Our pet sitting service provides loving care for your pet in the comfort of our own home while you're away."
                   imageSrc="/pet-sitting.png"
                   size={256}
                   className="circle-container"
@@ -423,16 +419,13 @@ export default function Home() {
                     <div>
                       <h4 className="text-lg font-semibold mb-3">In-Home Care</h4>
                       <p className="mb-4">
-                        Our pet sitting service ensures your pet is comfortable and well-cared for in their own environment while you're away.
+                        Our pet sitting service ensures your pet is comfortable and well-cared.
                         Benefits include:
                       </p>
                       <ul className="list-disc pl-6 mb-4 space-y-2">
-                        <li>Maintaining your pet's routine in familiar surroundings</li>
-                        <li>Regular feeding, play, and care sessions</li>
-                        <li>Home security with regular visits</li>
-                        <li>Plant watering and mail collection upon request</li>
+                        <li>Regular feeding, play, and care sessions and lots of love</li>
                       </ul>
-                      <p>We provide detailed updates and photos to keep you connected with your pet during your absence.</p>
+                      <p>We provide detailed updates and photos & videos to keep you connected with your pet during your absence.</p>
                     </div>
                   }
                 />
@@ -445,7 +438,7 @@ export default function Home() {
             {/* Text with Book Now button */}
             <div className="services-text px-6 py-4 rounded-md mb-12">
               <h2 className="text-xl font-bold tracking-wide mb-6" style={{ color: '#143F3F' }}>
-                Dog-loving couple ready to care for your furry friends! <br /> We offer flexible walking and sitting services whenever your pet needs attention while you're busy
+                Dog-loving couple ready to care for your furry friends in Chiswick, London area! <br /> We offer flexible walking and sitting services whenever your pet needs attention while you're busy
               </h2>
               
               {/* Email subscription form with Sign up button for mobile */}
@@ -472,7 +465,7 @@ export default function Home() {
             <div className="image-container mb-16">
               <CircularServiceCard 
                 title="Solo Walking"
-                description="Our solo walking service provides personalized attention for your dog. Perfect for dogs that need one-on-one time or have specific exercise requirements."
+                description="Our solo walking service provides personalised attention for your dog. Perfect for dogs that need one-on-one time or have specific exercise requirements."
                 imageSrc="/one-dog-1.png"
                 size={200}
                 className="circle-container"
@@ -480,16 +473,14 @@ export default function Home() {
                   <div>
                     <h4 className="text-lg font-semibold mb-3">Individual Attention</h4>
                     <p className="mb-4">
-                      Our solo walking service ensures your dog receives our undivided attention during their walk.
-                      This is ideal for dogs that:
-                    </p>
-                    <ul className="list-disc pl-6 mb-4 space-y-2">
-                      <li>Need individual training reinforcement</li>
-                      <li>Are uncomfortable around other dogs</li>
-                      <li>Have specific exercise requirements</li>
-                      <li>Need specialized care or medication during walks</li>
-                    </ul>
-                    <p>Each solo walk includes photo updates and a detailed report of your dog's activities and behavior.</p>
+                        Our solo walking service ensures your dog receives our undivided attention during their walk.
+                        This is ideal for dogs that:
+                      </p>
+                      <ul className="list-disc pl-6 mb-4 space-y-2">
+                        <li>Are uncomfortable around other dogs</li>
+                        <li>Have specific exercise requirements</li>
+                      </ul>
+                      <p>Each solo walk includes photo & video updates and a detailed report of your dog's activities and behavior.</p>
                   </div>
                 }
               />
@@ -499,24 +490,22 @@ export default function Home() {
             <div className="image-container mb-16">
               <CircularServiceCard 
                 title="Group Walking"
-                description="Our group walks allow your dog to socialize with other furry friends while getting exercise. Small groups ensure each dog gets attention and proper supervision."
+                description="Our group walks (at most 4 dogs) allow your dog to socialise with other furry friends while getting exercise."
                 imageSrc="/two-dogs.png"
                 size={200}
                 className="circle-container"
                 detailedContent={
                   <div>
                     <h4 className="text-lg font-semibold mb-3">Social Experience</h4>
-                    <p className="mb-4">
-                      Our group walking service offers your dog the chance to socialize while enjoying their exercise.
-                      Benefits include:
-                    </p>
-                    <ul className="list-disc pl-6 mb-4 space-y-2">
-                      <li>Socialization with other friendly dogs</li>
-                      <li>Learning proper social behavior</li>
-                      <li>More stimulating and enriching experience</li>
-                      <li>Cost-effective option for regular walking</li>
-                    </ul>
-                    <p>We carefully match dogs by size, temperament, and energy level to ensure a positive experience for all.</p>
+                      <p className="mb-4">
+                        Our group walking service offers your dog the chance to socialise while enjoying their exercise.
+                        Benefits include:
+                      </p>
+                      <ul className="list-disc pl-6 mb-4 space-y-2">
+                        <li>Socialisation with other friendly dogs</li>
+                        <li>Cost-effective option for regular walking</li>
+                      </ul>
+                      <p>Each group walk includes photo & video updates and a detailed report of your dog's activities and behavior.</p>
                   </div>
                 }
               />
@@ -532,18 +521,15 @@ export default function Home() {
                 className="circle-container"
                 detailedContent={
                   <div>
-                    <h4 className="text-lg font-semibold mb-3">In-Home Care</h4>
-                    <p className="mb-4">
-                      Our pet sitting service ensures your pet is comfortable and well-cared for in their own environment while you're away.
-                      Benefits include:
-                    </p>
-                    <ul className="list-disc pl-6 mb-4 space-y-2">
-                      <li>Maintaining your pet's routine in familiar surroundings</li>
-                      <li>Regular feeding, play, and care sessions</li>
-                      <li>Home security with regular visits</li>
-                      <li>Plant watering and mail collection upon request</li>
-                    </ul>
-                    <p>We provide detailed updates and photos to keep you connected with your pet during your absence.</p>
+                      <h4 className="text-lg font-semibold mb-3">In-Home Care</h4>
+                      <p className="mb-4">
+                        Our pet sitting service ensures your pet is comfortable and well-cared.
+                        Benefits include:
+                      </p>
+                      <ul className="list-disc pl-6 mb-4 space-y-2">
+                        <li>Regular feeding, play, and care sessions and lots of love</li>
+                      </ul>
+                      <p>We provide detailed updates and photos & videos to keep you connected with your pet during your absence.</p>
                   </div>
                 }
               />
@@ -580,9 +566,9 @@ export default function Home() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold mb-2" style={{ color: "#FEF2E4", position: "relative", zIndex: 20 }}>Professional Pet Care</h3>
+                  <h3 className="text-xl font-bold mb-2" style={{ color: "#FEF2E4", position: "relative", zIndex: 20 }}>Who We Are</h3>
                   <p className="text-[#e0e0e0]" style={{ position: "relative", zIndex: 20 }}>
-                    Our team of certified professionals delivers exceptional care tailored to your pet's specific needs and personality.
+                    We are a dog-loving couple who are passionate about providing the best care for your furry friends.
                   </p>
                 </div>
               </div>
@@ -596,7 +582,7 @@ export default function Home() {
                 <div>
                   <h3 className="text-xl font-bold mb-2" style={{ color: "#FEF2E4", position: "relative", zIndex: 20 }}>Peace of Mind</h3>
                   <p className="text-[#e0e0e0]" style={{ position: "relative", zIndex: 20 }}>
-                    Regular updates, photos, and GPS tracking provide complete transparency and reassurance while you're away.
+                    Regular updates, photos, and GPS tracking through Whatsapp live tracking provide complete transparency and reassurance while you're away.
                   </p>
                 </div>
               </div>
@@ -610,9 +596,9 @@ export default function Home() {
       <section id="contact" className="py-16 relative z-10">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
-            <h2 className="text-2xl font-bold text-primary mb-2">Get in Touch</h2>
-            <h3 className="text-4xl font-bold mb-4">Let's Chat, Reach Out to Us</h3>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
+            <h2 className="text-2xl font-bold text-[#5BA69E] mb-2">Get in Touch</h2>
+            <h3 className="text-4xl font-bold mb-4 text-[#143F3F]">Let's Chat, Reach Out to Us</h3>
+            <p className="text-lg text-[#666666] max-w-2xl mx-auto mb-8">
               Have questions or feedback? We're here to help. Send us a message, and we'll respond within 24 hours
             </p>
           </div>
@@ -649,7 +635,7 @@ export default function Home() {
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                   <div>
-                    <label htmlFor="firstName" className="block mb-2 font-medium">First Name</label>
+                    <label htmlFor="firstName" className="block mb-2 font-medium text-[#143F3F]">First Name</label>
                     <input 
                       type="text" 
                       id="firstName" 
@@ -667,7 +653,7 @@ export default function Home() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="lastName" className="block mb-2 font-medium">Last Name</label>
+                    <label htmlFor="lastName" className="block mb-2 font-medium text-[#143F3F]">Last Name</label>
                     <input 
                       type="text" 
                       id="lastName"
@@ -687,7 +673,7 @@ export default function Home() {
                 </div>
 
                 <div className="mb-6">
-                  <label htmlFor="email" className="block mb-2 font-medium">Email Address</label>
+                  <label htmlFor="email" className="block mb-2 font-medium text-[#143F3F]">Email Address</label>
                   <input 
                     type="email" 
                     id="email" 
@@ -706,7 +692,7 @@ export default function Home() {
                 </div>
 
                 <div className="mb-6">
-                  <label htmlFor="message" className="block mb-2 font-medium">Message</label>
+                  <label htmlFor="message" className="block mb-2 font-medium text-[#143F3F]">Message</label>
                   <textarea 
                     id="message" 
                     name="message"
@@ -732,7 +718,7 @@ export default function Home() {
                     className="mr-2"
                     required
                   />
-                  <label htmlFor="privacy" className="text-sm">
+                  <label htmlFor="privacy" className="text-sm text-[#143F3F]">
                     I agree to our friendly <span className="underline">privacy policy</span>
                   </label>
                 </div>
@@ -741,7 +727,7 @@ export default function Home() {
                 <div className="flex justify-center mt-8 mb-4">
                   <button 
                     type="submit" 
-                    className="w-full px-6 py-4 bg-green-600 text-white font-bold text-lg rounded-md hover:bg-green-700 transition-colors shadow-md"
+                    className="w-full px-6 py-4 bg-[#5BA69E] text-white font-bold text-lg rounded-md hover:bg-[#4a8f88] transition-colors shadow-md"
                   >
                     Send Message
                   </button>
@@ -752,26 +738,26 @@ export default function Home() {
               <div className="mt-8 pt-8 border-t border-gray-200">
                 <div className="flex flex-col md:flex-row justify-center gap-8">
                   <div className="flex items-center">
-                    <div className="bg-gray-100 p-3 rounded-full mr-4">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <div className="bg-[#F2F9F9] p-3 rounded-full mr-4">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-[#5BA69E]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                       </svg>
                     </div>
                     <div>
-                      <h3 className="text-lg font-bold mb-1">Email</h3>
-                      <p>info@fritopaws.com</p>
+                      <h3 className="text-lg font-bold mb-1 text-[#143F3F]">Email</h3>
+                      <p className="text-[#5BA69E]">info@fritopaws.com</p>
                     </div>
                   </div>
                   
                   <div className="flex items-center">
-                    <div className="bg-gray-100 p-3 rounded-full mr-4">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <div className="bg-[#F2F9F9] p-3 rounded-full mr-4">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-[#5BA69E]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                       </svg>
                     </div>
                     <div>
-                      <h3 className="text-lg font-bold mb-1">Phone</h3>
-                      <p>07534148093</p>
+                      <h3 className="text-lg font-bold mb-1 text-[#143F3F]">Phone</h3>
+                      <p className="text-[#5BA69E]">07534148093</p>
                     </div>
                   </div>
                 </div>
@@ -793,7 +779,7 @@ export default function Home() {
               style={{ objectFit: 'contain' }}
             />
           </div>
-          <p className="text-sm text-primary">© 2025 Frito Paws Professional Dog Walking. All rights reserved.</p>
+          <p className="text-sm text-[#143F3F]">© 2025 Frito Paws Professional Dog Walking. All rights reserved.</p>
         </div>
       </footer>
     </div>

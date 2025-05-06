@@ -113,7 +113,7 @@ const CircularServiceCard = ({
                 
                 <button 
                   onClick={() => setIsExpanded(false)}
-                  className="mt-6 px-4 py-2 bg-primary text-white rounded-md font-semibold hover:bg-primary-hover transition-colors"
+                  className="mt-6 px-4 py-2 bg-primary text-black rounded-md font-semibold hover:bg-primary-hover transition-colors"
                 >
                   Close
                 </button>
