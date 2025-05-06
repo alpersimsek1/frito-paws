@@ -263,6 +263,7 @@ export default function Home() {
     firstName: '',
     lastName: '',
     email: '',
+    phone: '',
     message: ''
   });
   const [subscriptionEmail, setSubscriptionEmail] = useState('');
@@ -360,23 +361,19 @@ export default function Home() {
               {/* Left Image */}
               <div className="mr-12" style={{ zIndex: 10 }}>
                 <CircularServiceCard 
-                  title="Solo Walking"
-                  description="Our solo walking service provides personalised attention for your dog. Perfect for dogs that need one-on-one time or have specific exercise requirements."
+                  title="Private Adventures"
+                  description="Treat your dog to exclusive one-on-one attention with our dedicated private walking service. These personalized adventures ensure your furry friend receives our undivided focus, allowing us to fully cater to their individual pace, preferences, and training needs."
                   imageSrc="/one-dog-1.png"
                   size={256}
                   className="circle-container"
                   detailedContent={
                     <div>
-                      <h4 className="text-lg font-semibold mb-3">Individual Attention</h4>
-                      <p className="mb-4">
-                        Our solo walking service ensures your dog receives our undivided attention during their walk.
-                        This is ideal for dogs that:
-                      </p>
-                      <ul className="list-disc pl-6 mb-4 space-y-2">
-                        <li>Are uncomfortable around other dogs</li>
-                        <li>Have specific exercise requirements</li>
-                      </ul>
                       <p>Each solo walk includes photo & video updates and a detailed report of your dog's activities and behavior.</p>
+                      
+                      <h4 className="text-lg font-semibold mt-6 mb-3">Personalized Walkings</h4>
+                      <p className="mb-4">
+                        We tailor each walk based on your dog's unique personality and needs. Whether they prefer energetic play, gentle strolls, or have special health considerations, we'll adapt our approach accordingly. From route selection to walking duration, we ensure your dog gets exactly what they need to stay happy and healthy.
+                      </p>
                     </div>
                   }
                 />
@@ -385,8 +382,8 @@ export default function Home() {
               {/* Middle Image */}
               <div className="mx-4" style={{ zIndex: 10 }}>
                 <CircularServiceCard 
-                  title="Group Walking"
-                  description="Our group walks (at most 4 dogs) allow your dog to socialise with other furry friends while getting exercise."
+                  title="Social Pack Walks"
+                  description="Give your dog the joy of friendship while ensuring personalized attention. Our exclusive small group walks bring together a maximum of four compatible dogs, creating the perfect balance between socialization and supervision. This thoughtfully limited pack size allows your furry friend to enjoy canine companionship and play while still receiving individualized care and attention from us."
                   imageSrc="/two-dogs.png"
                   size={256}
                   className="circle-container"
@@ -402,6 +399,11 @@ export default function Home() {
                         <li>Cost-effective option for regular walking</li>
                       </ul>
                       <p>Each group walk includes photo & video updates and a detailed report of your dog's activities and behavior.</p>
+                      
+                      <h4 className="text-lg font-semibold mt-6 mb-3">Personalized Walkings</h4>
+                      <p className="mb-4">
+                        Even in group settings, we recognize each dog's individuality. We carefully match walking companions based on energy levels and temperament, and ensure that each dog's specific needs are met. Our routes and activities are designed to accommodate the unique requirements of all dogs in the group.
+                      </p>
                     </div>
                   }
                 />
@@ -410,8 +412,8 @@ export default function Home() {
               {/* Right Image */}
               <div className="ml-12" style={{ zIndex: 10 }}>
                 <CircularServiceCard 
-                  title="Pet Sitting"
-                  description="Our pet sitting service provides loving care for your pet in the comfort of our own home while you're away."
+                  title="Cosy Homestays"
+                  description="Transform your time away into a worry-free experience for your pet with our attentive in-home care service. When you can't bring your furry family member along, our Cosy Homestays provide them with a loving environment, familiar routines, and plenty of affection."
                   imageSrc="/pet-sitting.png"
                   size={256}
                   className="circle-container"
@@ -419,8 +421,7 @@ export default function Home() {
                     <div>
                       <h4 className="text-lg font-semibold mb-3">In-Home Care</h4>
                       <p className="mb-4">
-                        Our pet sitting service ensures your pet is comfortable and well-cared.
-                        Benefits include:
+                        We'll ensure your pet receives consistent feeding, regular exercise, comfort, and companionship in our home—maintaining their happiness while preserving their sense of security. With personalised care plans tailored to your pet's specific needs and preferences, you can enjoy your time away knowing your beloved companion is in caring, experienced hands.
                       </p>
                       <ul className="list-disc pl-6 mb-4 space-y-2">
                         <li>Regular feeding, play, and care sessions and lots of love</li>
@@ -464,23 +465,19 @@ export default function Home() {
             {/* Left Image - Solo Walking */}
             <div className="image-container mb-16">
               <CircularServiceCard 
-                title="Solo Walking"
-                description="Our solo walking service provides personalised attention for your dog. Perfect for dogs that need one-on-one time or have specific exercise requirements."
+                title="Private Adventures"
+                description="Treat your dog to exclusive one-on-one attention with our dedicated private walking service. These personalized adventures ensure your furry friend receives our undivided focus, allowing us to fully cater to their individual pace, preferences, and training needs."
                 imageSrc="/one-dog-1.png"
                 size={200}
                 className="circle-container"
                 detailedContent={
                   <div>
-                    <h4 className="text-lg font-semibold mb-3">Individual Attention</h4>
-                    <p className="mb-4">
-                        Our solo walking service ensures your dog receives our undivided attention during their walk.
-                        This is ideal for dogs that:
-                      </p>
-                      <ul className="list-disc pl-6 mb-4 space-y-2">
-                        <li>Are uncomfortable around other dogs</li>
-                        <li>Have specific exercise requirements</li>
-                      </ul>
                       <p>Each solo walk includes photo & video updates and a detailed report of your dog's activities and behavior.</p>
+                      
+                      <h4 className="text-lg font-semibold mt-6 mb-3">Personalized Walkings</h4>
+                      <p className="mb-4">
+                        We tailor each walk based on your dog's unique personality and needs. Whether they prefer energetic play, gentle strolls, or have special health considerations, we'll adapt our approach accordingly. From route selection to walking duration, we ensure your dog gets exactly what they need to stay happy and healthy.
+                      </p>
                   </div>
                 }
               />
@@ -489,8 +486,8 @@ export default function Home() {
             {/* Middle Image - Group Walking */}
             <div className="image-container mb-16">
               <CircularServiceCard 
-                title="Group Walking"
-                description="Our group walks (at most 4 dogs) allow your dog to socialise with other furry friends while getting exercise."
+                title="Social Pack Walks"
+                description="Give your dog the joy of friendship while ensuring personalized attention. Our exclusive small group walks bring together a maximum of four compatible dogs, creating the perfect balance between socialization and supervision. This thoughtfully limited pack size allows your furry friend to enjoy canine companionship and play while still receiving individualized care and attention from us."
                 imageSrc="/two-dogs.png"
                 size={200}
                 className="circle-container"
@@ -506,6 +503,11 @@ export default function Home() {
                         <li>Cost-effective option for regular walking</li>
                       </ul>
                       <p>Each group walk includes photo & video updates and a detailed report of your dog's activities and behavior.</p>
+                      
+                      <h4 className="text-lg font-semibold mt-6 mb-3">Personalized Walkings</h4>
+                      <p className="mb-4">
+                        Even in group settings, we recognize each dog's individuality. We carefully match walking companions based on energy levels and temperament, and ensure that each dog's specific needs are met. Our routes and activities are designed to accommodate the unique requirements of all dogs in the group.
+                      </p>
                   </div>
                 }
               />
@@ -514,8 +516,8 @@ export default function Home() {
             {/* Right Image - Pet Sitting */}
             <div className="image-container">
               <CircularServiceCard 
-                title="Pet Sitting"
-                description="Our pet sitting service provides loving care for your pet in the comfort of your own home while you're away. Perfect for pets that thrive in familiar environments."
+                title="Cosy Homestays"
+                description="Transform your time away into a worry-free experience for your pet with our attentive in-home care service. When you can't bring your furry family member along, our Cosy Homestays provide them with a loving environment, familiar routines, and plenty of affection."
                 imageSrc="/pet-sitting.png"
                 size={200}
                 className="circle-container"
@@ -523,8 +525,7 @@ export default function Home() {
                   <div>
                       <h4 className="text-lg font-semibold mb-3">In-Home Care</h4>
                       <p className="mb-4">
-                        Our pet sitting service ensures your pet is comfortable and well-cared.
-                        Benefits include:
+                        We'll ensure your pet receives consistent feeding, regular exercise, comfort, and companionship in our home—maintaining their happiness while preserving their sense of security. With personalised care plans tailored to your pet's specific needs and preferences, you can enjoy your time away knowing your beloved companion is in caring, experienced hands.
                       </p>
                       <ul className="list-disc pl-6 mb-4 space-y-2">
                         <li>Regular feeding, play, and care sessions and lots of love</li>
@@ -601,7 +602,7 @@ export default function Home() {
                 <div>
                   <h3 className="text-xl font-bold mb-2" style={{ color: "#FEF2E4", position: "relative", zIndex: 20 }}>Peace of Mind</h3>
                   <p className="text-[#e0e0e0]" style={{ position: "relative", zIndex: 20 }}>
-                  While your furry family member is in our care, we ensure you're never left wondering. Through regular real-time updates, adorable photos of your pet's adventures, and GPS tracking via WhatsApp live location sharing, you'll always know exactly where your dog is and how they're doing. Our transparent communication approach means you can focus on your day with complete confidence, knowing your beloved pet is safe, happy, and thoroughly enjoying their time with us.RetryClaude can make mistakes. Please double-check responses.                  </p>
+                  While your furry family member is in our care, we ensure you're never left wondering. Through regular real-time updates, adorable photos of your pet's adventures, and GPS tracking via WhatsApp live location sharing, you'll always know exactly where your dog is and how they're doing. Our transparent communication approach means you can focus on your day with complete confidence, knowing your beloved pet is safe, happy, and thoroughly enjoying their time with us.</p>
                 </div>
               </div>
             </div>
@@ -614,7 +615,6 @@ export default function Home() {
       <section id="contact" className="py-16 relative z-10">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
-            <h2 className="text-2xl font-bold text-[#5BA69E] mb-2">Get in Touch</h2>
             <h3 className="text-4xl font-bold mb-4 text-[#143F3F]">Let's Chat, Reach Out to Us</h3>
             <p className="text-lg text-[#666666] max-w-2xl mx-auto mb-8">
               Have questions or feedback? We're here to help. Send us a message, and we'll respond within 24 hours
@@ -708,6 +708,24 @@ export default function Home() {
                     required
                   />
                 </div>
+                
+                <div className="mb-6">
+                  <label htmlFor="phone" className="block mb-2 font-medium text-[#143F3F]">Phone Number</label>
+                  <input 
+                    type="tel" 
+                    id="phone" 
+                    name="phone"
+                    placeholder="Phone number (optional)" 
+                    className="w-full p-3 border border-gray-300 rounded-md"
+                    value={contactFormData.phone}
+                    onChange={(e) => {
+                      setContactFormData({
+                        ...contactFormData,
+                        phone: e.target.value
+                      });
+                    }}
+                  />
+                </div>
 
                 <div className="mb-6">
                   <label htmlFor="message" className="block mb-2 font-medium text-[#143F3F]">Message</label>
@@ -788,14 +806,15 @@ export default function Home() {
       {/* Footer with background image */}
       <footer className="py-10 text-center relative z-10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-center mb-6">
+          <div className="flex flex-col items-center justify-center mb-6">
             <Image 
               src="/frito-logo.png" 
               alt="Frito Paws Logo"
-              width={80}
-              height={80}
+              width={120}
+              height={120}
               style={{ objectFit: 'contain' }}
             />
+            <h3 className="text-2xl mt-1" style={{ color: '#143F3F', fontFamily: 'Alfa Slab One, cursive', letterSpacing: '1px' }}>FRITO PAWS</h3>
           </div>
           <p className="text-sm text-[#143F3F]">© 2025 Frito Paws Professional Dog Walking. All rights reserved.</p>
         </div>
