@@ -558,32 +558,50 @@ export default function Home() {
             
             <h2 className="text-5xl font-bold mb-6" style={{ color: "#FEF2E4", position: "relative", zIndex: 20 }}>The Frito Paws difference</h2>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-6">
+            <div className="grid grid-cols-1 gap-8 mt-6">
               <div className="flex items-start">
-                <div className="mr-4 bg-[#1a4f4f] p-3 rounded-lg">
-                  <svg xmlns="http://www.w3.org/2000/svg" height="40" viewBox="0 -960 960 960" width="40" fill="#FEF2E4">
-                    <path d="M180-475q-42 0-71-29t-29-71q0-42 29-71t71-29q42 0 71 29t29 71q0 42-29 71t-71 29Z"/>
-                  </svg>
+                <div className="mr-4 bg-[#1a4f4f] p-3 rounded-lg overflow-hidden" style={{ minWidth: '70px', height: '70px', position: 'relative' }}>
+                  <Image 
+                    src="/why-us.png" 
+                    alt="Dog owners"
+                    fill
+                    style={{ 
+                      objectFit: 'cover',
+                    }}
+                  />
                 </div>
                 <div>
                   <h3 className="text-xl font-bold mb-2" style={{ color: "#FEF2E4", position: "relative", zIndex: 20 }}>Who We Are</h3>
                   <p className="text-[#e0e0e0]" style={{ position: "relative", zIndex: 20 }}>
-                    We are a dog-loving couple who are passionate about providing the best care for your furry friends.
+                    We're a dog-loving couple in our early 30s ready to care for your furry friends in the Chiswick, London area! With professional backgrounds in finance and tech, we understand busy schedules and the importance of reliable pet care when you need it most.
+                  </p>
+                  <p className="text-[#e0e0e0] mt-3" style={{ position: "relative", zIndex: 20 }}>
+                    Our passion for dogs runs deep - we both grew up surrounded by a variety of breeds including Dalmatians, German Shepherds, English Cocker Spaniels, Yorkshire Terriers, and Golden Retrievers. This lifelong experience has given us a natural understanding of different dog personalities, needs, and behaviors.
+                  </p>
+                  <p className="text-[#e0e0e0] mt-3" style={{ position: "relative", zIndex: 20 }}>
+                    When we're not working our day jobs, nothing makes us happier than spending time outdoors with canine companions. We offer flexible walking and sitting services whenever your pet needs attention while you're busy, bringing both professional reliability and genuine love to every interaction with your four-legged family members.
+                  </p>
+                  <p className="text-[#e0e0e0] mt-3" style={{ position: "relative", zIndex: 20 }}>
+                    Frito Paws isn't just a service for us - it's a chance to combine our love for animals with our desire to help our neighbors and be more active in our community.
                   </p>
                 </div>
               </div>
               
               <div className="flex items-start">
-                <div className="mr-4 bg-[#1a4f4f] p-3 rounded-lg">
-                  <svg xmlns="http://www.w3.org/2000/svg" height="40" viewBox="0 -960 960 960" width="40" fill="#FEF2E4">
-                    <path d="M266-75q-45 0-75.5-34.5T160-191q0-52 35.5-91t70.5-77q29-31 50-67.5t50-68.5q22-26 51-43t63-17q34 0 63 16t51 42q28 32 49.5 69t50.5 69q35 38 70.5 77t35.5 91q0 47-30.5 81.5T694-75q-54 0-107-9t-107-9q-54 0-107 9t-107 9Z"/>
-                  </svg>
+                <div className="mr-4 bg-[#1a4f4f] p-3 rounded-lg overflow-hidden" style={{ minWidth: '70px', height: '70px', position: 'relative' }}>
+                  <Image 
+                    src="/peace-of-mind.png" 
+                    alt="Peace of mind"
+                    fill
+                    style={{ 
+                      objectFit: 'cover',
+                    }}
+                  />
                 </div>
                 <div>
                   <h3 className="text-xl font-bold mb-2" style={{ color: "#FEF2E4", position: "relative", zIndex: 20 }}>Peace of Mind</h3>
                   <p className="text-[#e0e0e0]" style={{ position: "relative", zIndex: 20 }}>
-                    Regular updates, photos, and GPS tracking through Whatsapp live tracking provide complete transparency and reassurance while you're away.
-                  </p>
+                  While your furry family member is in our care, we ensure you're never left wondering. Through regular real-time updates, adorable photos of your pet's adventures, and GPS tracking via WhatsApp live location sharing, you'll always know exactly where your dog is and how they're doing. Our transparent communication approach means you can focus on your day with complete confidence, knowing your beloved pet is safe, happy, and thoroughly enjoying their time with us.RetryClaude can make mistakes. Please double-check responses.                  </p>
                 </div>
               </div>
             </div>
@@ -774,8 +792,8 @@ export default function Home() {
             <Image 
               src="/frito-logo.png" 
               alt="Frito Paws Logo"
-              width={60}
-              height={60}
+              width={80}
+              height={80}
               style={{ objectFit: 'contain' }}
             />
           </div>

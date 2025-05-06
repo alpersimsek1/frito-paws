@@ -111,12 +111,17 @@ const CircularServiceCard = ({
                   </div>
                 )}
                 
-                <button 
-                  onClick={() => setIsExpanded(false)}
-                  className="mt-6 px-4 py-2 bg-primary text-black rounded-md font-semibold hover:bg-primary-hover transition-colors"
-                >
-                  Close
-                </button>
+                <div className="mt-6 flex justify-center">
+                  <button 
+                    onClick={() => setIsExpanded(false)}
+                    className="px-4 py-2 rounded-md font-semibold transition-colors"
+                    style={{ backgroundColor: '#143F3F', color: 'white' }}
+                    onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#1a4f4f'}
+                    onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#143F3F'}
+                  >
+                    Close
+                  </button>
+                </div>
               </div>
             </div>
           </div>
