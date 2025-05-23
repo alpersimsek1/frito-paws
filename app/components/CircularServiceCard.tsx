@@ -103,10 +103,10 @@ const CircularServiceCard = ({
               </div>
               <div className="p-6 overflow-y-auto" style={{ maxHeight: 'calc(90vh - 16rem)' }}>
                 <h3 className="text-xl font-bold mb-3" style={{ color: '#143F3F' }}>{title}</h3>
-                <p className="text-muted-foreground mb-4">{description}</p>
+                <p className="mb-4" style={{ color: '#666666' }}>{description}</p>
                 
                 {detailedContent && (
-                  <div className="mt-4">
+                  <div className="mt-4" style={{ color: '#666666' }}>
                     {detailedContent}
                   </div>
                 )}

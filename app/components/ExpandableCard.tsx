@@ -107,7 +107,7 @@ export const ExpandableCard = ({
           {title}
         </div>
         
-        <div className="text-xs text-muted-foreground font-medium">
+        <div className="text-xs font-medium" style={{ color: '#666666' }}>
           {subtitle}
         </div>
 

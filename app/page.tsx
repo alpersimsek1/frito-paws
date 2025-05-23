@@ -329,7 +329,7 @@ export default function Home() {
       {/* Content wrapper */}
       <div className="content-wrapper relative z-10 mt-0">
         {/* Hero section */}
-        <div className="hero-container">
+        <div id="services" className="hero-container">
           {/* Desktop Layout */}
           <div className="hidden md:block">
             {/* Professional services text with Book Now button */}
