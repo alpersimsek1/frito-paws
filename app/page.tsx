@@ -291,6 +291,15 @@ export default function Home() {
   const handleBookNowClick = (e: React.FormEvent) => {
     e.preventDefault();
     
+    // Track Book Now button click with Google Analytics
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'book_now_click', {
+        event_category: 'engagement',
+        event_label: 'Book Now Button',
+        value: 1
+      });
+    }
+    
     // Update the contact form email with the subscription email
     setContactFormData(prev => ({
       ...prev,
@@ -657,8 +666,16 @@ export default function Home() {
             {/* Contact Form - Moved to right side */}
             <div className="bg-white p-8 rounded-lg shadow-md order-1 lg:order-2">
               <form action="https://api.web3forms.com/submit" method="POST" className="relative" onSubmit={(e) => {
+                // Track form submission with Google Analytics
+                if (typeof window !== 'undefined' && (window as any).gtag) {
+                  (window as any).gtag('event', 'contact_form_submit', {
+                    event_category: 'engagement',
+                    event_label: 'Contact Form',
+                    value: 1
+                  });
+                }
+                
                 // Allow the form to submit naturally to Web3Forms
-                // No need to call preventDefault()
                 console.log('Form submitted to Web3Forms');
               }}>
                 {/* Web3Forms Access Key */}
