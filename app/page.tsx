@@ -344,7 +344,7 @@ export default function Home() {
             {/* Professional services text with Book Now button */}
             <div className="text-center px-8 py-4 rounded-md mx-auto" 
                 style={{ zIndex: 20, maxWidth: '800px' }}>
-              <h2 className="text-2xl font-bold tracking-wide mb-8" style={{ color: '#143F3F' }}>Dog-loving couple ready to care for your furry friends in Chiswick, London area! <br /> We offer flexible walking and sitting services whenever your pet needs attention while you're busy</h2>
+              <h2 className="text-2xl font-bold tracking-wide mb-8" style={{ color: '#143F3F' }}>Professional Dog Walking & Pet Sitting Services in Chiswick, London <br /> We offer flexible walking and sitting services whenever your pet needs attention while you're busy</h2>
               
               {/* Email subscription form with Sign up button */}
               <div className="flex items-center justify-center mb-8">
@@ -456,7 +456,7 @@ export default function Home() {
             {/* Text with Book Now button */}
             <div className="services-text px-6 py-4 rounded-md mb-12">
               <h2 className="text-xl font-bold tracking-wide mb-6" style={{ color: '#143F3F' }}>
-                Dog-loving couple ready to care for your furry friends in Chiswick, London area! <br /> We offer flexible walking and sitting services whenever your pet needs attention while you're busy
+              Professional Dog Walking & Pet Sitting Services in Chiswick, London <br /> We offer flexible walking and sitting services whenever your pet needs attention while you're busy
               </h2>
               
               {/* Email subscription form with Sign up button for mobile */}
