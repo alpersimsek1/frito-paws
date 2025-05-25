@@ -53,7 +53,7 @@ const Header = () => {
           <div className="mr-3">
             <Image 
               src="/frito-logo.png" 
-              alt="Frito Paws Logo"
+              alt="Frito Paws Professional Dog Walking Service Logo - Chiswick London"
               width={48}
               height={48}
               style={{ objectFit: 'contain' }}
@@ -580,7 +580,7 @@ export default function Home() {
                 <div className="mr-4 bg-[#1a4f4f] p-3 rounded-lg overflow-hidden" style={{ minWidth: '70px', height: '70px', position: 'relative' }}>
                   <Image 
                     src="/why-us.png" 
-                    alt="Dog owners"
+                    alt="Professional dog walkers and pet sitters team in Chiswick London"
                     fill
                     style={{ 
                       objectFit: 'cover',
@@ -608,7 +608,7 @@ export default function Home() {
                 <div className="mr-4 bg-[#1a4f4f] p-3 rounded-lg overflow-hidden" style={{ minWidth: '70px', height: '70px', position: 'relative' }}>
                   <Image 
                     src="/peace-of-mind.png" 
-                    alt="Peace of mind"
+                    alt="GPS tracking and real-time updates for pet safety and owner peace of mind"
                     fill
                     style={{ 
                       objectFit: 'cover',
@@ -643,7 +643,7 @@ export default function Home() {
               <div className="relative w-full max-w-md h-[600px]">
                 <Image 
                   src="/contact-dog.png" 
-                  alt="Happy dog waiting for your message"
+                  alt="Friendly dog waiting to meet new pet care clients in Chiswick London"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   style={{
@@ -825,7 +825,7 @@ export default function Home() {
           <div className="flex flex-col items-center justify-center mb-6">
             <Image 
               src="/frito-logo.png" 
-              alt="Frito Paws Logo"
+              alt="Frito Paws Dog Walking Service Logo - Professional Pet Care Chiswick London"
               width={120}
               height={120}
               style={{ objectFit: 'contain' }}
