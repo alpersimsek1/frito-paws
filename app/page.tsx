@@ -602,7 +602,7 @@ export default function Home() {
                     We're a dog-loving couple in our early 30s ready to care for your furry friends in the Chiswick, London area! With professional backgrounds in finance and tech, we understand busy schedules and the importance of reliable pet care when you need it most.
                   </p>
                   <p className="text-[#e0e0e0] mt-3" style={{ position: "relative", zIndex: 20 }}>
-                    Our passion for dogs runs deep - we both grew up surrounded by a variety of breeds including Dalmatians, German Shepherds, English Cocker Spaniels, Yorkshire Terriers, and Golden Retrievers. This lifelong experience has given us a natural understanding of different dog personalities, needs, and behaviors.
+                    Our passion for dogs runs deep - we both grew up surrounded by a variety of breeds. This lifelong experience has given us a natural understanding of different dog personalities, needs, and behaviors.
                   </p>
                   <p className="text-[#e0e0e0] mt-3" style={{ position: "relative", zIndex: 20 }}>
                     When we're not working our day jobs, nothing makes us happier than spending time outdoors with canine companions. We offer flexible walking and sitting services whenever your pet needs attention while you're busy, bringing both professional reliability and genuine love to every interaction with your four-legged family members.
