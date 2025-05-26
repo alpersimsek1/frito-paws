@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from 'react';
 import { ExpandableCard } from './components/ExpandableCard';
 import Image from 'next/image';
 import DogAnimation from './components/DogAnimation';
+import DogCarousel from './components/DogCarousel';
 import './page-styles.css'; // Import the custom styles
 import CircularServiceCard from './components/CircularServiceCard'; // Import new component
 
@@ -635,6 +636,9 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      {/* Dog Carousel Section */}
+      <DogCarousel />
 
       {/* Contact Us Section */}
       <section id="contact" className="py-16 relative z-10">

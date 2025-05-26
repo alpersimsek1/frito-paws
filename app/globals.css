@@ -220,6 +220,83 @@ body {
   animation: sniff 1.2s ease-in-out;
 }
 
+/* Carousel animations */
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100%) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.carousel-slide-enter {
+  animation: slideInFromRight 0.7s ease-out;
+}
+
+.carousel-slide-enter-prev {
+  animation: slideInFromLeft 0.7s ease-out;
+}
+
+.carousel-name-appear {
+  animation: fadeInScale 0.5s ease-out 0.3s both;
+}
+
+/* Enhanced focus styles for accessibility */
+.carousel-nav:focus {
+  outline: 3px solid #5BA69E;
+  outline-offset: 2px;
+}
+
+/* Smooth hover transitions for carousel elements */
+.carousel-thumbnail {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.carousel-thumbnail:hover {
+  transform: translateY(-2px) scale(1.05);
+}
+
+/* Loading state for images */
+.carousel-image-loading {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
 @media (max-width: 768px) {
   .cards-container {
     grid-template-columns: 1fr;
@@ -232,5 +309,77 @@ body {
   
   .contact-section {
     padding: 2rem 1rem;
+  }
+  
+  .hero-container {
+    height: auto;
+    padding-bottom: 0;
+  }
+  
+  /* Why Us section mobile styling */
+  .why-us-section {
+    margin-top: 20px !important;
+  }
+  
+  /* Reduce animation area margin for mobile */
+  .animation-area {
+    margin-bottom: 40px;
+    height: 140px;
+  }
+  
+  .services-text {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .logo-container {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .button-container {
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .button-container .book-button {
+    width: 85%;
+    max-width: 350px;
+    padding: 15px 20px;
+    text-align: center;
+  }
+  
+  .image-container {
+    margin-bottom: 40px;
+    padding: 0 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .image-container:last-child {
+    margin-bottom: 30px;
+  }
+  
+  /* Carousel mobile adjustments */
+  .carousel-nav-button {
+    padding: 8px;
+    width: 40px;
+    height: 40px;
+  }
+  
+  .carousel-dot {
+    width: 12px;
+    height: 12px;
   }
 }
