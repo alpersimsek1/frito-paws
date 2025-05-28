@@ -379,9 +379,7 @@ export default function Home() {
                   detailedContent={
                     <div>
                       <p>Each solo walk includes photo & video updates and a detailed report of your dog's activities and behavior.</p>
-                      
-                      <h4 className="text-lg font-semibold mt-4 mb-2" style={{ color: '#5BA69E' }}>£20 per walk</h4>
-                      
+                                            
                       <h4 className="text-lg font-semibold mt-6 mb-3">Personalized Walkings</h4>
                       <p className="mb-4">
                         We tailor each walk based on your dog's unique personality and needs. Whether they prefer energetic play, gentle strolls, or have special health considerations, we'll adapt our approach accordingly. From route selection to walking duration, we ensure your dog gets exactly what they need to stay happy and healthy.
@@ -410,9 +408,7 @@ export default function Home() {
                         <li>Socialisation with other friendly dogs</li>
                         <li>Cost-effective option for regular walking</li>
                       </ul>
-                      
-                      <h4 className="text-lg font-semibold mb-3" style={{ color: '#5BA69E' }}>£15 per walk (max 4 dogs per group)</h4>
-                      
+                                            
                       <p>Each group walk includes photo & video updates and a detailed report of your dog's activities and behavior.</p>
                       
                       <h4 className="text-lg font-semibold mt-6 mb-3">Personalized Walkings</h4>
@@ -491,9 +487,7 @@ export default function Home() {
                 detailedContent={
                   <div>
                       <p>Each solo walk includes photo & video updates and a detailed report of your dog's activities and behavior.</p>
-                      
-                      <h4 className="text-lg font-semibold mt-4 mb-2" style={{ color: '#5BA69E' }}>£20 per walk</h4>
-                      
+                                            
                       <h4 className="text-lg font-semibold mt-6 mb-3">Personalized Walkings</h4>
                       <p className="mb-4">
                         We tailor each walk based on your dog's unique personality and needs. Whether they prefer energetic play, gentle strolls, or have special health considerations, we'll adapt our approach accordingly. From route selection to walking duration, we ensure your dog gets exactly what they need to stay happy and healthy.
@@ -522,9 +516,7 @@ export default function Home() {
                         <li>Socialisation with other friendly dogs</li>
                         <li>Cost-effective option for regular walking</li>
                       </ul>
-                      
-                      <h4 className="text-lg font-semibold mb-3" style={{ color: '#5BA69E' }}>£15 per walk (max 4 dogs per group)</h4>
-                      
+                                            
                       <p>Each group walk includes photo & video updates and a detailed report of your dog's activities and behavior.</p>
                       
                       <h4 className="text-lg font-semibold mt-6 mb-3">Personalized Walkings</h4>
