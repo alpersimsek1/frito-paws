@@ -9,7 +9,9 @@ const DogCarousel = () => {
     { name: 'Dobby', src: '/our-dogs/dobby.png' },
     { name: 'Rex', src: '/our-dogs/rex.png' },
     { name: 'Dobby', src: '/our-dogs/dabi.png' },
-    { name: 'Belle-Lola', src: '/our-dogs/belle-lola.png' },
+    { name: 'Belle&Lola', src: '/our-dogs/belle-lola.png' },
+    { name: 'Duba', src: '/our-dogs/duba.png' },
+    { name: 'Lucy', src: '/our-dogs/lucy.png' }
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -253,24 +255,6 @@ const DogCarousel = () => {
                 />
               </button>
             ))}
-          </div>
-
-          {/* Mobile: Show dog names below for side dogs */}
-          <div className="md:hidden mt-8 flex justify-between items-center px-8">
-            <div className={`bg-gradient-to-r from-gray-100 to-gray-200 backdrop-blur-sm px-4 py-2 rounded-xl shadow-md border border-white/20 transition-all duration-500 ${
-              isAnimating ? 'scale-95 opacity-70' : 'scale-100 opacity-100'
-            }`}>
-              <span className="text-sm font-medium bg-gradient-to-r from-[#143F3F] to-[#5BA69E] bg-clip-text text-transparent">
-                {getDogAtOffset(-1).name}
-              </span>
-            </div>
-            <div className={`bg-gradient-to-r from-gray-100 to-gray-200 backdrop-blur-sm px-4 py-2 rounded-xl shadow-md border border-white/20 transition-all duration-500 ${
-              isAnimating ? 'scale-95 opacity-70' : 'scale-100 opacity-100'
-            }`}>
-              <span className="text-sm font-medium bg-gradient-to-r from-[#143F3F] to-[#5BA69E] bg-clip-text text-transparent">
-                {getDogAtOffset(1).name}
-              </span>
-            </div>
           </div>
         </div>
       </div>
