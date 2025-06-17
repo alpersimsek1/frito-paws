@@ -11,7 +11,10 @@ const DogCarousel = () => {
     { name: 'Dobby', src: '/our-dogs/dabi.png' },
     { name: 'Belle&Lola', src: '/our-dogs/belle-lola.png' },
     { name: 'Duba', src: '/our-dogs/duba.png' },
-    { name: 'Lucy', src: '/our-dogs/lucy.png' }
+    { name: 'Lucy', src: '/our-dogs/lucy.png' },
+    { name: 'Ida', src: '/our-dogs/ida.jpg' },
+    { name: 'Nala & Poppy', src: '/our-dogs/nalapoppy.jpg' }
+
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
