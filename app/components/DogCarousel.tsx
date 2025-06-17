@@ -12,8 +12,8 @@ const DogCarousel = () => {
     { name: 'Belle&Lola', src: '/our-dogs/belle-lola.png' },
     { name: 'Duba', src: '/our-dogs/duba.png' },
     { name: 'Lucy', src: '/our-dogs/lucy.png' },
-    { name: 'Ida', src: '/our-dogs/ida.jpg' },
-    { name: 'Nala & Poppy', src: '/our-dogs/nalapoppy.jpg' }
+    { name: 'Nala & Poppy', src: '/our-dogs/nalapoppy.jpg' },
+    { name: 'Ida', src: '/our-dogs/ida.jpg' }
 
   ];
 
