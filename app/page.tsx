@@ -5,6 +5,7 @@ import { ExpandableCard } from './components/ExpandableCard';
 import Image from 'next/image';
 import DogAnimation from './components/DogAnimation';
 import DogCarousel from './components/DogCarousel';
+import CommentsCarousel from './components/CommentsCarousel';
 import './page-styles.css'; // Import the custom styles
 import CircularServiceCard from './components/CircularServiceCard'; // Import new component
 
@@ -631,6 +632,9 @@ export default function Home() {
 
       {/* Dog Carousel Section */}
       <DogCarousel />
+
+      {/* Comments Carousel Section */}
+      <CommentsCarousel />
 
       {/* Contact Us Section */}
       <section id="contact" className="py-16 relative z-10">
