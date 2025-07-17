@@ -121,7 +121,7 @@ const CommentsCarousel = () => {
   };
 
   const ReviewCard = ({ review }: { review: Review }) => (
-    <div className="flex-shrink-0 w-[280px] md:w-[600px] sm:w-[320px] mx-4">
+    <div className="flex-shrink-0 w-[320px] md:w-[600px] sm:w-[360px] mx-4">
       <div className="bg-white rounded-xl shadow-lg p-6 md:p-8 h-full border border-gray-100 hover:shadow-xl transition-shadow duration-300">
         {/* Review Header */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
