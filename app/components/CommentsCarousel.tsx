@@ -34,6 +34,15 @@ const CommentsCarousel = () => {
     },
     {
       id: 3,
+      name: 'Anna O’Toole',
+      verified: true,
+      date: '30 July 2025',
+      service: 'Dog Walking',
+      review: 'Frito Paws are fantastic. Turby our Jack Russell loves them tail wagging as soon as they arrive also so considerate to our needs and routines. They take great care of Turby sending messages and photo /video updates whilst out walking. I would highly recommend there services.',
+      rating: 5
+    },
+    {
+      id: 4,
       name: 'Carla Harrison',
       verified: true,
       date: '16 July 2025',
@@ -42,14 +51,23 @@ const CommentsCarousel = () => {
       rating: 5
     },
     {
-      id: 4,
+      id: 5,
       name: 'Gill',
       verified: true,
       date: '14 July 2025',
       service: 'Dog Walking',
       review: 'I needed someone for my 2 JR\'s and I am so happy I went with Frito Paws I was so nervous having someone for Belle and Lola but they love their walks with Imge and Alper especially Belle cos she waits by door when they leave. It makes it easier for me when they return as they are nice and relaxed. I am so happy and lucky I found them and would highly recommend them if you need someone for your pets',
       rating: 5
-    }
+    },
+    {
+      id: 6,
+      name: 'Anna O’Toole',
+      verified: true,
+      date: '30 July 2025',
+      service: 'Dog Walking',
+      review: 'Frito Paws are fantastic. Turby our Jack Russell loves them tail wagging as soon as they arrive also so considerate to our needs and routines. They take great care of Turby sending messages and photo /video updates whilst out walking. I would highly recommend there services.',
+      rating: 5
+    },
   ];
 
   const [isPaused, setIsPaused] = useState(false);
