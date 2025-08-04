@@ -5,7 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: 'https://fritopaws.co',
       lastModified: new Date(),
-      changeFrequency: 'monthly',
+      changeFrequency: 'weekly',
       priority: 1,
     },
     {
@@ -18,6 +18,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: 'https://fritopaws.co#why-us',
       lastModified: new Date(),
       changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: 'https://fritopaws.co#furry-friends',
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    {
+      url: 'https://fritopaws.co#reviews',
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
       priority: 0.8,
     },
     {

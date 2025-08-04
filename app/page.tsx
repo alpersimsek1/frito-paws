@@ -362,7 +362,8 @@ export default function Home() {
             {/* Professional services text with Book Now button */}
             <div className="text-center px-8 py-4 rounded-md mx-auto" 
                 style={{ zIndex: 20, maxWidth: '800px' }}>
-              <h2 className="text-2xl font-bold tracking-wide mb-8" style={{ color: '#143F3F' }}>Professional Dog Walking & Pet Sitting Services in Chiswick, London <br /> We offer flexible walking and sitting services whenever your pet needs attention while you're busy</h2>
+              <h2 className="text-2xl font-bold tracking-wide mb-8" style={{ color: '#143F3F' }}>Professional Dog Walking & Pet Sitting Services in Chiswick, London</h2>
+              <p className="text-lg mb-6 text-[#666666] max-w-4xl mx-auto">We offer flexible walking and sitting services throughout Chiswick, W4, and surrounding London areas including Turnham Green, Hammersmith, Acton, Richmond, and Kew Gardens. Your pet gets the attention they need while you're busy.</p>
               
               {/* Email subscription form with Sign up button */}
               <div className="flex items-center justify-center mb-8">
@@ -484,9 +485,8 @@ export default function Home() {
           <div className="block md:hidden">
             {/* Text with Book Now button */}
             <div className="services-text px-6 py-4 rounded-md mb-12">
-              <h2 className="text-xl font-bold tracking-wide mb-6" style={{ color: '#143F3F' }}>
-              Professional Dog Walking & Pet Sitting Services in Chiswick, London <br /> We offer flexible walking and sitting services whenever your pet needs attention while you're busy
-              </h2>
+              <h2 className="text-xl font-bold tracking-wide mb-6" style={{ color: '#143F3F' }}>Professional Dog Walking & Pet Sitting Services in Chiswick, London</h2>
+              <p className="text-lg mb-6 text-[#666666]">We offer flexible walking and sitting services throughout Chiswick, W4, and surrounding London areas.</p>
               
               {/* Email subscription form with Sign up button for mobile */}
               <div className="flex items-center justify-center mb-6">
@@ -526,8 +526,8 @@ export default function Home() {
             {/* Left Image - Solo Walking */}
             <div className="image-container mb-16">
               <CircularServiceCard 
-                title="Private Adventures"
-                description="Treat your dog to exclusive one-on-one attention with our dedicated private walking service. These personalized adventures ensure your furry friend receives our undivided focus, allowing us to fully cater to their individual pace, preferences, and training needs."
+                title="Private Adventures - Individual Dog Walking in Chiswick"
+                description="Treat your dog to exclusive one-on-one attention with our dedicated private walking service throughout Chiswick and W4. These personalized adventures ensure your furry friend receives our undivided focus, allowing us to fully cater to their individual pace, preferences, and training needs. Perfect for dogs who prefer solo attention or have specific behavioral requirements."
                 imageSrc="/one-dog-1.png"
                 size={200}
                 className="circle-container"
@@ -547,8 +547,8 @@ export default function Home() {
             {/* Middle Image - Group Walking */}
             <div className="image-container mb-16">
               <CircularServiceCard 
-                title="Social Pack Walks"
-                description="Give your dog the joy of friendship while ensuring personalized attention. Our exclusive small group walks bring together a maximum of four compatible dogs, creating the perfect balance between socialization and supervision. This thoughtfully limited pack size allows your furry friend to enjoy canine companionship and play while still receiving individualized care and attention from us."
+                title="Social Pack Walks - Group Dog Walking in Chiswick"
+                description="Give your dog the joy of friendship while ensuring personalized attention in Chiswick's beautiful parks and green spaces. Our exclusive small group walks bring together a maximum of four compatible dogs, creating the perfect balance between socialization and supervision. This thoughtfully limited pack size allows your furry friend to enjoy canine companionship at locations like Turnham Green, Chiswick Common, and local parks while receiving individualized care."
                 imageSrc="/two-dogs.png"
                 size={200}
                 className="circle-container"
@@ -578,8 +578,8 @@ export default function Home() {
             {/* Right Image - Pet Sitting */}
             <div className="image-container">
               <CircularServiceCard 
-                title="Cosy Homestays"
-                description="Transform your time away into a worry-free experience for your pet with our attentive in-home care service. When you can't bring your furry family member along, our Cosy Homestays provide them with a loving environment, familiar routines, and plenty of affection."
+                title="Cosy Homestays - Pet Sitting in Chiswick Homes"
+                description="Transform your time away into a worry-free experience for your pet with our attentive in-home care service throughout Chiswick and surrounding London areas. When you can't bring your furry family member along, our Cosy Homestays provide them with a loving environment in your own home or ours, familiar routines, and plenty of affection. Ideal for extended trips or when your pet prefers the comfort of home."
                 imageSrc="/pet-sitting.png"
                 size={200}
                 className="circle-container"
@@ -639,13 +639,13 @@ export default function Home() {
                 <div>
                   <h3 className="text-xl font-bold mb-2" style={{ color: "#FEF2E4", position: "relative", zIndex: 20 }}>Who We Are</h3>
                   <p className="text-[#e0e0e0]" style={{ position: "relative", zIndex: 20 }}>
-                    We're a dog-loving couple in our early 30s ready to care for your furry friends in the Chiswick, London area! With professional backgrounds in finance and tech, we understand busy schedules and the importance of reliable pet care when you need it most.
+                    We're a dog-loving couple in our early 30s ready to care for your furry friends throughout Chiswick, W4, and surrounding London areas including Hammersmith, Acton, Richmond, and Kew Gardens! With professional backgrounds in finance and tech, we understand busy schedules and the importance of reliable pet care when you need it most.
                   </p>
                   <p className="text-[#e0e0e0] mt-3" style={{ position: "relative", zIndex: 20 }}>
                     Our passion for dogs runs deep - we both grew up surrounded by a variety of breeds. This lifelong experience has given us a natural understanding of different dog personalities, needs, and behaviors.
                   </p>
                   <p className="text-[#e0e0e0] mt-3" style={{ position: "relative", zIndex: 20 }}>
-                    When we're not working our day jobs, nothing makes us happier than spending time outdoors with canine companions. We offer flexible walking and sitting services whenever your pet needs attention while you're busy, bringing both professional reliability and genuine love to every interaction with your four-legged family members.
+                    When we're not working our day jobs, nothing makes us happier than spending time outdoors with canine companions in Chiswick's beautiful parks and green spaces. We offer flexible walking and sitting services throughout the local area whenever your pet needs attention while you're busy, bringing both professional reliability and genuine love to every interaction with your four-legged family members.
                   </p>
                   <p className="text-[#e0e0e0] mt-3" style={{ position: "relative", zIndex: 20 }}>
                     Frito Paws isn't just a service for us - it's a chance to combine our love for animals with our desire to help our neighbors and be more active in our community.
@@ -667,7 +667,7 @@ export default function Home() {
                 <div>
                   <h3 className="text-xl font-bold mb-2" style={{ color: "#FEF2E4", position: "relative", zIndex: 20 }}>Peace of Mind</h3>
                   <p className="text-[#e0e0e0]" style={{ position: "relative", zIndex: 20 }}>
-                  While your furry family member is in our care, we ensure you're never left wondering. Through regular real-time updates, adorable photos of your pet's adventures, and GPS tracking via WhatsApp live location sharing, you'll always know exactly where your dog is and how they're doing. Our transparent communication approach means you can focus on your day with complete confidence, knowing your beloved pet is safe, happy, and thoroughly enjoying their time with us.</p>
+                  While your furry family member is in our care around Chiswick and local areas, we ensure you're never left wondering. Through regular real-time updates, adorable photos of your pet's adventures in local parks and streets, and GPS tracking via WhatsApp live location sharing, you'll always know exactly where your dog is and how they're doing. Our transparent communication approach means you can focus on your day with complete confidence, knowing your beloved pet is safe, happy, and thoroughly enjoying their time exploring the best of Chiswick with us.</p>
                 </div>
               </div>
             </div>
@@ -686,13 +686,70 @@ export default function Home() {
         <CommentsCarousel />
       </div>
 
+      {/* Service Areas Section */}
+      <section className="py-16 bg-gradient-to-br from-[#F2F9F9] to-[#FEF2E4] relative z-10">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h3 className="text-4xl font-bold mb-4 text-[#143F3F]">Our Service Areas in West London</h3>
+            <p className="text-lg text-[#666666] max-w-3xl mx-auto mb-8">
+              Frito Paws proudly serves Chiswick and surrounding areas with professional dog walking and pet sitting services. We know the local parks, safe walking routes, and pet-friendly locations that make each walk an adventure.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="bg-white p-6 rounded-xl shadow-md">
+              <h4 className="text-xl font-bold text-[#143F3F] mb-3">Chiswick W4</h4>
+              <p className="text-[#666666] mb-4">Our primary service area covering all of Chiswick including Turnham Green, Chiswick High Road, and riverside areas along the Thames Path.</p>
+              <ul className="text-sm text-[#666666] space-y-1">
+                <li>• Chiswick Common & Rec Ground</li>
+                <li>• Thames Path riverside walks</li>
+                <li>• Turnham Green area</li>
+                <li>• Chiswick High Road vicinity</li>
+              </ul>
+            </div>
+            
+            <div className="bg-white p-6 rounded-xl shadow-md">
+              <h4 className="text-xl font-bold text-[#143F3F] mb-3">Hammersmith & Fulham</h4>
+              <p className="text-[#666666] mb-4">Extended service to neighboring Hammersmith areas with excellent transport links and beautiful parks perfect for dog walking.</p>
+              <ul className="text-sm text-[#666666] space-y-1">
+                <li>• Ravenscourt Park</li>
+                <li>• Hammersmith Bridge area</li>
+                <li>• King Street vicinity</li>
+                <li>• Fulham Palace Gardens</li>
+              </ul>
+            </div>
+            
+            <div className="bg-white p-6 rounded-xl shadow-md">
+              <h4 className="text-xl font-bold text-[#143F3F] mb-3">Richmond, Kew & Acton</h4>
+              <p className="text-[#666666] mb-4">Service extension to Richmond, Kew Gardens area, and Acton providing comprehensive pet care across West London.</p>
+              <ul className="text-sm text-[#666666] space-y-1">
+                <li>• Richmond Park proximity</li>
+                <li>• Kew Gardens vicinity</li>
+                <li>• Acton residential areas</li>
+                <li>• Transport-accessible locations</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div className="text-center mt-12">
+            <p className="text-[#666666] mb-6">Not sure if we cover your area? Contact us to discuss your location - we're always happy to accommodate nearby areas for regular clients.</p>
+            <a 
+              href="#contact"
+              className="inline-block px-8 py-3 bg-[#5BA69E] text-white font-semibold rounded-full hover:bg-[#4a8f88] transition-colors shadow-md"
+            >
+              Check Your Area
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* Contact Us Section */}
       <section id="contact" className="py-16 relative z-10">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-10">
-            <h3 className="text-4xl font-bold mb-4 text-[#143F3F]">Let's Chat, Reach Out to Us</h3>
+            <h3 className="text-4xl font-bold mb-4 text-[#143F3F]">Contact Frito Paws - Your Local Chiswick Pet Care Experts</h3>
             <p className="text-lg text-[#666666] max-w-2xl mx-auto mb-8">
-              Have questions or feedback? We're here to help. Send us a message, and we'll respond within 24 hours
+              Ready to book dog walking or pet sitting services in Chiswick, W4, or surrounding London areas? Have questions about our services? We're here to help. Send us a message, and we'll respond within 24 hours to discuss your pet's needs.
             </p>
           </div>
           
@@ -899,7 +956,7 @@ export default function Home() {
             />
             <h3 className="text-2xl mt-1" style={{ color: '#143F3F', fontFamily: 'Alfa Slab One, cursive', letterSpacing: '1px' }}>FRITO PAWS</h3>
           </div>
-          <p className="text-sm text-[#143F3F]">© 2025 Frito Paws Professional Dog Walking. All rights reserved.</p>
+          <p className="text-sm text-[#143F3F]">© 2025 Frito Paws Professional Dog Walking & Pet Sitting Services Chiswick, London. All rights reserved.</p>
         </div>
       </footer>
     </div>

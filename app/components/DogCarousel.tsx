@@ -95,7 +95,7 @@ const DogCarousel = () => {
         <div className="text-center mb-12">
           <h3 className="text-4xl font-bold mb-4 text-[#143F3F]">Meet Our Furry Friends</h3>
           <p className="text-lg text-[#666666] max-w-2xl mx-auto">
-            These are some of the wonderful employers we've had the pleasure of caring
+            These are some of the wonderful furry clients we've had the pleasure of caring for throughout Chiswick, W4, and surrounding London areas. From energetic park adventures to peaceful home visits, each pet receives personalized attention.
           </p>
         </div>
 
