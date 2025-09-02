@@ -8,6 +8,7 @@ import DogCarousel from './components/DogCarousel';
 import CommentsCarousel from './components/CommentsCarousel';
 import './page-styles.css'; // Import the custom styles
 import CircularServiceCard from './components/CircularServiceCard'; // Import new component
+import ExpandableText from './components/ExpandableText';
 
 // Component for paw icon with position
 interface PawIconProps {
@@ -691,18 +692,34 @@ export default function Home() {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold mb-2" style={{ color: "#FEF2E4", position: "relative", zIndex: 20 }}>Who We Are</h3>
-                  <p className="text-[#e0e0e0]" style={{ position: "relative", zIndex: 20 }}>
-                    We're a dog-loving couple in our early 30s ready to care for your furry friends throughout Chiswick, W4, and surrounding London areas including Hammersmith, Acton, Richmond, and Kew Gardens! With professional backgrounds in finance and tech, we understand busy schedules and the importance of reliable pet care when you need it most.
-                  </p>
-                  <p className="text-[#e0e0e0] mt-3" style={{ position: "relative", zIndex: 20 }}>
-                    Our passion for dogs runs deep - we both grew up surrounded by a variety of breeds. This lifelong experience has given us a natural understanding of different dog personalities, needs, and behaviors.
-                  </p>
-                  <p className="text-[#e0e0e0] mt-3" style={{ position: "relative", zIndex: 20 }}>
-                    When we're not working our day jobs, nothing makes us happier than spending time outdoors with canine companions in Chiswick's beautiful parks and green spaces. We offer flexible walking and sitting services throughout the local area whenever your pet needs attention while you're busy, bringing both professional reliability and genuine love to every interaction with your four-legged family members.
-                  </p>
-                  <p className="text-[#e0e0e0] mt-3" style={{ position: "relative", zIndex: 20 }}>
-                    Frito Paws isn't just a service for us - it's a chance to combine our love for animals with our desire to help our neighbors and be more active in our community.
-                  </p>
+                  <ExpandableText maxHeight="120px" className="md:hidden">
+                    <p className="text-[#e0e0e0]" style={{ position: "relative", zIndex: 20 }}>
+                      We're a dog-loving couple in our early 30s ready to care for your furry friends throughout Chiswick, W4, and surrounding London areas including Hammersmith, Acton, Richmond, and Kew Gardens! With professional backgrounds in finance and tech, we understand busy schedules and the importance of reliable pet care when you need it most.
+                    </p>
+                    <p className="text-[#e0e0e0] mt-3" style={{ position: "relative", zIndex: 20 }}>
+                      Our passion for dogs runs deep - we both grew up surrounded by a variety of breeds. This lifelong experience has given us a natural understanding of different dog personalities, needs, and behaviors.
+                    </p>
+                    <p className="text-[#e0e0e0] mt-3" style={{ position: "relative", zIndex: 20 }}>
+                      When we're not working our day jobs, nothing makes us happier than spending time outdoors with canine companions in Chiswick's beautiful parks and green spaces. We offer flexible walking and sitting services throughout the local area whenever your pet needs attention while you're busy, bringing both professional reliability and genuine love to every interaction with your four-legged family members.
+                    </p>
+                    <p className="text-[#e0e0e0] mt-3" style={{ position: "relative", zIndex: 20 }}>
+                      Frito Paws isn't just a service for us - it's a chance to combine our love for animals with our desire to help our neighbors and be more active in our community.
+                    </p>
+                  </ExpandableText>
+                  <div className="hidden md:block">
+                    <p className="text-[#e0e0e0]" style={{ position: "relative", zIndex: 20 }}>
+                      We're a dog-loving couple in our early 30s ready to care for your furry friends throughout Chiswick, W4, and surrounding London areas including Hammersmith, Acton, Richmond, and Kew Gardens! With professional backgrounds in finance and tech, we understand busy schedules and the importance of reliable pet care when you need it most.
+                    </p>
+                    <p className="text-[#e0e0e0] mt-3" style={{ position: "relative", zIndex: 20 }}>
+                      Our passion for dogs runs deep - we both grew up surrounded by a variety of breeds. This lifelong experience has given us a natural understanding of different dog personalities, needs, and behaviors.
+                    </p>
+                    <p className="text-[#e0e0e0] mt-3" style={{ position: "relative", zIndex: 20 }}>
+                      When we're not working our day jobs, nothing makes us happier than spending time outdoors with canine companions in Chiswick's beautiful parks and green spaces. We offer flexible walking and sitting services throughout the local area whenever your pet needs attention while you're busy, bringing both professional reliability and genuine love to every interaction with your four-legged family members.
+                    </p>
+                    <p className="text-[#e0e0e0] mt-3" style={{ position: "relative", zIndex: 20 }}>
+                      Frito Paws isn't just a service for us - it's a chance to combine our love for animals with our desire to help our neighbors and be more active in our community.
+                    </p>
+                  </div>
                 </div>
               </div>
               
@@ -719,8 +736,14 @@ export default function Home() {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold mb-2" style={{ color: "#FEF2E4", position: "relative", zIndex: 20 }}>Peace of Mind</h3>
-                  <p className="text-[#e0e0e0]" style={{ position: "relative", zIndex: 20 }}>
-                  While your furry family member is in our care around Chiswick and local areas, we ensure you're never left wondering. Through regular real-time updates, adorable photos of your pet's adventures in local parks and streets, and GPS tracking via WhatsApp live location sharing, you'll always know exactly where your dog is and how they're doing. Our transparent communication approach means you can focus on your day with complete confidence, knowing your beloved pet is safe, happy, and thoroughly enjoying their time exploring the best of Chiswick with us.</p>
+                  <ExpandableText maxHeight="80px" className="md:hidden">
+                    <p className="text-[#e0e0e0]" style={{ position: "relative", zIndex: 20 }}>
+                    While your furry family member is in our care around Chiswick and local areas, we ensure you're never left wondering. Through regular real-time updates, adorable photos of your pet's adventures in local parks and streets, and GPS tracking via WhatsApp live location sharing, you'll always know exactly where your dog is and how they're doing. Our transparent communication approach means you can focus on your day with complete confidence, knowing your beloved pet is safe, happy, and thoroughly enjoying their time exploring the best of Chiswick with us.</p>
+                  </ExpandableText>
+                  <div className="hidden md:block">
+                    <p className="text-[#e0e0e0]" style={{ position: "relative", zIndex: 20 }}>
+                    While your furry family member is in our care around Chiswick and local areas, we ensure you're never left wondering. Through regular real-time updates, adorable photos of your pet's adventures in local parks and streets, and GPS tracking via WhatsApp live location sharing, you'll always know exactly where your dog is and how they're doing. Our transparent communication approach means you can focus on your day with complete confidence, knowing your beloved pet is safe, happy, and thoroughly enjoying their time exploring the best of Chiswick with us.</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -948,7 +971,7 @@ export default function Home() {
                     required
                   />
                   <label htmlFor="privacy" className="text-sm text-[#143F3F]">
-                    I agree to our friendly <span className="underline">privacy policy</span>
+                    I agree to our friendly <a href="/privacy" target="_blank" className="underline hover:text-[#5BA69E] transition-colors">privacy policy</a>
                   </label>
                 </div>
 
