@@ -139,7 +139,7 @@ const CommentsCarousel = () => {
   };
 
   const ReviewCard = ({ review }: { review: Review }) => (
-    <div className="flex-shrink-0 w-[320px] md:w-[600px] sm:w-[360px] mx-4">
+    <div className="flex-shrink-0 w-[300px] md:w-[600px] sm:w-[340px] mx-2 md:mx-4">
       <div className="bg-white rounded-xl shadow-lg p-6 md:p-8 h-full border border-gray-100 hover:shadow-xl transition-shadow duration-300">
         {/* Review Header */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
@@ -218,10 +218,10 @@ const CommentsCarousel = () => {
           
           {/* Mobile: Single Card with Arrows */}
           <div className="md:hidden">
-            <div className="relative px-16">
-              {/* Single Review Card with Swipe */}
+            <div className="relative">
+              {/* Single Review Card with Swipe - Centered */}
               <div 
-                className="mx-auto"
+                className="flex justify-center"
                 onTouchStart={handleTouchStart}
                 onTouchMove={handleTouchMove}
                 onTouchEnd={handleTouchEnd}
@@ -229,11 +229,11 @@ const CommentsCarousel = () => {
                 <ReviewCard review={reviews[currentIndex]} />
               </div>
 
-              {/* Left Arrow - Positioned absolutely */}
+              {/* Left Arrow - Positioned absolutely outside the card */}
               <button
                 onClick={goToPrevious}
                 disabled={isAnimating}
-                className={`absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white backdrop-blur-sm rounded-full p-2 shadow-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-[#5BA69E] z-10 ${
+                className={`absolute left-1 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white backdrop-blur-sm rounded-full p-2 shadow-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-[#5BA69E] z-10 ${
                   isAnimating ? 'opacity-50 cursor-not-allowed' : 'opacity-100'
                 }`}
                 aria-label="Previous review"
@@ -243,11 +243,11 @@ const CommentsCarousel = () => {
                 </svg>
               </button>
 
-              {/* Right Arrow - Positioned absolutely */}
+              {/* Right Arrow - Positioned absolutely outside the card */}
               <button
                 onClick={goToNext}
                 disabled={isAnimating}
-                className={`absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white backdrop-blur-sm rounded-full p-2 shadow-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-[#5BA69E] z-10 ${
+                className={`absolute right-1 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white backdrop-blur-sm rounded-full p-2 shadow-lg transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-[#5BA69E] z-10 ${
                   isAnimating ? 'opacity-50 cursor-not-allowed' : 'opacity-100'
                 }`}
                 aria-label="Next review"
