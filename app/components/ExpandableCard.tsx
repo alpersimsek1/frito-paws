@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useRef } from "react";
-import * as M from "motion";
 import { cn } from "../utils";
 import { useOutsideClick } from "../hooks/use-outside-click";
 

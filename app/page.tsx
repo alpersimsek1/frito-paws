@@ -75,6 +75,7 @@ const Header = () => {
             <a href="#why-us" className="text-[#143F3F] hover:text-[#5BA69E] font-medium">About Us</a>
             <a href="#furry-friends" className="text-[#143F3F] hover:text-[#5BA69E] font-medium">Our Furry Friends</a>
             <a href="#reviews" className="text-[#143F3F] hover:text-[#5BA69E] font-medium">Reviews</a>
+            <a href="/dashboard" className="text-[#143F3F] hover:text-[#5BA69E] font-medium">Pro Dashboard</a>
             <a href="#contact" className="text-[#143F3F] hover:text-[#5BA69E] font-medium">Contact</a>
             {/* Social Media Icons */}
             <div className="flex items-center space-x-3 ml-4">
@@ -129,43 +130,50 @@ const Header = () => {
       {mobileMenuOpen && (
         <div className="md:hidden bg-[rgba(254,242,228,0.95)] py-4 px-6 shadow-md">
           <nav className="flex flex-col space-y-4">
-            <a 
-              href="#" 
+            <a
+              href="#"
               className="text-[#143F3F] hover:text-[#5BA69E] font-medium"
               onClick={() => setMobileMenuOpen(false)}
             >
               Home
             </a>
-            <a 
-              href="#services" 
+            <a
+              href="#services"
               className="text-[#143F3F] hover:text-[#5BA69E] font-medium"
               onClick={() => setMobileMenuOpen(false)}
             >
               Services
             </a>
-            <a 
-              href="#why-us" 
+            <a
+              href="#why-us"
               className="text-[#143F3F] hover:text-[#5BA69E] font-medium"
               onClick={() => setMobileMenuOpen(false)}
             >
               About Us
             </a>
-            <a 
-              href="#furry-friends" 
+            <a
+              href="#furry-friends"
               className="text-[#143F3F] hover:text-[#5BA69E] font-medium"
               onClick={() => setMobileMenuOpen(false)}
             >
               Our Furry Friends
             </a>
-            <a 
-              href="#reviews" 
+            <a
+              href="#reviews"
               className="text-[#143F3F] hover:text-[#5BA69E] font-medium"
               onClick={() => setMobileMenuOpen(false)}
             >
               Reviews
             </a>
-            <a 
-              href="#contact" 
+            <a
+              href="/dashboard"
+              className="text-[#143F3F] hover:text-[#5BA69E] font-medium"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Pro Dashboard
+            </a>
+            <a
+              href="#contact"
               className="text-[#143F3F] hover:text-[#5BA69E] font-medium"
               onClick={() => setMobileMenuOpen(false)}
             >
