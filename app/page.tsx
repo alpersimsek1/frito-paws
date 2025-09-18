@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { ExpandableCard } from './components/ExpandableCard';
 import Image from 'next/image';
+import Link from 'next/link';
 import DogAnimation from './components/DogAnimation';
 import DogCarousel from './components/DogCarousel';
 import CommentsCarousel from './components/CommentsCarousel';
@@ -76,6 +77,7 @@ const Header = () => {
             <a href="#furry-friends" className="text-[#143F3F] hover:text-[#5BA69E] font-medium">Our Furry Friends</a>
             <a href="#reviews" className="text-[#143F3F] hover:text-[#5BA69E] font-medium">Reviews</a>
             <a href="#contact" className="text-[#143F3F] hover:text-[#5BA69E] font-medium">Contact</a>
+            <Link href="/join-us" className="text-[#143F3F] hover:text-[#5BA69E] font-medium bg-[#5BA69E] text-white hover:bg-[#4a8f88] px-4 py-2 rounded-full transition-colors">Join Our Team</Link>
             {/* Social Media Icons */}
             <div className="flex items-center space-x-3 ml-4">
               <a 
@@ -164,13 +166,20 @@ const Header = () => {
             >
               Reviews
             </a>
-            <a 
-              href="#contact" 
+            <a
+              href="#contact"
               className="text-[#143F3F] hover:text-[#5BA69E] font-medium"
               onClick={() => setMobileMenuOpen(false)}
             >
               Contact
             </a>
+            <Link
+              href="/join-us"
+              className="text-white bg-[#5BA69E] hover:bg-[#4a8f88] font-medium px-4 py-2 rounded-full text-center transition-colors"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Join Our Team
+            </Link>
             {/* Social Media Icons for Mobile */}
             <div className="flex items-center justify-center space-x-4 mt-6 pt-4 border-t border-gray-200">
               <a 
