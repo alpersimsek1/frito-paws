@@ -181,7 +181,16 @@ export default function RootLayout({
             `,
           }}
         />
-        
+
+        {/* Event snippet for Page view (1) conversion page */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              gtag('event', 'conversion', {'send_to': 'AW-17474827745/RmnfCLLOtqUbEOHr0oxB'});
+            `,
+          }}
+        />
+
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
