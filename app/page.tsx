@@ -41,7 +41,7 @@ export default function Home() {
         }}
       >
         We&apos;re evolving from dog walking into something much bigger.
-        Meet <strong style={{ color: '#143F3F' }}>Petverse</strong> &mdash; your
+        Meet <strong style={{ color: '#143F3F' }}>PetverseApp</strong> &mdash; your
         pet&apos;s digital universe. One app to manage your pet&apos;s entire life.
       </p>
       <p
